@@ -77,10 +77,10 @@ def reference_model():
     return model, index, config, scene, xml
 
 
-def check_physics(task):
+def _check_original_physics(task):
     check_sources()
     baseline, index, config, scene, old_xml = reference_model()
-    new_xml, _, _ = assemble_xml()
+    new_xml, _, _ = assemble_xml(cameras=False)
     old_fields, new_fields = canonical_xml(old_xml), canonical_xml(new_xml)
     diff = {key: dict(before=old_fields.get(key), after=new_fields.get(key))
             for key in old_fields.keys() | new_fields.keys() if old_fields.get(key) != new_fields.get(key)}
@@ -139,6 +139,102 @@ def check_physics(task):
                 compiled_arrays_compared=arrays, mass_matrix_max_errors=errors,
                 mass_matrix_rtol=1e-10, mass_matrix_atol=1e-12, bean_count=1, plate_assembled=False,
                 xml_input_sha256=hashlib.sha256(ET.tostring(new_xml)).hexdigest())
+
+
+def check_physics(task):
+    """Keep the exact P1 audit, then allow only the registered visual additions."""
+    if not task.cameras:
+        return _check_original_physics(task)
+    baseline = FeedingTask(cameras=False)
+    report = _check_original_physics(baseline)
+    original_xml, _, _ = assemble_xml(cameras=False)
+    visual_xml, _, _ = assemble_xml(cameras=True)
+    camera_config = load_json("configs/cameras.json")
+    stripped = copy.deepcopy(visual_xml)
+    added_bodies = {camera["name"] + "_d435i" for camera in camera_config["cameras"]}
+    removed = set()
+    for parent in stripped.iter():
+        for child in list(parent):
+            if child.tag == "body" and child.get("name") in added_bodies:
+                removed.add(child.get("name"))
+                parent.remove(child)
+    assert removed == added_bodies
+    source = ET.parse(ROOT / camera_config["asset"]).getroot()
+    added_assets = {"d435i_" + Path(mesh.get("file")).stem for mesh in source.findall("asset/mesh")}
+    added_assets.update("d435i_" + material.get("name") for material in source.findall("asset/material"))
+    removed = set()
+    for child in list(stripped.find("asset")):
+        if child.get("name") in added_assets:
+            removed.add(child.get("name"))
+            stripped.find("asset").remove(child)
+    assert removed == added_assets
+    mapping = stripped.find("visual/map")
+    assert mapping.attrib == dict(znear=str(camera_config["znear_extent_fraction"]),
+                                  zfar=str(camera_config["zfar_extent_fraction"]))
+    stripped.find("visual").remove(mapping)
+    assert canonical_xml(stripped) == canonical_xml(original_xml), "Unexpected camera assembly edits"
+
+    old, new = baseline.model, task.model
+    assert (old.nq, old.nv, old.nu, old.nsensor, old.npair) == (
+        new.nq, new.nv, new.nu, new.nsensor, new.npair)
+    body_map = np.array([new.body(old.body(i).name).id for i in range(old.nbody)])
+    geom_map = []
+    for body in range(old.nbody):
+        old_ids = np.flatnonzero(old.geom_bodyid == body)
+        new_ids = np.flatnonzero(new.geom_bodyid == body_map[body])
+        assert len(old_ids) == len(new_ids), old.body(body).name
+        geom_map.extend(zip(old_ids, new_ids))
+    geom_map = np.array([new_id for _, new_id in sorted(geom_map)])
+    for name in ("body_mass", "body_inertia", "body_ipos", "body_iquat", "body_pos", "body_quat"):
+        np.testing.assert_array_equal(getattr(old, name), getattr(new, name)[body_map], err_msg=name)
+    np.testing.assert_array_equal(body_map[old.body_parentid], new.body_parentid[body_map])
+    for name in ("geom_type", "geom_size", "geom_pos", "geom_quat", "geom_friction", "geom_solref",
+                 "geom_solimp", "geom_margin", "geom_gap", "geom_contype", "geom_conaffinity"):
+        np.testing.assert_array_equal(getattr(old, name), getattr(new, name)[geom_map], err_msg=name)
+    for kind in ("joint", "actuator", "sensor"):
+        count = {"joint": old.njnt, "actuator": old.nu, "sensor": old.nsensor}[kind]
+        assert [getattr(old, kind)(i).name for i in range(count)] == [
+            getattr(new, kind)(i).name for i in range(count)]
+    for name in ("jnt_type", "jnt_qposadr", "jnt_dofadr", "jnt_range", "jnt_axis", "jnt_pos", "jnt_limited",
+                 "dof_damping", "dof_armature", "dof_frictionloss", "actuator_gainprm", "actuator_biasprm",
+                 "actuator_ctrlrange", "actuator_forcerange", "actuator_gear", "actuator_trnid",
+                 "actuator_trntype", "actuator_dyntype", "actuator_biastype", "sensor_type", "sensor_adr", "sensor_dim",
+                 "pair_friction", "pair_solref", "pair_solimp", "pair_margin", "pair_gap"):
+        np.testing.assert_array_equal(getattr(old, name), getattr(new, name), err_msg=name)
+    for name in ("pair_geom1", "pair_geom2"):
+        np.testing.assert_array_equal(geom_map[getattr(old, name)], getattr(new, name), err_msg=name)
+    added = [new.body(name).id for name in added_bodies]
+    np.testing.assert_array_equal(new.body_mass[added], 0.)
+    np.testing.assert_array_equal(new.body_inertia[added], 0.)
+    visual_geoms = np.flatnonzero(np.isin(new.geom_bodyid, added))
+    assert len(visual_geoms) == 18 and new.nbody == old.nbody + 2
+    assert new.ngeom == old.ngeom + 18 and new.nmesh == old.nmesh + 9 and new.ncam == old.ncam + 2
+    assert not np.any(new.geom_contype[visual_geoms]) and not np.any(new.geom_conaffinity[visual_geoms])
+    assert task.index.tool_mass == baseline.index.tool_mass == .035
+    errors = {}
+    for label, offset in (("qpos0", None), ("reset", 0.), ("reset_-1", -.1), ("reset_+1", .1)):
+        qpos = old.qpos0.copy()
+        if offset is not None:
+            qpos[baseline.index.qpos] = np.clip(np.array(baseline.robot_config["reset_q"]) + offset,
+                old.jnt_range[baseline.index.joints, 0], old.jnt_range[baseline.index.joints, 1])
+            qpos[old.jnt_qposadr[baseline.index.head_joints[-1]]] = baseline.scene_config["head"]["jaw_center_rad"]
+            qpos[baseline.index.bean_qpos[0, 3:]] = ([1., 0., 0., 0.] if offset > 0.
+                else baseline.scene_config["beans"]["reset_quaternion_wxyz"])
+        matrices = []
+        for model in (old, new):
+            data = mujoco.MjData(model)
+            data.qpos[:] = qpos
+            mujoco.mj_forward(model, data)
+            matrix = np.empty((model.nv, model.nv))
+            mujoco.mj_fullM(model, data, matrix)
+            matrices.append(matrix)
+        np.testing.assert_allclose(*matrices, rtol=1e-10, atol=1e-12)
+        errors[label] = float(np.max(np.abs(matrices[0] - matrices[1])))
+    report["visual_additions"] = dict(original_xml_equal_after_explicit_visual_removal=True,
+        body_names=sorted(added_bodies), added_geoms=len(visual_geoms), added_meshes=9,
+        zero_mass_and_collision=True, tool_mass_kg=task.index.tool_mass,
+        mass_matrix_max_errors=errors, xml_input_sha256=hashlib.sha256(ET.tostring(visual_xml)).hexdigest())
+    return report
 
 
 def check_head_driver(task):

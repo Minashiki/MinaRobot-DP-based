@@ -32,11 +32,12 @@
     "menagerie": {
       "url": "https://github.com/google-deepmind/mujoco_menagerie",
       "commit": "0059d4335f8156206f63a35662313385f7ad6d74",
-      "role": "reference_only",
+      "role": "imported",
       "license": {
-        "url": "https://raw.githubusercontent.com/google-deepmind/mujoco_menagerie/0059d4335f8156206f63a35662313385f7ad6d74/LICENSE",
-        "sha256": "b1334631b1d7bd73394f95d3241d5110f98f7310ad08b17d3b113518dd967a5b",
-        "status": "reference_only_not_imported"
+        "url": "https://raw.githubusercontent.com/google-deepmind/mujoco_menagerie/0059d4335f8156206f63a35662313385f7ad6d74/realsense_d435i/LICENSE",
+        "sha256": "1c72ac904e86caaa9dbf1740d8d4737264712699e8a7f416cfe15591f21a2cbf",
+        "path": "assets/third_party/realsense_d435i/LICENSE",
+        "status": "imported_unmodified"
       }
     }
   },
@@ -2608,10 +2609,11 @@
       "source": "legacy",
       "source_path": "src/feedingrobot/sim/model.py",
       "source_sha256": "0c2d2b42332c4cea860b6bf285080656a49923ff0baca2ff357b1c8a01405e36",
-      "sha256": "82e58aafb5febbc950f6f707b05678c846a5ae03ac10ede36fa796be70ec67ef",
+      "sha256": "65c0c933c6d348f7a2828df0952a639467499d1cb1e90f356f2e50017d7d391e",
       "license_paths": [],
       "modifications": [
-        "Panda-only assembly API; expose assembled XML and bowl indexes; scope runtime input hashes"
+        "Panda-only assembly API; expose assembled XML and bowl indexes; scope runtime input hashes",
+        "P2: optional zero-mass noncolliding D435i instances and fixed RGB cameras; original physics assembly preserved"
       ]
     },
     {
@@ -2630,10 +2632,11 @@
       "source": "legacy",
       "source_path": "src/feedingrobot/sim/task.py",
       "source_sha256": "4b8b2369f0b3780f5ebd5d2295c6a4343d148941b1a1b7ed5f37669260a52351",
-      "sha256": "1d2c892202f0a41811438d15c975d3ade0e449c243144bb5b6f45f4214bda710",
+      "sha256": "25b483239111c02877ee34a0cfd6a91a5d4e41cb70fa906d5b0fe56f491fb18b",
       "license_paths": [],
       "modifications": [
-        "P1 joint holding only; episode-local randomized reset, fixed head PD, complete layout-aware state restore"
+        "P1 joint holding only; episode-local randomized reset, fixed head PD, complete layout-aware state restore",
+        "P2/P3: schema 2 delta controller/safety snapshots, single-application control and RGB/TCP observation whitelist"
       ]
     },
     {
@@ -2724,6 +2727,158 @@
       "license_paths": [],
       "modifications": [],
       "role": "validation_reference_only"
+    },
+    {
+      "path": "assets/third_party/realsense_d435i/LICENSE",
+      "source": "menagerie",
+      "source_path": "realsense_d435i/LICENSE",
+      "source_sha256": "1c72ac904e86caaa9dbf1740d8d4737264712699e8a7f416cfe15591f21a2cbf",
+      "sha256": "1c72ac904e86caaa9dbf1740d8d4737264712699e8a7f416cfe15591f21a2cbf",
+      "license_paths": [],
+      "modifications": []
+    },
+    {
+      "path": "assets/third_party/realsense_d435i/README.md",
+      "source": "menagerie",
+      "source_path": "realsense_d435i/README.md",
+      "source_sha256": "a3b3a71e2d2868fda3a1f7f1c79b88a3b0b726e0710b282c177f790fd6545474",
+      "sha256": "a3b3a71e2d2868fda3a1f7f1c79b88a3b0b726e0710b282c177f790fd6545474",
+      "license_paths": [
+        "assets/third_party/realsense_d435i/LICENSE"
+      ],
+      "modifications": []
+    },
+    {
+      "path": "assets/third_party/realsense_d435i/assets/d435i_0.obj",
+      "source": "menagerie",
+      "source_path": "realsense_d435i/assets/d435i_0.obj",
+      "source_sha256": "dbaa9c4f2762320875ccc23f162df8d0879910611bbc4a53c677cc381642301e",
+      "sha256": "dbaa9c4f2762320875ccc23f162df8d0879910611bbc4a53c677cc381642301e",
+      "license_paths": [
+        "assets/third_party/realsense_d435i/LICENSE"
+      ],
+      "modifications": []
+    },
+    {
+      "path": "assets/third_party/realsense_d435i/assets/d435i_1.obj",
+      "source": "menagerie",
+      "source_path": "realsense_d435i/assets/d435i_1.obj",
+      "source_sha256": "5ee79cc2bfee84b91ae9d04b508f6a4cd3a1caae989114d9ab043fbde6ac6d41",
+      "sha256": "5ee79cc2bfee84b91ae9d04b508f6a4cd3a1caae989114d9ab043fbde6ac6d41",
+      "license_paths": [
+        "assets/third_party/realsense_d435i/LICENSE"
+      ],
+      "modifications": []
+    },
+    {
+      "path": "assets/third_party/realsense_d435i/assets/d435i_2.obj",
+      "source": "menagerie",
+      "source_path": "realsense_d435i/assets/d435i_2.obj",
+      "source_sha256": "2835a8c85afde2b561f01da2c722537637a1c3309b1b9577dfda093f26936dec",
+      "sha256": "2835a8c85afde2b561f01da2c722537637a1c3309b1b9577dfda093f26936dec",
+      "license_paths": [
+        "assets/third_party/realsense_d435i/LICENSE"
+      ],
+      "modifications": []
+    },
+    {
+      "path": "assets/third_party/realsense_d435i/assets/d435i_3.obj",
+      "source": "menagerie",
+      "source_path": "realsense_d435i/assets/d435i_3.obj",
+      "source_sha256": "cc6448c05f215b02f04c1960748b2bd5ef51c276e40f327c3b9e0e012e6b61b8",
+      "sha256": "cc6448c05f215b02f04c1960748b2bd5ef51c276e40f327c3b9e0e012e6b61b8",
+      "license_paths": [
+        "assets/third_party/realsense_d435i/LICENSE"
+      ],
+      "modifications": []
+    },
+    {
+      "path": "assets/third_party/realsense_d435i/assets/d435i_4.obj",
+      "source": "menagerie",
+      "source_path": "realsense_d435i/assets/d435i_4.obj",
+      "source_sha256": "bbc952be30c194decf1e86d107edeeb5dfa3dd96f972202f5a99ebbd0b39b701",
+      "sha256": "bbc952be30c194decf1e86d107edeeb5dfa3dd96f972202f5a99ebbd0b39b701",
+      "license_paths": [
+        "assets/third_party/realsense_d435i/LICENSE"
+      ],
+      "modifications": []
+    },
+    {
+      "path": "assets/third_party/realsense_d435i/assets/d435i_5.obj",
+      "source": "menagerie",
+      "source_path": "realsense_d435i/assets/d435i_5.obj",
+      "source_sha256": "8495497738082c23f481b7809ed365bdfdc8f05717da9030880c0091d1440c05",
+      "sha256": "8495497738082c23f481b7809ed365bdfdc8f05717da9030880c0091d1440c05",
+      "license_paths": [
+        "assets/third_party/realsense_d435i/LICENSE"
+      ],
+      "modifications": []
+    },
+    {
+      "path": "assets/third_party/realsense_d435i/assets/d435i_6.obj",
+      "source": "menagerie",
+      "source_path": "realsense_d435i/assets/d435i_6.obj",
+      "source_sha256": "1f3733f318d55cbea0f6968596881454eb0902c74b85aa846e45f02a1efd26e7",
+      "sha256": "1f3733f318d55cbea0f6968596881454eb0902c74b85aa846e45f02a1efd26e7",
+      "license_paths": [
+        "assets/third_party/realsense_d435i/LICENSE"
+      ],
+      "modifications": []
+    },
+    {
+      "path": "assets/third_party/realsense_d435i/assets/d435i_7.obj",
+      "source": "menagerie",
+      "source_path": "realsense_d435i/assets/d435i_7.obj",
+      "source_sha256": "da2592b7c9dacc653cbfbbb6e47ddde74bfd76bb3d7627c4b7a145b4984a0c62",
+      "sha256": "da2592b7c9dacc653cbfbbb6e47ddde74bfd76bb3d7627c4b7a145b4984a0c62",
+      "license_paths": [
+        "assets/third_party/realsense_d435i/LICENSE"
+      ],
+      "modifications": []
+    },
+    {
+      "path": "assets/third_party/realsense_d435i/assets/d435i_8.obj",
+      "source": "menagerie",
+      "source_path": "realsense_d435i/assets/d435i_8.obj",
+      "source_sha256": "fc882d749abb4392d89b02fcc4c12b7b857899b32d88e9d98cc19f66253ecd90",
+      "sha256": "fc882d749abb4392d89b02fcc4c12b7b857899b32d88e9d98cc19f66253ecd90",
+      "license_paths": [
+        "assets/third_party/realsense_d435i/LICENSE"
+      ],
+      "modifications": []
+    },
+    {
+      "path": "assets/third_party/realsense_d435i/d435i.xml",
+      "source": "menagerie",
+      "source_path": "realsense_d435i/d435i.xml",
+      "source_sha256": "4a1dee17959d0f4b087738a2ef0ff417e36291867bda60bcf1296bfb652449f3",
+      "sha256": "4a1dee17959d0f4b087738a2ef0ff417e36291867bda60bcf1296bfb652449f3",
+      "license_paths": [
+        "assets/third_party/realsense_d435i/LICENSE"
+      ],
+      "modifications": []
+    },
+    {
+      "path": "src/feedingrobot/control/adapter.py",
+      "source": "legacy",
+      "source_path": "src/feedingrobot/control/adapter.py",
+      "source_sha256": "0fa93ae24f92a303b285fa469a99aa9cf55199c0c11bce40ec0853e5cbba6ed5",
+      "sha256": "eb10025713185ac3fea58e337c68d5a0bd4beb341deb1d52a8cb1e281cb2b540",
+      "license_paths": [],
+      "modifications": [
+        "Reuse Mink FrameTask, frozen DOFs and configuration/velocity/collision limits; replace twist chain with immutable 6D delta targets; no Python clipping"
+      ]
+    },
+    {
+      "path": "src/feedingrobot/control/safety.py",
+      "source": "legacy",
+      "source_path": "src/feedingrobot/sim/events.py",
+      "source_sha256": "4175fa1e04f2d3b694ee0db9cf24a1907ab9fe057f324b128780e0d6c8362e17",
+      "sha256": "250d017e83fea1d9fab4e71ad1eeaa1ce38d94fd847960033d18e368812ced5b",
+      "license_paths": [],
+      "modifications": [
+        "Extract only the original runtime penetration thresholds and duration rule; no task-stage logic"
+      ]
     }
   ],
   "tableware_provenance": {

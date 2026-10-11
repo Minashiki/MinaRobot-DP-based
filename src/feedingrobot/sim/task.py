@@ -1,4 +1,4 @@
-"""P1 physics owner: fixed joint holding, randomized initial state and replay."""
+"""Physics owner, single-application delta control and complete state replay."""
 
 import copy
 import hashlib
@@ -13,6 +13,8 @@ from feedingrobot.sim.beans import bean_state, bean_diagnostics, spawn_clearance
 from feedingrobot.sim.contacts import ContactMonitor, read_contacts
 from feedingrobot.sim.model import ROOT, asset_files, load_json, load_model
 from feedingrobot.sim.sensors import wrist_state
+from feedingrobot.control.adapter import DeltaAdapter
+from feedingrobot.control.safety import SafetyMonitor
 
 
 class InvalidInitialState(ValueError):
@@ -24,24 +26,30 @@ class InvalidInitialState(ValueError):
 
 
 class FeedingTask:
-    def __init__(self):
-        self.model, self.index, self.robot_config, self.scene_config = load_model()
+    def __init__(self, *, cameras=True):
+        self.cameras = bool(cameras)
+        self.model, self.index, self.robot_config, self.scene_config = load_model(cameras=self.cameras)
         self.data = mujoco.MjData(self.model)
         self.dt = float(self.model.opt.timestep)
         self.bean_acceptance = load_json("configs/acceptance.json")
         self.protocol = load_json("configs/protocol.json")
+        self.control_config = load_json("configs/control.json")
+        self._renderer = None
         self.default_bowl_pos = self.model.body_pos[self.index.bowl_body].copy()
         self.default_bowl_quat = self.model.body_quat[self.index.bowl_body].copy()
         digest = hashlib.sha256()
-        for path in asset_files("panda"):
+        for path in [*asset_files("panda", cameras=self.cameras), ROOT / "configs/control.json"]:
             digest.update(path.relative_to(ROOT).as_posix().encode())
             digest.update(path.read_bytes())
         compiled = np.empty(mujoco.mj_sizeModel(self.model), dtype=np.uint8)
         mujoco.mj_saveModel(self.model, None, compiled)
         digest.update(compiled.tobytes())
-        self.signature = dict(schema_version=1, model_config_hash=digest.hexdigest(),
+        self.signature = dict(schema_version=2, model_config_hash=digest.hexdigest(),
                               mujoco_version=mujoco.__version__)
         self.monitor = ContactMonitor(self.scene_config["contact_force_limit_n"])
+        mujoco.mj_forward(self.model, self.data)
+        self.adapter = DeltaAdapter(self.model, self.data, self.index, self.robot_config, self.control_config)
+        self.safety = SafetyMonitor(self.control_config, self.bean_acceptance["penetration_limit_m"])
         self.reset(seed=self.protocol["seed"], split="debug", episode_id=0,
                    layout={"bowl_offset_m": [0., 0.], "bean_offset_m": [0., 0.]})
 
@@ -53,6 +61,7 @@ class FeedingTask:
         m.body_pos[idx.bowl_body] = self.default_bowl_pos + base_rotation.reshape(3, 3) @ np.r_[bowl_offset, 0.]
         m.body_quat[idx.bowl_body] = self.default_bowl_quat
         self.tick = 0
+        self.resetting = True
         self.terminated, self.failure_reason = False, None
         self.external_wrench = None
         self.servo_reference_q = np.array(self.robot_config["reset_q"], dtype=float)
@@ -64,10 +73,13 @@ class FeedingTask:
         self.monitor.reset()
         self.contacts, self.applied_contacts = [], []
         self.substep_contact_peak_n = self.substep_wrist_peak_n = 0.
+        self.previous_eef_quat = None
+        self.safety.reset()
         d.qpos[idx.qpos] = self.servo_reference_q
         d.ctrl[idx.actuators] = self.servo_reference_q
         d.qpos[idx.bean_qpos[0]] = [2., 2., -.2455, 1., 0., 0., 0.]
         mujoco.mj_forward(m, d)
+        self.adapter.reset(self.servo_reference_q)
         started = time.monotonic()
         for _ in range(round(self.scene_config["settle_seconds"] / self.dt)):
             self.step_physics()
@@ -105,6 +117,8 @@ class FeedingTask:
             self.data.xfrc_applied[:] = 0
             self.data.qfrc_applied[:] = 0
             self.monitor.reset()
+            self.safety.reset()
+            self.resetting = False
             self.substep_contact_peak_n = self.substep_wrist_peak_n = 0.
             self.contacts = read_contacts(self.model, self.data, self.index)
             self.applied_contacts = []
@@ -194,12 +208,39 @@ class FeedingTask:
     def _terminate(self, reason):
         self.terminated, self.failure_reason = True, reason
         self.servo_status, self.servo_fault = "fault", reason
+        self.adapter.stop(reason, fault=True)
+        if np.isfinite(self.data.qpos[self.index.qpos]).all():
+            self.servo_reference_q = self.data.qpos[self.index.qpos].copy()
+            self.data.ctrl[self.index.actuators] = self.servo_reference_q
+        self.adapter.record_result()
+
+    def step_delta(self, action):
+        """Apply one base-frame metre/radian delta, then track for 50 substeps."""
+        if self.terminated:
+            raise RuntimeError(f"Episode terminated: {self.failure_reason}; reset required")
+        if self.adapter.remaining_substeps:
+            raise RuntimeError("Complete the restored pending delta before submitting a new action")
+        try:
+            self.adapter.set_delta(action)
+        except ValueError:
+            self._terminate(self.adapter.fault or "invalid_command")
+            raise
+        for _ in range(self.control_config["physics_substeps"]):
+            self.step_physics()
+            if self.terminated:
+                break
+        return dict(**self.snapshot(), control=copy.deepcopy(self.adapter.last_result))
 
     def step_physics(self):
         if self.terminated:
             raise RuntimeError(f"Episode terminated: {self.failure_reason}; reset required")
         if not all(np.isfinite(a).all() for a in (self.data.qpos, self.data.qvel, self.data.ctrl)):
             self._terminate("nonfinite_state")
+            return self.snapshot()
+        self.servo_reference_q = self.adapter.update(self.dt)
+        self.servo_status, self.servo_fault = self.adapter.status, self.adapter.fault
+        if self.adapter.fault:
+            self._terminate(self.adapter.fault)
             return self.snapshot()
         self._write_drivers()
         started = time.perf_counter()
@@ -228,7 +269,46 @@ class FeedingTask:
             self._terminate("contact_limit")
         elif np.max(np.abs(self.data.qvel[self.index.dofs])) > self.scene_config["joint_speed_fault_rad_s"]:
             self._terminate("joint_speed_limit")
+        elif not self.resetting:
+            reason = self.safety.update(self.applied_contacts, self.contacts, self.dt, float(self.data.time))
+            if reason:
+                self._terminate(reason)
+        self.adapter.record_result()
+        self.servo_status, self.servo_fault = self.adapter.status, self.adapter.fault
         return self.snapshot()
+
+    def render_rgb(self):
+        """Two raw RGB views of the current state; rendering never steps physics."""
+        if not self.cameras:
+            raise ValueError("This task was constructed without policy cameras")
+        if self._renderer is None:
+            from feedingrobot.sim.vision import VisionRenderer
+            self._renderer = VisionRenderer(self.model)
+        return self._renderer.render_rgb(self.data)
+
+    def observe(self):
+        """Single 20 Hz frame: RGB and measured TCP only; history is assembled later."""
+        from feedingrobot.sim.images import resize_area, rgb240_to_observation
+        rotation = self.data.site_xmat[self.index.base].reshape(3, 3)
+        position = rotation.T @ (self.data.site_xpos[self.index.tcp] - self.data.site_xpos[self.index.base])
+        eef_rotation = rotation.T @ self.data.site_xmat[self.index.tcp].reshape(3, 3)
+        quat = np.empty(4)
+        mujoco.mju_mat2Quat(quat, eef_rotation.ravel())
+        if self.previous_eef_quat is None:
+            nonzero = quat[np.flatnonzero(quat)]
+            if nonzero.size and nonzero[0] < 0:
+                quat *= -1
+        elif quat @ self.previous_eef_quat < 0:
+            quat *= -1
+        self.previous_eef_quat = quat.copy()
+        images = {name: rgb240_to_observation(resize_area(rgb)) for name, rgb in self.render_rgb().items()}
+        return dict(**images, robot0_eef_pos=position.astype(np.float32),
+                    robot0_eef_quat=quat.astype(np.float32))
+
+    def close(self):
+        if self._renderer is not None:
+            self._renderer.close()
+            self._renderer = None
 
     def snapshot(self):
         return dict(time=float(self.data.time), tick=self.tick, terminated=self.terminated,
@@ -241,19 +321,26 @@ class FeedingTask:
         fields = ("seed", "split", "episode_id", "tick", "external_wrench", "servo_reference_q",
                   "servo_status", "servo_fault", "scenario_state", "terminated", "failure_reason",
                   "contacts", "applied_contacts", "substep_contact_peak_n", "substep_wrist_peak_n",
-                  "candidate_index", "rejections", "reset_diagnostics", "physics_timing")
+                  "candidate_index", "rejections", "reset_diagnostics", "physics_timing", "previous_eef_quat", "resetting")
         return copy.deepcopy(dict(signature=self.signature,
             layout=dict(body_pos=self.model.body_pos[self.index.bowl_body],
                         body_quat=self.model.body_quat[self.index.bowl_body]), physics=physics,
             boundary=dict(qacc=self.data.qacc, sensordata=self.data.sensordata),
             warnings=[(w.lastinfo, w.number) for w in self.data.warning],
             task={name: getattr(self, name) for name in fields}, monitor=vars(self.monitor),
+            controller=self.adapter.get_state(), safety=self.safety.get_state(),
             proposal_rng=self.proposal_rng.bit_generator.state))
 
     def set_state(self, state):
         if state["signature"] != self.signature:
             raise ValueError("Incompatible snapshot model/configuration/version")
         state = copy.deepcopy(state)
+        if "controller" not in state or "safety" not in state:
+            raise ValueError("Snapshot must contain delta controller and safety memory")
+        reference = np.asarray(state["controller"]["reference_q"])
+        if reference.shape != (self.model.nq,) or not np.array_equal(
+                reference[self.index.qpos], state["task"]["servo_reference_q"]):
+            raise ValueError("Snapshot has inconsistent controller/servo references")
         mujoco.mj_resetData(self.model, self.data)
         self.model.body_pos[self.index.bowl_body] = state["layout"]["body_pos"]
         self.model.body_quat[self.index.bowl_body] = state["layout"]["body_quat"]
@@ -268,5 +355,7 @@ class FeedingTask:
         for name, value in state["task"].items():
             setattr(self, name, value)
         self.monitor.__dict__.update(state["monitor"])
+        self.adapter.set_state(state["controller"])
+        self.safety.set_state(state["safety"])
         self.proposal_rng = numpy_generator("proposal", self.split, self.episode_id, seed=self.seed)
         self.proposal_rng.bit_generator.state = state["proposal_rng"]

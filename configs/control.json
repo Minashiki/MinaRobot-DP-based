@@ -1,0 +1,11 @@
+{
+  "control_dt_s": 0.05,
+  "physics_substeps": 50,
+  "ik_velocity_tolerance_rad_s": 1e-7,
+  "reference_tolerance_rad": 1e-7,
+  "frozen_velocity_tolerance": 1e-7,
+  "collision_minimum_distance_m": 0.005,
+  "collision_detection_distance_m": 0.02,
+  "penetration_limit_m": 0.003,
+  "penetration_confirm_s": 0.005
+}

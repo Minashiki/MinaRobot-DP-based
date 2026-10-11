@@ -1,0 +1,97 @@
+{
+  "schema_version": 2,
+  "version": "p2-calibration-v3-240",
+  "change_reason": "User locks K240=8 and K216=8 from complete p2-calibration-v3-240 measurements; identical 723-state full rerender and all original formal criteria remain required; installation is frozen only after passing",
+  "protocol_status": "locked",
+  "calibration_candidates_pixels": [
+    9,
+    25,
+    49
+  ],
+  "sample_ticks": 100,
+  "minimum_stage_frames_per_camera": 3,
+  "crop_schemes": [
+    "center",
+    "top_left",
+    "top_right",
+    "bottom_left",
+    "bottom_right"
+  ],
+  "legacy_episode": "outputs/single_bean/v1/m4/revision_3/panda/calibration/fixed_0",
+  "legacy_source": "outputs/single_bean/v1/m4/revision_3/frozen_inputs",
+  "legacy_parent_manifest": "outputs/single_bean/v1/m4/revision_4/freeze_manifest.json",
+  "legacy_parent_sha256": "84f73bd3263ff4008f28e62df4156000b46f996177ba601b999cacfeda1f821e",
+  "threshold_rule": "User calibrates K240/K216 using full distributions and actual RGB examples, then freezes this protocol; pending thresholds never pass",
+  "joint_coverage_rule": "For each crop scheme and each sampled state, at least one camera satisfies both K240 and K216",
+  "interval_precision": "Sample endpoint spans only; intermediate continuity is not verified",
+  "p4_reverification": "Required: replay complete states and both-view RGB/segmentation for the first 10 new-teacher validation demonstrations, using the same frozen K240=8/K216=8 and all five crop schemes",
+  "K240": 8,
+  "K216": 8,
+  "resolution": {
+    "render": 256,
+    "observation": 240,
+    "crop": 216,
+    "center_offset": [
+      12,
+      12
+    ],
+    "corner_offsets": [
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        24
+      ],
+      [
+        24,
+        0
+      ],
+      [
+        24,
+        24
+      ]
+    ]
+  },
+  "supersedes": {
+    "protocol": "p2-calibration-v2",
+    "report": "outputs/p2/p2-calibration-v2/d8af8884c04680b7/report.json",
+    "report_sha256": "155596d1033e12a3feabdcc1d6f32248213967ae592e37a1ac1ee0a0d5938b80",
+    "measurements": 7230,
+    "threshold_decision": "K84/K76 retired without locking; observed 1–2 px insufficient; no mounting/FOV adjustment in this version"
+  },
+  "basis": {
+    "task_shape": "https://github.com/real-stanford/diffusion_policy/blob/5ba07ac6661db573af695b419a7947ecb704690f/diffusion_policy/config/task/tool_hang_image.yaml",
+    "published_transformer_config": "https://diffusion-policy.cs.columbia.edu/data/experiments/image/tool_hang_ph/diffusion_policy_transformer/config.yaml",
+    "choice": "DP Tool Hang resolution tier, not a new backbone or an adoption of all Tool Hang training defaults",
+    "published_transformer_config_sha256": "46689b3155419e9c7eb896fb62af02fb005c7f67a3998d741c7c5cde826dc9a4"
+  },
+  "frozen_main_sequence": {
+    "path": "outputs/p2/frozen_sequences/p2-v2-723.pkl",
+    "sha256": "cf197de810c507016686afbd31ff977f653d34283650ac09ffc91af2caa0065b"
+  },
+  "threshold_lock": {
+    "decision": "user_explicit",
+    "calibration_report": "outputs/p2/p2-calibration-v3-240/e4fddd1c913277b9/report.json",
+    "calibration_report_sha256": "089f0844bd97d1760dcd7ec25fb7d48f33afa55e3551515d91ebf1cf88fa05c4",
+    "K240": 8,
+    "K216": 8,
+    "version_policy": "User explicitly retains p2-calibration-v3-240; distinct input fingerprints preserve pending calibration and locked acceptance",
+    "boundary_samples": [
+      "legacy_015600",
+      "legacy_015699",
+      "legacy_015700",
+      "legacy_015701",
+      "legacy_015702",
+      "legacy_015703",
+      "legacy_015707",
+      "legacy_015708",
+      "legacy_015709",
+      "legacy_015710",
+      "legacy_015800"
+    ],
+    "boundary_annotation": "舀起后入勺部分遮挡，阈值下限由此类结构性区间决定",
+    "attribution_note": "Post-pickup in-spoon task context is the user decision rationale; measured fixed view is unoccluded and wrist occluder is visual_dynamic_bowl2. Do not replace measured object attribution with a spoon-head assumption."
+  }
+}

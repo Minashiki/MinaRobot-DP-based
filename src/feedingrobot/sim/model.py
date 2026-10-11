@@ -24,7 +24,7 @@ def named_id(model, kind, name):
     return index
 
 
-def asset_files(robot_id=None):
+def asset_files(robot_id=None, *, cameras=True):
     """Runtime inputs, including mesh bytes; the inactive plate is excluded."""
     paths = {ROOT / f"configs/{name}.json" for name in ("scene", "acceptance", "protocol")}
     scene_cfg = load_json("configs/scene.json")
@@ -48,6 +48,13 @@ def asset_files(robot_id=None):
         paths.add(path)
         paths.update((path.parent / mesh.get("file")).resolve()
                      for mesh in ET.parse(path).findall("asset/mesh"))
+    if cameras:
+        paths.add(ROOT / "configs/cameras.json")
+        camera_asset = ROOT / load_json("configs/cameras.json")["asset"]
+        paths.add(camera_asset)
+        compiler = ET.parse(camera_asset).find("compiler")
+        paths.update((camera_asset.parent / compiler.get("meshdir") / mesh.get("file")).resolve()
+                     for mesh in ET.parse(camera_asset).findall("asset/mesh"))
     return sorted(paths)
 
 
@@ -88,7 +95,50 @@ def _numbers(values):
     return " ".join(map(str, values))
 
 
-def assemble_xml(robot_id="panda", timestep=None):
+def _add_cameras(root, base):
+    config = load_json("configs/cameras.json")
+    path = ROOT / config["asset"]
+    source = ET.parse(path).getroot()
+    meshdir = path.parent / source.find("compiler").get("meshdir")
+    for mesh in source.findall("asset/mesh"):
+        registered = copy.deepcopy(mesh)
+        registered.set("name", f"d435i_{Path(mesh.get('file')).stem}")
+        registered.set("file", str((meshdir / mesh.get("file")).resolve()))
+        root.find("asset").append(registered)
+    for material in source.findall("asset/material"):
+        registered = copy.deepcopy(material)
+        registered.attrib.pop("class", None)
+        registered.set("name", f"d435i_{material.get('name')}")
+        registered.set("specular", "0")
+        registered.set("shininess", "0.25")
+        root.find("asset").append(registered)
+    for camera in config["cameras"]:
+        parent = root.find("worldbody") if camera["parent"] == "world" else base.find(
+            f".//body[@name='{camera['parent']}']")
+        body = ET.SubElement(parent, "body", name=f"{camera['name']}_d435i",
+                             pos=_numbers(camera["body_position_m"]),
+                             quat=_numbers(camera["body_quaternion_wxyz"]))
+        for number, geom in enumerate(source.findall("worldbody/body/geom")):
+            if geom.get("class") != "visual":
+                continue
+            ET.SubElement(body, "geom", name=f"{camera['name']}_d435i_visual_{number}",
+                          type="mesh", mesh=f"d435i_{geom.get('mesh')}",
+                          material=f"d435i_{geom.get('material')}", group="2",
+                          contype="0", conaffinity="0", mass="0", density="0")
+        height, width = config["render_size"]
+        fovy = np.rad2deg(2*np.arctan(np.tan(np.deg2rad(config["hfov_deg"])/2)*height/width))
+        ET.SubElement(body, "camera", name=camera["name"], mode="fixed",
+                      pos=_numbers(config["optical_center_m"]),
+                      quat=_numbers(config["optical_quaternion_wxyz"]), fovy=str(fovy))
+    visual = root.find("visual")
+    mapping = visual.find("map")
+    if mapping is None:
+        mapping = ET.SubElement(visual, "map")
+    mapping.set("znear", str(config["znear_extent_fraction"]))
+    mapping.set("zfar", str(config["zfar_extent_fraction"]))
+
+
+def assemble_xml(robot_id="panda", timestep=None, *, cameras=True):
     if robot_id != "panda":
         raise ValueError("P1 supports only Panda")
     cfg = load_json(f"configs/robots/{robot_id}.json")
@@ -177,14 +227,16 @@ def assemble_xml(robot_id="panda", timestep=None):
     if len(contact.findall("pair")) != 145:
         raise ValueError("Expected all 145 source spoon/bowl pairs")
     ET.SubElement(contact, "exclude", body1=cfg["mount_body"], body2="dynamic_spoon2")
+    if cameras:
+        _add_cameras(root, base)
     root.find("option").set("timestep", str(timestep if timestep is not None else scene_cfg["timestep"]))
     root.find("option").set("iterations", str(scene_cfg["solver_iterations"]))
     root.find("option").set("ccd_tolerance", str(scene_cfg["ccd_tolerance"]))
     return root, cfg, scene_cfg
 
 
-def load_model(robot_id="panda", timestep=None):
-    root, cfg, scene_cfg = assemble_xml(robot_id, timestep)
+def load_model(robot_id="panda", timestep=None, *, cameras=True):
+    root, cfg, scene_cfg = assemble_xml(robot_id, timestep, cameras=cameras)
     model = mujoco.MjModel.from_xml_string(ET.tostring(root, encoding="unicode"))
     index = RobotIndex(model, cfg)
     scale = cfg.get("servo_gain_scale", 1.)

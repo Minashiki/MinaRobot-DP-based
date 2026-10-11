@@ -1,0 +1,72 @@
+{
+  "version": "p2-frozen-v3-240-k8",
+  "status": "frozen",
+  "asset": "assets/third_party/realsense_d435i/d435i.xml",
+  "hfov_deg": 69.0,
+  "render_size": [
+    256,
+    256
+  ],
+  "observation_size": 240,
+  "crop_size": 216,
+  "resize_method": "exact_pixel_area_uint8_round_nearest",
+  "optical_center_m": [
+    0.0325,
+    1e-06,
+    -0.003538
+  ],
+  "optical_quaternion_wxyz": [
+    0.0,
+    0.0,
+    1.0,
+    0.0
+  ],
+  "optical_center_source": "fixed source assets/d435i_7.obj RGB_Pupil AABB front surface center; source forward is +Z",
+  "znear_extent_fraction": 0.005,
+  "zfar_extent_fraction": 10.0,
+  "cameras": [
+    {
+      "name": "agentview",
+      "parent": "world",
+      "body_position_m": [
+        0.5675,
+        0.055001,
+        0.506462
+      ],
+      "body_quaternion_wxyz": [
+        0.0,
+        1.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "name": "robot0_eye_in_hand",
+      "parent": "link7",
+      "body_position_m": [
+        0.035,
+        0.075,
+        0.0
+      ],
+      "body_quaternion_wxyz": [
+        0.944543941,
+        0.288772124,
+        0.149602679,
+        -0.045737002
+      ]
+    }
+  ],
+  "change_reason": "Resolution-only upgrade to DP Tool Hang 240→216 after v2 7230 measurements showed 1–2 pixel Bean signals; mounting, 69 degree FOV and raw 256 render unchanged",
+  "installation_version": "p2-frozen-v2",
+  "freeze": {
+    "protocol_version": "p2-calibration-v3-240",
+    "K240": 8,
+    "K216": 8,
+    "accepted_report": "outputs/p2/p2-calibration-v3-240/fddf2b5b03729c7a/report.json",
+    "accepted_report_sha256": "517ab298844ea8a0a6045eeb0bc6c134f3feff5183b447c28c0477a458512748",
+    "candidate_configuration_sha256": "d0938189c1df8233acf90fe9097dcd1dec507173978a51d547d0002789589ba2",
+    "mounting_and_optics_sha256": "585772c6a761dc1180175f8a40cd7e4534fb79f37888abbaa03000e1c3559d18",
+    "compiled_model_sha256": "af1dd7005d21c905839bfef9fb224ef41ccaf9dbb9d936106e4d79ad45c1c945",
+    "decision": "Freeze unchanged v2 mounting and 69 degree FOV after full locked-threshold acceptance; final configuration requires full 723-state rerender binding"
+  }
+}
