@@ -1,0 +1,10 @@
+{
+  "max_settle_s": 5.0,
+  "stable_window_s": 0.5,
+  "linear_speed_m_s": 0.001,
+  "angular_speed_rad_s": 0.1,
+  "penetration_limit_m": 0.0004,
+  "spawn_gap_m": 0.0005,
+  "wall_budget_s": 60.0,
+  "support_min_force_n": 1e-05
+}

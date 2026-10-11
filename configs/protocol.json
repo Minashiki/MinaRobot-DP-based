@@ -1,0 +1,18 @@
+{
+  "version": "p1-v1",
+  "seed": 42,
+  "proposal_half_width_m": 0.02,
+  "max_candidates": 100,
+  "rng_namespaces": [
+    "proposal",
+    "teacher",
+    "sampler",
+    "training",
+    "validation",
+    "ddim"
+  ],
+  "geometry_rule": "rotated ellipsoid XY projection wholly over finite bowl bottom; finite geom distances and natural settling",
+  "calibration_episodes": 50,
+  "unique_position_resolution_m": 0.0001,
+  "histogram_bin_m": 0.005
+}

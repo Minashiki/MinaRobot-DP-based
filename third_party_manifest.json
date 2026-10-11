@@ -1,0 +1,2735 @@
+{
+  "schema_version": 1,
+  "sources": {
+    "legacy": {
+      "url": "https://github.com/Minashiki/Diffusion-based-Feeding-Robot",
+      "commit": "56bd51a2c8966ab040fda60d9615cff4e9926725",
+      "role": "imported",
+      "license": {
+        "status": "no_root_license_in_fixed_source; preserve third-party notices"
+      }
+    },
+    "dp": {
+      "url": "https://github.com/real-stanford/diffusion_policy",
+      "commit": "5ba07ac6661db573af695b419a7947ecb704690f",
+      "role": "reference_only",
+      "license": {
+        "url": "https://raw.githubusercontent.com/real-stanford/diffusion_policy/5ba07ac6661db573af695b419a7947ecb704690f/LICENSE",
+        "sha256": "304e99a48271e10820f71a1b86ef395c06c100d7f68dd1d308790d1064fc4d41",
+        "status": "reference_only_not_imported"
+      }
+    },
+    "dp3": {
+      "url": "https://github.com/YanjieZe/3D-Diffusion-Policy",
+      "commit": "47385d9d6f5bde3f2ebdf2400ecb8261cc9e6b97",
+      "role": "reference_only",
+      "license": {
+        "url": "https://raw.githubusercontent.com/YanjieZe/3D-Diffusion-Policy/47385d9d6f5bde3f2ebdf2400ecb8261cc9e6b97/LICENSE",
+        "sha256": "d62cd477abcbf7329c15d3e740c9466d07dc39ef3a212e4c9b237675c8bc7a7d",
+        "status": "reference_only_not_imported"
+      }
+    },
+    "menagerie": {
+      "url": "https://github.com/google-deepmind/mujoco_menagerie",
+      "commit": "0059d4335f8156206f63a35662313385f7ad6d74",
+      "role": "reference_only",
+      "license": {
+        "url": "https://raw.githubusercontent.com/google-deepmind/mujoco_menagerie/0059d4335f8156206f63a35662313385f7ad6d74/LICENSE",
+        "sha256": "b1334631b1d7bd73394f95d3241d5110f98f7310ad08b17d3b113518dd967a5b",
+        "status": "reference_only_not_imported"
+      }
+    }
+  },
+  "files": [
+    {
+      "path": "assets/robots/panda.xml",
+      "source": "legacy",
+      "source_path": "assets/robots/panda.xml",
+      "source_sha256": "2fbce82a707d9e4be921bb4e26bec4a21c9bd01616b8dddd0204da639ef7b119",
+      "sha256": "2fbce82a707d9e4be921bb4e26bec4a21c9bd01616b8dddd0204da639ef7b119",
+      "license_paths": [
+        "assets/third_party/franka_emika_panda/LICENSE"
+      ],
+      "modifications": []
+    },
+    {
+      "path": "assets/task/foods/beans/meshes/bean_visual.obj",
+      "source": "legacy",
+      "source_path": "assets/task/foods/beans/meshes/bean_visual.obj",
+      "source_sha256": "ce60335c4b017386cc6f91b182d96db69c355a014907877efd7e4909842a1e29",
+      "sha256": "ce60335c4b017386cc6f91b182d96db69c355a014907877efd7e4909842a1e29",
+      "license_paths": [],
+      "modifications": []
+    },
+    {
+      "path": "assets/task/scene.xml",
+      "source": "legacy",
+      "source_path": "assets/task/scene.xml",
+      "source_sha256": "e4444efefa78e7a04a24c3f50b2760e6e3565bf4dd7cdf8801b682efad4f27d4",
+      "sha256": "e4444efefa78e7a04a24c3f50b2760e6e3565bf4dd7cdf8801b682efad4f27d4",
+      "license_paths": [],
+      "modifications": []
+    },
+    {
+      "path": "assets/task/tableware/README.md",
+      "source": "legacy",
+      "source_path": "assets/task/tableware/README.md",
+      "source_sha256": "da50219ac95e255e640577527636ccfdb4f1d3216a864fbd3cc42743e12c8ed9",
+      "sha256": "da50219ac95e255e640577527636ccfdb4f1d3216a864fbd3cc42743e12c8ed9",
+      "license_paths": [
+        "docs/licenses/ebim-benchmark/LICENSE",
+        "docs/licenses/ebim-benchmark/NOTICE"
+      ],
+      "modifications": []
+    },
+    {
+      "path": "assets/task/tableware/bowl/bowl.xml",
+      "source": "legacy",
+      "source_path": "assets/task/tableware/bowl/bowl.xml",
+      "source_sha256": "6ee5b74644ef1ad7421a2a81ebdc9ed8f7ac5ec3377f2324680ec84f04f9a5cc",
+      "sha256": "6ee5b74644ef1ad7421a2a81ebdc9ed8f7ac5ec3377f2324680ec84f04f9a5cc",
+      "license_paths": [
+        "docs/licenses/ebim-benchmark/LICENSE",
+        "docs/licenses/ebim-benchmark/NOTICE"
+      ],
+      "modifications": []
+    },
+    {
+      "path": "assets/task/tableware/bowl/meshes/bowl2_exact.obj",
+      "source": "legacy",
+      "source_path": "assets/task/tableware/bowl/meshes/bowl2_exact.obj",
+      "source_sha256": "849314d57f9ffd72b981f18155647c74fa199dcad59a8f853f39301515d0d9d7",
+      "sha256": "849314d57f9ffd72b981f18155647c74fa199dcad59a8f853f39301515d0d9d7",
+      "license_paths": [
+        "docs/licenses/ebim-benchmark/LICENSE",
+        "docs/licenses/ebim-benchmark/NOTICE"
+      ],
+      "modifications": []
+    },
+    {
+      "path": "assets/task/tableware/contact_pairs.xml",
+      "source": "legacy",
+      "source_path": "assets/task/tableware/contact_pairs.xml",
+      "source_sha256": "b8dd1f695f0cd11d4c7d8d45c8eaae7911bd01e388b736e3597a3454352c5403",
+      "sha256": "b8dd1f695f0cd11d4c7d8d45c8eaae7911bd01e388b736e3597a3454352c5403",
+      "license_paths": [
+        "docs/licenses/ebim-benchmark/LICENSE",
+        "docs/licenses/ebim-benchmark/NOTICE"
+      ],
+      "modifications": []
+    },
+    {
+      "path": "assets/task/tableware/plate/meshes/plate2_exact.obj",
+      "source": "legacy",
+      "source_path": "assets/task/tableware/plate/meshes/plate2_exact.obj",
+      "source_sha256": "f25840b7e81d1076e2a437c625984ba555cd95f1b8b7f92a313268076a6d77a5",
+      "sha256": "f25840b7e81d1076e2a437c625984ba555cd95f1b8b7f92a313268076a6d77a5",
+      "license_paths": [
+        "docs/licenses/ebim-benchmark/LICENSE",
+        "docs/licenses/ebim-benchmark/NOTICE"
+      ],
+      "modifications": []
+    },
+    {
+      "path": "assets/task/tableware/plate/plate.xml",
+      "source": "legacy",
+      "source_path": "assets/task/tableware/plate/plate.xml",
+      "source_sha256": "fcb1e6b65c4cf55983e945079609ba5bea1e0b62965d28d753edff7fb9676aa3",
+      "sha256": "fcb1e6b65c4cf55983e945079609ba5bea1e0b62965d28d753edff7fb9676aa3",
+      "license_paths": [
+        "docs/licenses/ebim-benchmark/LICENSE",
+        "docs/licenses/ebim-benchmark/NOTICE"
+      ],
+      "modifications": []
+    },
+    {
+      "path": "assets/task/tableware/spoon/meshes/scoop_prisms_coarse/spoon_scoop_coarse_prism_000.obj",
+      "source": "legacy",
+      "source_path": "assets/task/tableware/spoon/meshes/scoop_prisms_coarse/spoon_scoop_coarse_prism_000.obj",
+      "source_sha256": "a9d68e5e5b79340a44663316d22aa4e1d699d443e8908fdd158f19d5d6e4251e",
+      "sha256": "a9d68e5e5b79340a44663316d22aa4e1d699d443e8908fdd158f19d5d6e4251e",
+      "license_paths": [
+        "docs/licenses/ebim-benchmark/LICENSE",
+        "docs/licenses/ebim-benchmark/NOTICE"
+      ],
+      "modifications": []
+    },
+    {
+      "path": "assets/task/tableware/spoon/meshes/scoop_prisms_coarse/spoon_scoop_coarse_prism_001.obj",
+      "source": "legacy",
+      "source_path": "assets/task/tableware/spoon/meshes/scoop_prisms_coarse/spoon_scoop_coarse_prism_001.obj",
+      "source_sha256": "afeb817422a1ef912939fb6da0a041dc3c56feacba758dbd92fe4a50496a5d2c",
+      "sha256": "afeb817422a1ef912939fb6da0a041dc3c56feacba758dbd92fe4a50496a5d2c",
+      "license_paths": [
+        "docs/licenses/ebim-benchmark/LICENSE",
+        "docs/licenses/ebim-benchmark/NOTICE"
+      ],
+      "modifications": []
+    },
+    {
+      "path": "assets/task/tableware/spoon/meshes/scoop_prisms_coarse/spoon_scoop_coarse_prism_002.obj",
+      "source": "legacy",
+      "source_path": "assets/task/tableware/spoon/meshes/scoop_prisms_coarse/spoon_scoop_coarse_prism_002.obj",
+      "source_sha256": "bf259280a7341bf04c6bded0f05e0e04cf37b07454efd402f55f90c977706497",
+      "sha256": "bf259280a7341bf04c6bded0f05e0e04cf37b07454efd402f55f90c977706497",
+      "license_paths": [
+        "docs/licenses/ebim-benchmark/LICENSE",
+        "docs/licenses/ebim-benchmark/NOTICE"
+      ],
+      "modifications": []
+    },
+    {
+      "path": "assets/task/tableware/spoon/meshes/scoop_prisms_coarse/spoon_scoop_coarse_prism_003.obj",
+      "source": "legacy",
+      "source_path": "assets/task/tableware/spoon/meshes/scoop_prisms_coarse/spoon_scoop_coarse_prism_003.obj",
+      "source_sha256": "f78c5af734f629cec655a65123f0bd210aa6d80463138aa31c63c332049f8ed4",
+      "sha256": "f78c5af734f629cec655a65123f0bd210aa6d80463138aa31c63c332049f8ed4",
+      "license_paths": [
+        "docs/licenses/ebim-benchmark/LICENSE",
+        "docs/licenses/ebim-benchmark/NOTICE"
+      ],
+      "modifications": []
+    },
+    {
+      "path": "assets/task/tableware/spoon/meshes/scoop_prisms_coarse/spoon_scoop_coarse_prism_004.obj",
+      "source": "legacy",
+      "source_path": "assets/task/tableware/spoon/meshes/scoop_prisms_coarse/spoon_scoop_coarse_prism_004.obj",
+      "source_sha256": "832cb30fa6d4ef694e4e8f6c87b47e2afde7c3409eb63e37af7fe58a4387ac88",
+      "sha256": "832cb30fa6d4ef694e4e8f6c87b47e2afde7c3409eb63e37af7fe58a4387ac88",
+      "license_paths": [
+        "docs/licenses/ebim-benchmark/LICENSE",
+        "docs/licenses/ebim-benchmark/NOTICE"
+      ],
+      "modifications": []
+    },
+    {
+      "path": "assets/task/tableware/spoon/meshes/scoop_prisms_coarse/spoon_scoop_coarse_prism_005.obj",
+      "source": "legacy",
+      "source_path": "assets/task/tableware/spoon/meshes/scoop_prisms_coarse/spoon_scoop_coarse_prism_005.obj",
+      "source_sha256": "4a1d8d648a49764c9db29bf3e285f623d0725e85c0c53d2318e3ae3ec0070897",
+      "sha256": "4a1d8d648a49764c9db29bf3e285f623d0725e85c0c53d2318e3ae3ec0070897",
+      "license_paths": [
+        "docs/licenses/ebim-benchmark/LICENSE",
+        "docs/licenses/ebim-benchmark/NOTICE"
+      ],
+      "modifications": []
+    },
+    {
+      "path": "assets/task/tableware/spoon/meshes/scoop_prisms_coarse/spoon_scoop_coarse_prism_006.obj",
+      "source": "legacy",
+      "source_path": "assets/task/tableware/spoon/meshes/scoop_prisms_coarse/spoon_scoop_coarse_prism_006.obj",
+      "source_sha256": "2c9d2df7147f410a551140be8b4ed4d645126e5026602d517b00cdd2669b7713",
+      "sha256": "2c9d2df7147f410a551140be8b4ed4d645126e5026602d517b00cdd2669b7713",
+      "license_paths": [
+        "docs/licenses/ebim-benchmark/LICENSE",
+        "docs/licenses/ebim-benchmark/NOTICE"
+      ],
+      "modifications": []
+    },
+    {
+      "path": "assets/task/tableware/spoon/meshes/scoop_prisms_coarse/spoon_scoop_coarse_prism_007.obj",
+      "source": "legacy",
+      "source_path": "assets/task/tableware/spoon/meshes/scoop_prisms_coarse/spoon_scoop_coarse_prism_007.obj",
+      "source_sha256": "f7a3b92293b4ded9d4a8585354cb4efc474cb64785599dea08b1c9d6fb521c7d",
+      "sha256": "f7a3b92293b4ded9d4a8585354cb4efc474cb64785599dea08b1c9d6fb521c7d",
+      "license_paths": [
+        "docs/licenses/ebim-benchmark/LICENSE",
+        "docs/licenses/ebim-benchmark/NOTICE"
+      ],
+      "modifications": []
+    },
+    {
+      "path": "assets/task/tableware/spoon/meshes/scoop_prisms_coarse/spoon_scoop_coarse_prism_008.obj",
+      "source": "legacy",
+      "source_path": "assets/task/tableware/spoon/meshes/scoop_prisms_coarse/spoon_scoop_coarse_prism_008.obj",
+      "source_sha256": "9a8b66ddceaa5eea921203ca719459d0cc851f565e913a40088c1a3fef2a051f",
+      "sha256": "9a8b66ddceaa5eea921203ca719459d0cc851f565e913a40088c1a3fef2a051f",
+      "license_paths": [
+        "docs/licenses/ebim-benchmark/LICENSE",
+        "docs/licenses/ebim-benchmark/NOTICE"
+      ],
+      "modifications": []
+    },
+    {
+      "path": "assets/task/tableware/spoon/meshes/scoop_prisms_coarse/spoon_scoop_coarse_prism_009.obj",
+      "source": "legacy",
+      "source_path": "assets/task/tableware/spoon/meshes/scoop_prisms_coarse/spoon_scoop_coarse_prism_009.obj",
+      "source_sha256": "b2cf133e1eda63538b416d425ecf5a3a6cdeda4da2bcdb72cfa0870cef1ba780",
+      "sha256": "b2cf133e1eda63538b416d425ecf5a3a6cdeda4da2bcdb72cfa0870cef1ba780",
+      "license_paths": [
+        "docs/licenses/ebim-benchmark/LICENSE",
+        "docs/licenses/ebim-benchmark/NOTICE"
+      ],
+      "modifications": []
+    },
+    {
+      "path": "assets/task/tableware/spoon/meshes/scoop_prisms_coarse/spoon_scoop_coarse_prism_010.obj",
+      "source": "legacy",
+      "source_path": "assets/task/tableware/spoon/meshes/scoop_prisms_coarse/spoon_scoop_coarse_prism_010.obj",
+      "source_sha256": "9a2cf6cf5072ed5c53fd136ea47387d0bd732fd7baf22043653887bee7f4a5bd",
+      "sha256": "9a2cf6cf5072ed5c53fd136ea47387d0bd732fd7baf22043653887bee7f4a5bd",
+      "license_paths": [
+        "docs/licenses/ebim-benchmark/LICENSE",
+        "docs/licenses/ebim-benchmark/NOTICE"
+      ],
+      "modifications": []
+    },
+    {
+      "path": "assets/task/tableware/spoon/meshes/scoop_prisms_coarse/spoon_scoop_coarse_prism_011.obj",
+      "source": "legacy",
+      "source_path": "assets/task/tableware/spoon/meshes/scoop_prisms_coarse/spoon_scoop_coarse_prism_011.obj",
+      "source_sha256": "b952115e543ba23da0cba8fa4aa5b00c7fe8a1d0ea68459c4974febb897b7b0b",
+      "sha256": "b952115e543ba23da0cba8fa4aa5b00c7fe8a1d0ea68459c4974febb897b7b0b",
+      "license_paths": [
+        "docs/licenses/ebim-benchmark/LICENSE",
+        "docs/licenses/ebim-benchmark/NOTICE"
+      ],
+      "modifications": []
+    },
+    {
+      "path": "assets/task/tableware/spoon/meshes/scoop_prisms_coarse/spoon_scoop_coarse_prism_012.obj",
+      "source": "legacy",
+      "source_path": "assets/task/tableware/spoon/meshes/scoop_prisms_coarse/spoon_scoop_coarse_prism_012.obj",
+      "source_sha256": "66b941f263df49c460d73d2221cf418b72dfa9d52eaed91e592299bcf011f76d",
+      "sha256": "66b941f263df49c460d73d2221cf418b72dfa9d52eaed91e592299bcf011f76d",
+      "license_paths": [
+        "docs/licenses/ebim-benchmark/LICENSE",
+        "docs/licenses/ebim-benchmark/NOTICE"
+      ],
+      "modifications": []
+    },
+    {
+      "path": "assets/task/tableware/spoon/meshes/scoop_prisms_coarse/spoon_scoop_coarse_prism_013.obj",
+      "source": "legacy",
+      "source_path": "assets/task/tableware/spoon/meshes/scoop_prisms_coarse/spoon_scoop_coarse_prism_013.obj",
+      "source_sha256": "d7f50834a36ae22d21270729696d42da991e4e8249a680a8e70b20021f5d530f",
+      "sha256": "d7f50834a36ae22d21270729696d42da991e4e8249a680a8e70b20021f5d530f",
+      "license_paths": [
+        "docs/licenses/ebim-benchmark/LICENSE",
+        "docs/licenses/ebim-benchmark/NOTICE"
+      ],
+      "modifications": []
+    },
+    {
+      "path": "assets/task/tableware/spoon/meshes/scoop_prisms_coarse/spoon_scoop_coarse_prism_014.obj",
+      "source": "legacy",
+      "source_path": "assets/task/tableware/spoon/meshes/scoop_prisms_coarse/spoon_scoop_coarse_prism_014.obj",
+      "source_sha256": "464196e163f7005e086adc0ce55dac756dc36bdfde28b42be0dfa95ea326fc13",
+      "sha256": "464196e163f7005e086adc0ce55dac756dc36bdfde28b42be0dfa95ea326fc13",
+      "license_paths": [
+        "docs/licenses/ebim-benchmark/LICENSE",
+        "docs/licenses/ebim-benchmark/NOTICE"
+      ],
+      "modifications": []
+    },
+    {
+      "path": "assets/task/tableware/spoon/meshes/scoop_prisms_coarse/spoon_scoop_coarse_prism_015.obj",
+      "source": "legacy",
+      "source_path": "assets/task/tableware/spoon/meshes/scoop_prisms_coarse/spoon_scoop_coarse_prism_015.obj",
+      "source_sha256": "0d42c757987198334ab2301d1d0885f639371adb2990ea71b43c1f825c7d262b",
+      "sha256": "0d42c757987198334ab2301d1d0885f639371adb2990ea71b43c1f825c7d262b",
+      "license_paths": [
+        "docs/licenses/ebim-benchmark/LICENSE",
+        "docs/licenses/ebim-benchmark/NOTICE"
+      ],
+      "modifications": []
+    },
+    {
+      "path": "assets/task/tableware/spoon/meshes/scoop_prisms_coarse/spoon_scoop_coarse_prism_016.obj",
+      "source": "legacy",
+      "source_path": "assets/task/tableware/spoon/meshes/scoop_prisms_coarse/spoon_scoop_coarse_prism_016.obj",
+      "source_sha256": "91e4ef987a642cbf3f5e1d66d0cba3351f6662511446201ee5f4e15f0999eb07",
+      "sha256": "91e4ef987a642cbf3f5e1d66d0cba3351f6662511446201ee5f4e15f0999eb07",
+      "license_paths": [
+        "docs/licenses/ebim-benchmark/LICENSE",
+        "docs/licenses/ebim-benchmark/NOTICE"
+      ],
+      "modifications": []
+    },
+    {
+      "path": "assets/task/tableware/spoon/meshes/scoop_prisms_coarse/spoon_scoop_coarse_prism_017.obj",
+      "source": "legacy",
+      "source_path": "assets/task/tableware/spoon/meshes/scoop_prisms_coarse/spoon_scoop_coarse_prism_017.obj",
+      "source_sha256": "6021937afff4b3cfb2a4f32bc9c53cd798386d72bd201e029ac9beb0fa475499",
+      "sha256": "6021937afff4b3cfb2a4f32bc9c53cd798386d72bd201e029ac9beb0fa475499",
+      "license_paths": [
+        "docs/licenses/ebim-benchmark/LICENSE",
+        "docs/licenses/ebim-benchmark/NOTICE"
+      ],
+      "modifications": []
+    },
+    {
+      "path": "assets/task/tableware/spoon/meshes/scoop_prisms_coarse/spoon_scoop_coarse_prism_018.obj",
+      "source": "legacy",
+      "source_path": "assets/task/tableware/spoon/meshes/scoop_prisms_coarse/spoon_scoop_coarse_prism_018.obj",
+      "source_sha256": "0fde5065567f3371b2550b0408906410b69e5b0eefa02f0c3eb09875a593808d",
+      "sha256": "0fde5065567f3371b2550b0408906410b69e5b0eefa02f0c3eb09875a593808d",
+      "license_paths": [
+        "docs/licenses/ebim-benchmark/LICENSE",
+        "docs/licenses/ebim-benchmark/NOTICE"
+      ],
+      "modifications": []
+    },
+    {
+      "path": "assets/task/tableware/spoon/meshes/scoop_prisms_coarse/spoon_scoop_coarse_prism_019.obj",
+      "source": "legacy",
+      "source_path": "assets/task/tableware/spoon/meshes/scoop_prisms_coarse/spoon_scoop_coarse_prism_019.obj",
+      "source_sha256": "4ade4a1866dd9f8d40ca07fca981c440f6dd9fbdc04ad09f38e7a33b1a9c3b20",
+      "sha256": "4ade4a1866dd9f8d40ca07fca981c440f6dd9fbdc04ad09f38e7a33b1a9c3b20",
+      "license_paths": [
+        "docs/licenses/ebim-benchmark/LICENSE",
+        "docs/licenses/ebim-benchmark/NOTICE"
+      ],
+      "modifications": []
+    },
+    {
+      "path": "assets/task/tableware/spoon/meshes/scoop_prisms_coarse/spoon_scoop_coarse_prism_020.obj",
+      "source": "legacy",
+      "source_path": "assets/task/tableware/spoon/meshes/scoop_prisms_coarse/spoon_scoop_coarse_prism_020.obj",
+      "source_sha256": "3059a8a99bfc97343883dff0571a275ffe8e73de8a8e6953ca74335a5ee247e9",
+      "sha256": "3059a8a99bfc97343883dff0571a275ffe8e73de8a8e6953ca74335a5ee247e9",
+      "license_paths": [
+        "docs/licenses/ebim-benchmark/LICENSE",
+        "docs/licenses/ebim-benchmark/NOTICE"
+      ],
+      "modifications": []
+    },
+    {
+      "path": "assets/task/tableware/spoon/meshes/scoop_prisms_coarse/spoon_scoop_coarse_prism_021.obj",
+      "source": "legacy",
+      "source_path": "assets/task/tableware/spoon/meshes/scoop_prisms_coarse/spoon_scoop_coarse_prism_021.obj",
+      "source_sha256": "104e8359794bde5a2476869357323ce479bd058bb2e749b6b65e668d85fb9e5d",
+      "sha256": "104e8359794bde5a2476869357323ce479bd058bb2e749b6b65e668d85fb9e5d",
+      "license_paths": [
+        "docs/licenses/ebim-benchmark/LICENSE",
+        "docs/licenses/ebim-benchmark/NOTICE"
+      ],
+      "modifications": []
+    },
+    {
+      "path": "assets/task/tableware/spoon/meshes/scoop_prisms_coarse/spoon_scoop_coarse_prism_022.obj",
+      "source": "legacy",
+      "source_path": "assets/task/tableware/spoon/meshes/scoop_prisms_coarse/spoon_scoop_coarse_prism_022.obj",
+      "source_sha256": "15342b3cd1757a16158764de04fb49cfc1dcbbcbebe9b0697556758029c7d92f",
+      "sha256": "15342b3cd1757a16158764de04fb49cfc1dcbbcbebe9b0697556758029c7d92f",
+      "license_paths": [
+        "docs/licenses/ebim-benchmark/LICENSE",
+        "docs/licenses/ebim-benchmark/NOTICE"
+      ],
+      "modifications": []
+    },
+    {
+      "path": "assets/task/tableware/spoon/meshes/scoop_prisms_coarse/spoon_scoop_coarse_prism_023.obj",
+      "source": "legacy",
+      "source_path": "assets/task/tableware/spoon/meshes/scoop_prisms_coarse/spoon_scoop_coarse_prism_023.obj",
+      "source_sha256": "c7ddae860a00ca25b432ea30d3d901cac55e89d5aa6f2f974773e4341485c194",
+      "sha256": "c7ddae860a00ca25b432ea30d3d901cac55e89d5aa6f2f974773e4341485c194",
+      "license_paths": [
+        "docs/licenses/ebim-benchmark/LICENSE",
+        "docs/licenses/ebim-benchmark/NOTICE"
+      ],
+      "modifications": []
+    },
+    {
+      "path": "assets/task/tableware/spoon/meshes/scoop_prisms_coarse/spoon_scoop_coarse_prism_024.obj",
+      "source": "legacy",
+      "source_path": "assets/task/tableware/spoon/meshes/scoop_prisms_coarse/spoon_scoop_coarse_prism_024.obj",
+      "source_sha256": "0dfdfec60db4955982d7e437b6a1e399b6125ba15187f013a8dc8ca8a853ffe3",
+      "sha256": "0dfdfec60db4955982d7e437b6a1e399b6125ba15187f013a8dc8ca8a853ffe3",
+      "license_paths": [
+        "docs/licenses/ebim-benchmark/LICENSE",
+        "docs/licenses/ebim-benchmark/NOTICE"
+      ],
+      "modifications": []
+    },
+    {
+      "path": "assets/task/tableware/spoon/meshes/scoop_prisms_coarse/spoon_scoop_coarse_prism_025.obj",
+      "source": "legacy",
+      "source_path": "assets/task/tableware/spoon/meshes/scoop_prisms_coarse/spoon_scoop_coarse_prism_025.obj",
+      "source_sha256": "048a2b3f589b081ed51595ddab9108f96000e2898d6c0a4984ecdc1330ccc293",
+      "sha256": "048a2b3f589b081ed51595ddab9108f96000e2898d6c0a4984ecdc1330ccc293",
+      "license_paths": [
+        "docs/licenses/ebim-benchmark/LICENSE",
+        "docs/licenses/ebim-benchmark/NOTICE"
+      ],
+      "modifications": []
+    },
+    {
+      "path": "assets/task/tableware/spoon/meshes/scoop_prisms_coarse/spoon_scoop_coarse_prism_026.obj",
+      "source": "legacy",
+      "source_path": "assets/task/tableware/spoon/meshes/scoop_prisms_coarse/spoon_scoop_coarse_prism_026.obj",
+      "source_sha256": "d7218913c924e9d5a1a37caa854b09ba2293285012cfdf1f552da7bce6e58a3f",
+      "sha256": "d7218913c924e9d5a1a37caa854b09ba2293285012cfdf1f552da7bce6e58a3f",
+      "license_paths": [
+        "docs/licenses/ebim-benchmark/LICENSE",
+        "docs/licenses/ebim-benchmark/NOTICE"
+      ],
+      "modifications": []
+    },
+    {
+      "path": "assets/task/tableware/spoon/meshes/scoop_prisms_coarse/spoon_scoop_coarse_prism_027.obj",
+      "source": "legacy",
+      "source_path": "assets/task/tableware/spoon/meshes/scoop_prisms_coarse/spoon_scoop_coarse_prism_027.obj",
+      "source_sha256": "38f713b7343cacc8167bb2016074ca40ced5c8ac1dc7672fc6410d08b1054a70",
+      "sha256": "38f713b7343cacc8167bb2016074ca40ced5c8ac1dc7672fc6410d08b1054a70",
+      "license_paths": [
+        "docs/licenses/ebim-benchmark/LICENSE",
+        "docs/licenses/ebim-benchmark/NOTICE"
+      ],
+      "modifications": []
+    },
+    {
+      "path": "assets/task/tableware/spoon/meshes/scoop_prisms_coarse/spoon_scoop_coarse_prism_028.obj",
+      "source": "legacy",
+      "source_path": "assets/task/tableware/spoon/meshes/scoop_prisms_coarse/spoon_scoop_coarse_prism_028.obj",
+      "source_sha256": "9f428c4992faae58b5e638b4d06aa43d6993fcd60f24be9651a6c90de1c09c2a",
+      "sha256": "9f428c4992faae58b5e638b4d06aa43d6993fcd60f24be9651a6c90de1c09c2a",
+      "license_paths": [
+        "docs/licenses/ebim-benchmark/LICENSE",
+        "docs/licenses/ebim-benchmark/NOTICE"
+      ],
+      "modifications": []
+    },
+    {
+      "path": "assets/task/tableware/spoon/meshes/scoop_prisms_coarse/spoon_scoop_coarse_prism_029.obj",
+      "source": "legacy",
+      "source_path": "assets/task/tableware/spoon/meshes/scoop_prisms_coarse/spoon_scoop_coarse_prism_029.obj",
+      "source_sha256": "17d7a7845a4bd376744aac32828237fdff51ae78070bad72b0997976d3f369e4",
+      "sha256": "17d7a7845a4bd376744aac32828237fdff51ae78070bad72b0997976d3f369e4",
+      "license_paths": [
+        "docs/licenses/ebim-benchmark/LICENSE",
+        "docs/licenses/ebim-benchmark/NOTICE"
+      ],
+      "modifications": []
+    },
+    {
+      "path": "assets/task/tableware/spoon/meshes/scoop_prisms_coarse/spoon_scoop_coarse_prism_030.obj",
+      "source": "legacy",
+      "source_path": "assets/task/tableware/spoon/meshes/scoop_prisms_coarse/spoon_scoop_coarse_prism_030.obj",
+      "source_sha256": "eacafe5c804f5573e087e187be7f4a616112047ed1e39e759cd049079aa00d87",
+      "sha256": "eacafe5c804f5573e087e187be7f4a616112047ed1e39e759cd049079aa00d87",
+      "license_paths": [
+        "docs/licenses/ebim-benchmark/LICENSE",
+        "docs/licenses/ebim-benchmark/NOTICE"
+      ],
+      "modifications": []
+    },
+    {
+      "path": "assets/task/tableware/spoon/meshes/scoop_prisms_coarse/spoon_scoop_coarse_prism_031.obj",
+      "source": "legacy",
+      "source_path": "assets/task/tableware/spoon/meshes/scoop_prisms_coarse/spoon_scoop_coarse_prism_031.obj",
+      "source_sha256": "de65c927c5671f1927e8578b903a55e4fd0813e658d4c3de0796dcc5c678dd9f",
+      "sha256": "de65c927c5671f1927e8578b903a55e4fd0813e658d4c3de0796dcc5c678dd9f",
+      "license_paths": [
+        "docs/licenses/ebim-benchmark/LICENSE",
+        "docs/licenses/ebim-benchmark/NOTICE"
+      ],
+      "modifications": []
+    },
+    {
+      "path": "assets/task/tableware/spoon/meshes/scoop_prisms_coarse/spoon_scoop_coarse_prism_032.obj",
+      "source": "legacy",
+      "source_path": "assets/task/tableware/spoon/meshes/scoop_prisms_coarse/spoon_scoop_coarse_prism_032.obj",
+      "source_sha256": "cf759aca9dd35daa7a02a7baf7a5275ded243feb592a4b21b0f542c79bb36ed8",
+      "sha256": "cf759aca9dd35daa7a02a7baf7a5275ded243feb592a4b21b0f542c79bb36ed8",
+      "license_paths": [
+        "docs/licenses/ebim-benchmark/LICENSE",
+        "docs/licenses/ebim-benchmark/NOTICE"
+      ],
+      "modifications": []
+    },
+    {
+      "path": "assets/task/tableware/spoon/meshes/scoop_prisms_coarse/spoon_scoop_coarse_prism_033.obj",
+      "source": "legacy",
+      "source_path": "assets/task/tableware/spoon/meshes/scoop_prisms_coarse/spoon_scoop_coarse_prism_033.obj",
+      "source_sha256": "44f763f52c5f0bda1cf29c4e7582c99a7386b3588a5555256bda1e43c9f3715f",
+      "sha256": "44f763f52c5f0bda1cf29c4e7582c99a7386b3588a5555256bda1e43c9f3715f",
+      "license_paths": [
+        "docs/licenses/ebim-benchmark/LICENSE",
+        "docs/licenses/ebim-benchmark/NOTICE"
+      ],
+      "modifications": []
+    },
+    {
+      "path": "assets/task/tableware/spoon/meshes/scoop_prisms_coarse/spoon_scoop_coarse_prism_034.obj",
+      "source": "legacy",
+      "source_path": "assets/task/tableware/spoon/meshes/scoop_prisms_coarse/spoon_scoop_coarse_prism_034.obj",
+      "source_sha256": "ccc9d0793d1d37d02fba464af2dbc3577cde388680256401a91768a5ab586d59",
+      "sha256": "ccc9d0793d1d37d02fba464af2dbc3577cde388680256401a91768a5ab586d59",
+      "license_paths": [
+        "docs/licenses/ebim-benchmark/LICENSE",
+        "docs/licenses/ebim-benchmark/NOTICE"
+      ],
+      "modifications": []
+    },
+    {
+      "path": "assets/task/tableware/spoon/meshes/scoop_prisms_coarse/spoon_scoop_coarse_prism_035.obj",
+      "source": "legacy",
+      "source_path": "assets/task/tableware/spoon/meshes/scoop_prisms_coarse/spoon_scoop_coarse_prism_035.obj",
+      "source_sha256": "2492a65fbeeb27eeeaf60f238e952f24a819a3fbfbf26f5f57449d3752cfbae7",
+      "sha256": "2492a65fbeeb27eeeaf60f238e952f24a819a3fbfbf26f5f57449d3752cfbae7",
+      "license_paths": [
+        "docs/licenses/ebim-benchmark/LICENSE",
+        "docs/licenses/ebim-benchmark/NOTICE"
+      ],
+      "modifications": []
+    },
+    {
+      "path": "assets/task/tableware/spoon/meshes/scoop_prisms_coarse/spoon_scoop_coarse_prism_036.obj",
+      "source": "legacy",
+      "source_path": "assets/task/tableware/spoon/meshes/scoop_prisms_coarse/spoon_scoop_coarse_prism_036.obj",
+      "source_sha256": "531d1b6e17b6ea838babb152326304087460159dd85df54a732cc8660b85b1e2",
+      "sha256": "531d1b6e17b6ea838babb152326304087460159dd85df54a732cc8660b85b1e2",
+      "license_paths": [
+        "docs/licenses/ebim-benchmark/LICENSE",
+        "docs/licenses/ebim-benchmark/NOTICE"
+      ],
+      "modifications": []
+    },
+    {
+      "path": "assets/task/tableware/spoon/meshes/scoop_prisms_coarse/spoon_scoop_coarse_prism_037.obj",
+      "source": "legacy",
+      "source_path": "assets/task/tableware/spoon/meshes/scoop_prisms_coarse/spoon_scoop_coarse_prism_037.obj",
+      "source_sha256": "49f440e96b8b9e040607b9c09fff8f3471c640c9a79b84cf5f6de4c22a8e89f7",
+      "sha256": "49f440e96b8b9e040607b9c09fff8f3471c640c9a79b84cf5f6de4c22a8e89f7",
+      "license_paths": [
+        "docs/licenses/ebim-benchmark/LICENSE",
+        "docs/licenses/ebim-benchmark/NOTICE"
+      ],
+      "modifications": []
+    },
+    {
+      "path": "assets/task/tableware/spoon/meshes/scoop_prisms_coarse/spoon_scoop_coarse_prism_038.obj",
+      "source": "legacy",
+      "source_path": "assets/task/tableware/spoon/meshes/scoop_prisms_coarse/spoon_scoop_coarse_prism_038.obj",
+      "source_sha256": "6545785817dd285cd23a5dc568aea910f5300a4347b0ece35030ddc56c1044f1",
+      "sha256": "6545785817dd285cd23a5dc568aea910f5300a4347b0ece35030ddc56c1044f1",
+      "license_paths": [
+        "docs/licenses/ebim-benchmark/LICENSE",
+        "docs/licenses/ebim-benchmark/NOTICE"
+      ],
+      "modifications": []
+    },
+    {
+      "path": "assets/task/tableware/spoon/meshes/scoop_prisms_coarse/spoon_scoop_coarse_prism_039.obj",
+      "source": "legacy",
+      "source_path": "assets/task/tableware/spoon/meshes/scoop_prisms_coarse/spoon_scoop_coarse_prism_039.obj",
+      "source_sha256": "71e7e037a7d5ac18c1c6e9076cc9957506c58a206611247d355c9e12382250c0",
+      "sha256": "71e7e037a7d5ac18c1c6e9076cc9957506c58a206611247d355c9e12382250c0",
+      "license_paths": [
+        "docs/licenses/ebim-benchmark/LICENSE",
+        "docs/licenses/ebim-benchmark/NOTICE"
+      ],
+      "modifications": []
+    },
+    {
+      "path": "assets/task/tableware/spoon/meshes/scoop_prisms_coarse/spoon_scoop_coarse_prism_040.obj",
+      "source": "legacy",
+      "source_path": "assets/task/tableware/spoon/meshes/scoop_prisms_coarse/spoon_scoop_coarse_prism_040.obj",
+      "source_sha256": "158c8ab2aaca158affcdf472028dd6bed540a0fc53f57f516e4f6afa8876939d",
+      "sha256": "158c8ab2aaca158affcdf472028dd6bed540a0fc53f57f516e4f6afa8876939d",
+      "license_paths": [
+        "docs/licenses/ebim-benchmark/LICENSE",
+        "docs/licenses/ebim-benchmark/NOTICE"
+      ],
+      "modifications": []
+    },
+    {
+      "path": "assets/task/tableware/spoon/meshes/scoop_prisms_coarse/spoon_scoop_coarse_prism_041.obj",
+      "source": "legacy",
+      "source_path": "assets/task/tableware/spoon/meshes/scoop_prisms_coarse/spoon_scoop_coarse_prism_041.obj",
+      "source_sha256": "8fd6a89fbc113a93fbde0a3e8e0a627e7210fe9a926dca740e7014d42facccb7",
+      "sha256": "8fd6a89fbc113a93fbde0a3e8e0a627e7210fe9a926dca740e7014d42facccb7",
+      "license_paths": [
+        "docs/licenses/ebim-benchmark/LICENSE",
+        "docs/licenses/ebim-benchmark/NOTICE"
+      ],
+      "modifications": []
+    },
+    {
+      "path": "assets/task/tableware/spoon/meshes/scoop_prisms_coarse/spoon_scoop_coarse_prism_042.obj",
+      "source": "legacy",
+      "source_path": "assets/task/tableware/spoon/meshes/scoop_prisms_coarse/spoon_scoop_coarse_prism_042.obj",
+      "source_sha256": "24bd454d298349156ff724d8109ad51baf8812a4b78268057cf10565c3832232",
+      "sha256": "24bd454d298349156ff724d8109ad51baf8812a4b78268057cf10565c3832232",
+      "license_paths": [
+        "docs/licenses/ebim-benchmark/LICENSE",
+        "docs/licenses/ebim-benchmark/NOTICE"
+      ],
+      "modifications": []
+    },
+    {
+      "path": "assets/task/tableware/spoon/meshes/scoop_prisms_coarse/spoon_scoop_coarse_prism_043.obj",
+      "source": "legacy",
+      "source_path": "assets/task/tableware/spoon/meshes/scoop_prisms_coarse/spoon_scoop_coarse_prism_043.obj",
+      "source_sha256": "eac33100b85d500b1043504f22512391e4dca66540cab151d58651c97974c6f8",
+      "sha256": "eac33100b85d500b1043504f22512391e4dca66540cab151d58651c97974c6f8",
+      "license_paths": [
+        "docs/licenses/ebim-benchmark/LICENSE",
+        "docs/licenses/ebim-benchmark/NOTICE"
+      ],
+      "modifications": []
+    },
+    {
+      "path": "assets/task/tableware/spoon/meshes/scoop_prisms_coarse/spoon_scoop_coarse_prism_044.obj",
+      "source": "legacy",
+      "source_path": "assets/task/tableware/spoon/meshes/scoop_prisms_coarse/spoon_scoop_coarse_prism_044.obj",
+      "source_sha256": "79c917206201a48fa84d593f2159ce5f47b7cf73d9d1c6f257948a6d2293b2df",
+      "sha256": "79c917206201a48fa84d593f2159ce5f47b7cf73d9d1c6f257948a6d2293b2df",
+      "license_paths": [
+        "docs/licenses/ebim-benchmark/LICENSE",
+        "docs/licenses/ebim-benchmark/NOTICE"
+      ],
+      "modifications": []
+    },
+    {
+      "path": "assets/task/tableware/spoon/meshes/scoop_prisms_coarse/spoon_scoop_coarse_prism_045.obj",
+      "source": "legacy",
+      "source_path": "assets/task/tableware/spoon/meshes/scoop_prisms_coarse/spoon_scoop_coarse_prism_045.obj",
+      "source_sha256": "bf3d59078c7ea04b0d079bff356ca665b7e15a6fa8566c84f8f3602f67c7701b",
+      "sha256": "bf3d59078c7ea04b0d079bff356ca665b7e15a6fa8566c84f8f3602f67c7701b",
+      "license_paths": [
+        "docs/licenses/ebim-benchmark/LICENSE",
+        "docs/licenses/ebim-benchmark/NOTICE"
+      ],
+      "modifications": []
+    },
+    {
+      "path": "assets/task/tableware/spoon/meshes/scoop_prisms_coarse/spoon_scoop_coarse_prism_046.obj",
+      "source": "legacy",
+      "source_path": "assets/task/tableware/spoon/meshes/scoop_prisms_coarse/spoon_scoop_coarse_prism_046.obj",
+      "source_sha256": "4eee6289b53f0c0aacc473d7502a04298e9d59c98863d6f250ddd83c756cb148",
+      "sha256": "4eee6289b53f0c0aacc473d7502a04298e9d59c98863d6f250ddd83c756cb148",
+      "license_paths": [
+        "docs/licenses/ebim-benchmark/LICENSE",
+        "docs/licenses/ebim-benchmark/NOTICE"
+      ],
+      "modifications": []
+    },
+    {
+      "path": "assets/task/tableware/spoon/meshes/scoop_prisms_coarse/spoon_scoop_coarse_prism_047.obj",
+      "source": "legacy",
+      "source_path": "assets/task/tableware/spoon/meshes/scoop_prisms_coarse/spoon_scoop_coarse_prism_047.obj",
+      "source_sha256": "e3cba46253005c4e70974037d498b9fcb1b71290dfe36bcd5d6b6a3103eb3262",
+      "sha256": "e3cba46253005c4e70974037d498b9fcb1b71290dfe36bcd5d6b6a3103eb3262",
+      "license_paths": [
+        "docs/licenses/ebim-benchmark/LICENSE",
+        "docs/licenses/ebim-benchmark/NOTICE"
+      ],
+      "modifications": []
+    },
+    {
+      "path": "assets/task/tableware/spoon/meshes/scoop_prisms_coarse/spoon_scoop_coarse_prism_048.obj",
+      "source": "legacy",
+      "source_path": "assets/task/tableware/spoon/meshes/scoop_prisms_coarse/spoon_scoop_coarse_prism_048.obj",
+      "source_sha256": "c1cde37ae25eb704c1e22bbd75d8c9cf951e6be6b3e59362f710cd785ee6e819",
+      "sha256": "c1cde37ae25eb704c1e22bbd75d8c9cf951e6be6b3e59362f710cd785ee6e819",
+      "license_paths": [
+        "docs/licenses/ebim-benchmark/LICENSE",
+        "docs/licenses/ebim-benchmark/NOTICE"
+      ],
+      "modifications": []
+    },
+    {
+      "path": "assets/task/tableware/spoon/meshes/scoop_prisms_coarse/spoon_scoop_coarse_prism_049.obj",
+      "source": "legacy",
+      "source_path": "assets/task/tableware/spoon/meshes/scoop_prisms_coarse/spoon_scoop_coarse_prism_049.obj",
+      "source_sha256": "bb7008411ca32dc204e3233a0d1c68341c43ae131d31a2cec7e7e9fc36e6d5c6",
+      "sha256": "bb7008411ca32dc204e3233a0d1c68341c43ae131d31a2cec7e7e9fc36e6d5c6",
+      "license_paths": [
+        "docs/licenses/ebim-benchmark/LICENSE",
+        "docs/licenses/ebim-benchmark/NOTICE"
+      ],
+      "modifications": []
+    },
+    {
+      "path": "assets/task/tableware/spoon/meshes/scoop_prisms_coarse/spoon_scoop_coarse_prism_050.obj",
+      "source": "legacy",
+      "source_path": "assets/task/tableware/spoon/meshes/scoop_prisms_coarse/spoon_scoop_coarse_prism_050.obj",
+      "source_sha256": "dc19ba8e3c298bb4bc7a12bcd3f8c31c7470676652b0a5331b61cbcf8aa4fecb",
+      "sha256": "dc19ba8e3c298bb4bc7a12bcd3f8c31c7470676652b0a5331b61cbcf8aa4fecb",
+      "license_paths": [
+        "docs/licenses/ebim-benchmark/LICENSE",
+        "docs/licenses/ebim-benchmark/NOTICE"
+      ],
+      "modifications": []
+    },
+    {
+      "path": "assets/task/tableware/spoon/meshes/scoop_prisms_coarse/spoon_scoop_coarse_prism_051.obj",
+      "source": "legacy",
+      "source_path": "assets/task/tableware/spoon/meshes/scoop_prisms_coarse/spoon_scoop_coarse_prism_051.obj",
+      "source_sha256": "024159c427ac9f23f9f79bb3dbe9499b7b2b5438847f185eb3f9e2d7df0603e2",
+      "sha256": "024159c427ac9f23f9f79bb3dbe9499b7b2b5438847f185eb3f9e2d7df0603e2",
+      "license_paths": [
+        "docs/licenses/ebim-benchmark/LICENSE",
+        "docs/licenses/ebim-benchmark/NOTICE"
+      ],
+      "modifications": []
+    },
+    {
+      "path": "assets/task/tableware/spoon/meshes/scoop_prisms_coarse/spoon_scoop_coarse_prism_052.obj",
+      "source": "legacy",
+      "source_path": "assets/task/tableware/spoon/meshes/scoop_prisms_coarse/spoon_scoop_coarse_prism_052.obj",
+      "source_sha256": "16d5dca4d38ca48b7333c691f93332bc16f6edd30112ae18e0da7edbea7c8731",
+      "sha256": "16d5dca4d38ca48b7333c691f93332bc16f6edd30112ae18e0da7edbea7c8731",
+      "license_paths": [
+        "docs/licenses/ebim-benchmark/LICENSE",
+        "docs/licenses/ebim-benchmark/NOTICE"
+      ],
+      "modifications": []
+    },
+    {
+      "path": "assets/task/tableware/spoon/meshes/scoop_prisms_coarse/spoon_scoop_coarse_prism_053.obj",
+      "source": "legacy",
+      "source_path": "assets/task/tableware/spoon/meshes/scoop_prisms_coarse/spoon_scoop_coarse_prism_053.obj",
+      "source_sha256": "e63cf15bcc0203e05a078ea64bf333859d8251c3d04412394dc9cd8092695fb5",
+      "sha256": "e63cf15bcc0203e05a078ea64bf333859d8251c3d04412394dc9cd8092695fb5",
+      "license_paths": [
+        "docs/licenses/ebim-benchmark/LICENSE",
+        "docs/licenses/ebim-benchmark/NOTICE"
+      ],
+      "modifications": []
+    },
+    {
+      "path": "assets/task/tableware/spoon/meshes/scoop_prisms_coarse/spoon_scoop_coarse_prism_054.obj",
+      "source": "legacy",
+      "source_path": "assets/task/tableware/spoon/meshes/scoop_prisms_coarse/spoon_scoop_coarse_prism_054.obj",
+      "source_sha256": "f8e7e58dca8f8c891ae7255b5daea62a5070aa39578ee28ccd6e1f454d8ace96",
+      "sha256": "f8e7e58dca8f8c891ae7255b5daea62a5070aa39578ee28ccd6e1f454d8ace96",
+      "license_paths": [
+        "docs/licenses/ebim-benchmark/LICENSE",
+        "docs/licenses/ebim-benchmark/NOTICE"
+      ],
+      "modifications": []
+    },
+    {
+      "path": "assets/task/tableware/spoon/meshes/scoop_prisms_coarse/spoon_scoop_coarse_prism_055.obj",
+      "source": "legacy",
+      "source_path": "assets/task/tableware/spoon/meshes/scoop_prisms_coarse/spoon_scoop_coarse_prism_055.obj",
+      "source_sha256": "e912c736da408ae9fcca5ff7ab51b094e7b5c25469eface328fd88fd99314014",
+      "sha256": "e912c736da408ae9fcca5ff7ab51b094e7b5c25469eface328fd88fd99314014",
+      "license_paths": [
+        "docs/licenses/ebim-benchmark/LICENSE",
+        "docs/licenses/ebim-benchmark/NOTICE"
+      ],
+      "modifications": []
+    },
+    {
+      "path": "assets/task/tableware/spoon/meshes/scoop_prisms_coarse/spoon_scoop_coarse_prism_056.obj",
+      "source": "legacy",
+      "source_path": "assets/task/tableware/spoon/meshes/scoop_prisms_coarse/spoon_scoop_coarse_prism_056.obj",
+      "source_sha256": "b743124e39752b5e553a7e47f7180eed07d9a79b2c05bccf01dad4b6d1ef54ba",
+      "sha256": "b743124e39752b5e553a7e47f7180eed07d9a79b2c05bccf01dad4b6d1ef54ba",
+      "license_paths": [
+        "docs/licenses/ebim-benchmark/LICENSE",
+        "docs/licenses/ebim-benchmark/NOTICE"
+      ],
+      "modifications": []
+    },
+    {
+      "path": "assets/task/tableware/spoon/meshes/scoop_prisms_coarse/spoon_scoop_coarse_prism_057.obj",
+      "source": "legacy",
+      "source_path": "assets/task/tableware/spoon/meshes/scoop_prisms_coarse/spoon_scoop_coarse_prism_057.obj",
+      "source_sha256": "214b2daa5a5c251c3d93df7cfa4afd4cc8f1fea0ebe51e9493dbaab1977bd3f2",
+      "sha256": "214b2daa5a5c251c3d93df7cfa4afd4cc8f1fea0ebe51e9493dbaab1977bd3f2",
+      "license_paths": [
+        "docs/licenses/ebim-benchmark/LICENSE",
+        "docs/licenses/ebim-benchmark/NOTICE"
+      ],
+      "modifications": []
+    },
+    {
+      "path": "assets/task/tableware/spoon/meshes/scoop_prisms_coarse/spoon_scoop_coarse_prism_058.obj",
+      "source": "legacy",
+      "source_path": "assets/task/tableware/spoon/meshes/scoop_prisms_coarse/spoon_scoop_coarse_prism_058.obj",
+      "source_sha256": "e8b274e2537d6279cafb154e6dd0308b011f9c53f31d13018d4313679e4e098c",
+      "sha256": "e8b274e2537d6279cafb154e6dd0308b011f9c53f31d13018d4313679e4e098c",
+      "license_paths": [
+        "docs/licenses/ebim-benchmark/LICENSE",
+        "docs/licenses/ebim-benchmark/NOTICE"
+      ],
+      "modifications": []
+    },
+    {
+      "path": "assets/task/tableware/spoon/meshes/scoop_prisms_coarse/spoon_scoop_coarse_prism_059.obj",
+      "source": "legacy",
+      "source_path": "assets/task/tableware/spoon/meshes/scoop_prisms_coarse/spoon_scoop_coarse_prism_059.obj",
+      "source_sha256": "185017a5e791e73f3d8e3b30cae510f30ec86c442e6e6993a965c9324f344ae9",
+      "sha256": "185017a5e791e73f3d8e3b30cae510f30ec86c442e6e6993a965c9324f344ae9",
+      "license_paths": [
+        "docs/licenses/ebim-benchmark/LICENSE",
+        "docs/licenses/ebim-benchmark/NOTICE"
+      ],
+      "modifications": []
+    },
+    {
+      "path": "assets/task/tableware/spoon/meshes/scoop_prisms_coarse/spoon_scoop_coarse_prism_060.obj",
+      "source": "legacy",
+      "source_path": "assets/task/tableware/spoon/meshes/scoop_prisms_coarse/spoon_scoop_coarse_prism_060.obj",
+      "source_sha256": "427ad7215930b15698fda97b33f4ea3e3593c90c8a9e5dbaad24b9041927b761",
+      "sha256": "427ad7215930b15698fda97b33f4ea3e3593c90c8a9e5dbaad24b9041927b761",
+      "license_paths": [
+        "docs/licenses/ebim-benchmark/LICENSE",
+        "docs/licenses/ebim-benchmark/NOTICE"
+      ],
+      "modifications": []
+    },
+    {
+      "path": "assets/task/tableware/spoon/meshes/scoop_prisms_coarse/spoon_scoop_coarse_prism_061.obj",
+      "source": "legacy",
+      "source_path": "assets/task/tableware/spoon/meshes/scoop_prisms_coarse/spoon_scoop_coarse_prism_061.obj",
+      "source_sha256": "bc078a311297fd64230a57fbd153f92c2e2af1d1f61674a607bc60d3885d1de8",
+      "sha256": "bc078a311297fd64230a57fbd153f92c2e2af1d1f61674a607bc60d3885d1de8",
+      "license_paths": [
+        "docs/licenses/ebim-benchmark/LICENSE",
+        "docs/licenses/ebim-benchmark/NOTICE"
+      ],
+      "modifications": []
+    },
+    {
+      "path": "assets/task/tableware/spoon/meshes/scoop_prisms_coarse/spoon_scoop_coarse_prism_062.obj",
+      "source": "legacy",
+      "source_path": "assets/task/tableware/spoon/meshes/scoop_prisms_coarse/spoon_scoop_coarse_prism_062.obj",
+      "source_sha256": "22050ea262d7fcaa19d364d28967af9b0bc2771c1d1943a06a64a3ffe6de34d5",
+      "sha256": "22050ea262d7fcaa19d364d28967af9b0bc2771c1d1943a06a64a3ffe6de34d5",
+      "license_paths": [
+        "docs/licenses/ebim-benchmark/LICENSE",
+        "docs/licenses/ebim-benchmark/NOTICE"
+      ],
+      "modifications": []
+    },
+    {
+      "path": "assets/task/tableware/spoon/meshes/scoop_prisms_coarse/spoon_scoop_coarse_prism_063.obj",
+      "source": "legacy",
+      "source_path": "assets/task/tableware/spoon/meshes/scoop_prisms_coarse/spoon_scoop_coarse_prism_063.obj",
+      "source_sha256": "46aec7c2b871fd09016ff1e2eb9a55f3c16e2d403feac503ff28cc7c0af10d0d",
+      "sha256": "46aec7c2b871fd09016ff1e2eb9a55f3c16e2d403feac503ff28cc7c0af10d0d",
+      "license_paths": [
+        "docs/licenses/ebim-benchmark/LICENSE",
+        "docs/licenses/ebim-benchmark/NOTICE"
+      ],
+      "modifications": []
+    },
+    {
+      "path": "assets/task/tableware/spoon/meshes/scoop_prisms_coarse/spoon_scoop_coarse_prism_064.obj",
+      "source": "legacy",
+      "source_path": "assets/task/tableware/spoon/meshes/scoop_prisms_coarse/spoon_scoop_coarse_prism_064.obj",
+      "source_sha256": "7e170c34a7cb65283615c6a13d8b24f2672994e7a6a453f9715e088717f0c2a3",
+      "sha256": "7e170c34a7cb65283615c6a13d8b24f2672994e7a6a453f9715e088717f0c2a3",
+      "license_paths": [
+        "docs/licenses/ebim-benchmark/LICENSE",
+        "docs/licenses/ebim-benchmark/NOTICE"
+      ],
+      "modifications": []
+    },
+    {
+      "path": "assets/task/tableware/spoon/meshes/scoop_prisms_coarse/spoon_scoop_coarse_prism_065.obj",
+      "source": "legacy",
+      "source_path": "assets/task/tableware/spoon/meshes/scoop_prisms_coarse/spoon_scoop_coarse_prism_065.obj",
+      "source_sha256": "f4d88e692c03e72035d3f43ead572c7a47ce35cc49c2c627e54e1327c7b80759",
+      "sha256": "f4d88e692c03e72035d3f43ead572c7a47ce35cc49c2c627e54e1327c7b80759",
+      "license_paths": [
+        "docs/licenses/ebim-benchmark/LICENSE",
+        "docs/licenses/ebim-benchmark/NOTICE"
+      ],
+      "modifications": []
+    },
+    {
+      "path": "assets/task/tableware/spoon/meshes/scoop_prisms_coarse/spoon_scoop_coarse_prism_066.obj",
+      "source": "legacy",
+      "source_path": "assets/task/tableware/spoon/meshes/scoop_prisms_coarse/spoon_scoop_coarse_prism_066.obj",
+      "source_sha256": "54b1b9adc2d0a9bcb8af0843de203579b9c685fa07ee5fbb561ea654fff08aaf",
+      "sha256": "54b1b9adc2d0a9bcb8af0843de203579b9c685fa07ee5fbb561ea654fff08aaf",
+      "license_paths": [
+        "docs/licenses/ebim-benchmark/LICENSE",
+        "docs/licenses/ebim-benchmark/NOTICE"
+      ],
+      "modifications": []
+    },
+    {
+      "path": "assets/task/tableware/spoon/meshes/scoop_prisms_coarse/spoon_scoop_coarse_prism_067.obj",
+      "source": "legacy",
+      "source_path": "assets/task/tableware/spoon/meshes/scoop_prisms_coarse/spoon_scoop_coarse_prism_067.obj",
+      "source_sha256": "0b688b54991624b0efd99cb9ee1b01e2e6a3cb2dae58a4e6b957be40c3dcc763",
+      "sha256": "0b688b54991624b0efd99cb9ee1b01e2e6a3cb2dae58a4e6b957be40c3dcc763",
+      "license_paths": [
+        "docs/licenses/ebim-benchmark/LICENSE",
+        "docs/licenses/ebim-benchmark/NOTICE"
+      ],
+      "modifications": []
+    },
+    {
+      "path": "assets/task/tableware/spoon/meshes/scoop_prisms_coarse/spoon_scoop_coarse_prism_068.obj",
+      "source": "legacy",
+      "source_path": "assets/task/tableware/spoon/meshes/scoop_prisms_coarse/spoon_scoop_coarse_prism_068.obj",
+      "source_sha256": "c5b63b59319c253967b55d017fb55720172d5968718e8263c9085a3a1851d310",
+      "sha256": "c5b63b59319c253967b55d017fb55720172d5968718e8263c9085a3a1851d310",
+      "license_paths": [
+        "docs/licenses/ebim-benchmark/LICENSE",
+        "docs/licenses/ebim-benchmark/NOTICE"
+      ],
+      "modifications": []
+    },
+    {
+      "path": "assets/task/tableware/spoon/meshes/scoop_prisms_coarse/spoon_scoop_coarse_prism_069.obj",
+      "source": "legacy",
+      "source_path": "assets/task/tableware/spoon/meshes/scoop_prisms_coarse/spoon_scoop_coarse_prism_069.obj",
+      "source_sha256": "f9e3aecd03f95701c2f5feb5292c6653652b66163abc9f011960d9ac6a009487",
+      "sha256": "f9e3aecd03f95701c2f5feb5292c6653652b66163abc9f011960d9ac6a009487",
+      "license_paths": [
+        "docs/licenses/ebim-benchmark/LICENSE",
+        "docs/licenses/ebim-benchmark/NOTICE"
+      ],
+      "modifications": []
+    },
+    {
+      "path": "assets/task/tableware/spoon/meshes/scoop_prisms_coarse/spoon_scoop_coarse_prism_070.obj",
+      "source": "legacy",
+      "source_path": "assets/task/tableware/spoon/meshes/scoop_prisms_coarse/spoon_scoop_coarse_prism_070.obj",
+      "source_sha256": "98f5cdff53c87f8a05161628015dfbedafeb1721b7449aa83fc18dbea8d0287e",
+      "sha256": "98f5cdff53c87f8a05161628015dfbedafeb1721b7449aa83fc18dbea8d0287e",
+      "license_paths": [
+        "docs/licenses/ebim-benchmark/LICENSE",
+        "docs/licenses/ebim-benchmark/NOTICE"
+      ],
+      "modifications": []
+    },
+    {
+      "path": "assets/task/tableware/spoon/meshes/scoop_prisms_coarse/spoon_scoop_coarse_prism_071.obj",
+      "source": "legacy",
+      "source_path": "assets/task/tableware/spoon/meshes/scoop_prisms_coarse/spoon_scoop_coarse_prism_071.obj",
+      "source_sha256": "2479f466a09b01075c284900161c431c310bcbe6ca48b20bae9f6d690d72737c",
+      "sha256": "2479f466a09b01075c284900161c431c310bcbe6ca48b20bae9f6d690d72737c",
+      "license_paths": [
+        "docs/licenses/ebim-benchmark/LICENSE",
+        "docs/licenses/ebim-benchmark/NOTICE"
+      ],
+      "modifications": []
+    },
+    {
+      "path": "assets/task/tableware/spoon/meshes/scoop_prisms_coarse/spoon_scoop_coarse_prism_072.obj",
+      "source": "legacy",
+      "source_path": "assets/task/tableware/spoon/meshes/scoop_prisms_coarse/spoon_scoop_coarse_prism_072.obj",
+      "source_sha256": "2503168531fc5c74c77634c2fc260b383d9332fead9bd9c68ae76e800ee738ba",
+      "sha256": "2503168531fc5c74c77634c2fc260b383d9332fead9bd9c68ae76e800ee738ba",
+      "license_paths": [
+        "docs/licenses/ebim-benchmark/LICENSE",
+        "docs/licenses/ebim-benchmark/NOTICE"
+      ],
+      "modifications": []
+    },
+    {
+      "path": "assets/task/tableware/spoon/meshes/scoop_prisms_coarse/spoon_scoop_coarse_prism_073.obj",
+      "source": "legacy",
+      "source_path": "assets/task/tableware/spoon/meshes/scoop_prisms_coarse/spoon_scoop_coarse_prism_073.obj",
+      "source_sha256": "38123097489787c0f6908bcec333fce128284ae4bda7abc676d58358ccf55359",
+      "sha256": "38123097489787c0f6908bcec333fce128284ae4bda7abc676d58358ccf55359",
+      "license_paths": [
+        "docs/licenses/ebim-benchmark/LICENSE",
+        "docs/licenses/ebim-benchmark/NOTICE"
+      ],
+      "modifications": []
+    },
+    {
+      "path": "assets/task/tableware/spoon/meshes/scoop_prisms_coarse/spoon_scoop_coarse_prism_074.obj",
+      "source": "legacy",
+      "source_path": "assets/task/tableware/spoon/meshes/scoop_prisms_coarse/spoon_scoop_coarse_prism_074.obj",
+      "source_sha256": "5fe9f78d746e991da17af9cfbbeca2c99d95989fb16fd3aae9295bdb3eec0c51",
+      "sha256": "5fe9f78d746e991da17af9cfbbeca2c99d95989fb16fd3aae9295bdb3eec0c51",
+      "license_paths": [
+        "docs/licenses/ebim-benchmark/LICENSE",
+        "docs/licenses/ebim-benchmark/NOTICE"
+      ],
+      "modifications": []
+    },
+    {
+      "path": "assets/task/tableware/spoon/meshes/scoop_prisms_coarse/spoon_scoop_coarse_prism_075.obj",
+      "source": "legacy",
+      "source_path": "assets/task/tableware/spoon/meshes/scoop_prisms_coarse/spoon_scoop_coarse_prism_075.obj",
+      "source_sha256": "1a661aafd7ccd0767b97f2b8dd50bd6fcec6adcaf16eb7761552c45d5c3dd1fd",
+      "sha256": "1a661aafd7ccd0767b97f2b8dd50bd6fcec6adcaf16eb7761552c45d5c3dd1fd",
+      "license_paths": [
+        "docs/licenses/ebim-benchmark/LICENSE",
+        "docs/licenses/ebim-benchmark/NOTICE"
+      ],
+      "modifications": []
+    },
+    {
+      "path": "assets/task/tableware/spoon/meshes/scoop_prisms_coarse/spoon_scoop_coarse_prism_076.obj",
+      "source": "legacy",
+      "source_path": "assets/task/tableware/spoon/meshes/scoop_prisms_coarse/spoon_scoop_coarse_prism_076.obj",
+      "source_sha256": "33e9443cf6ff58049045fc766d45539a7acbf3718dbfe055ffc6f429d74e41f8",
+      "sha256": "33e9443cf6ff58049045fc766d45539a7acbf3718dbfe055ffc6f429d74e41f8",
+      "license_paths": [
+        "docs/licenses/ebim-benchmark/LICENSE",
+        "docs/licenses/ebim-benchmark/NOTICE"
+      ],
+      "modifications": []
+    },
+    {
+      "path": "assets/task/tableware/spoon/meshes/scoop_prisms_coarse/spoon_scoop_coarse_prism_077.obj",
+      "source": "legacy",
+      "source_path": "assets/task/tableware/spoon/meshes/scoop_prisms_coarse/spoon_scoop_coarse_prism_077.obj",
+      "source_sha256": "1c8c844eea746b70d19fa83577e7fba4b191a0eca9dc81eb92b12d42c7d3d78c",
+      "sha256": "1c8c844eea746b70d19fa83577e7fba4b191a0eca9dc81eb92b12d42c7d3d78c",
+      "license_paths": [
+        "docs/licenses/ebim-benchmark/LICENSE",
+        "docs/licenses/ebim-benchmark/NOTICE"
+      ],
+      "modifications": []
+    },
+    {
+      "path": "assets/task/tableware/spoon/meshes/scoop_prisms_coarse/spoon_scoop_coarse_prism_078.obj",
+      "source": "legacy",
+      "source_path": "assets/task/tableware/spoon/meshes/scoop_prisms_coarse/spoon_scoop_coarse_prism_078.obj",
+      "source_sha256": "8d23df5fc715ecee86b0b87a2dcf97815d6855f60d71dc637a0f930ad86d54a2",
+      "sha256": "8d23df5fc715ecee86b0b87a2dcf97815d6855f60d71dc637a0f930ad86d54a2",
+      "license_paths": [
+        "docs/licenses/ebim-benchmark/LICENSE",
+        "docs/licenses/ebim-benchmark/NOTICE"
+      ],
+      "modifications": []
+    },
+    {
+      "path": "assets/task/tableware/spoon/meshes/scoop_prisms_coarse/spoon_scoop_coarse_prism_079.obj",
+      "source": "legacy",
+      "source_path": "assets/task/tableware/spoon/meshes/scoop_prisms_coarse/spoon_scoop_coarse_prism_079.obj",
+      "source_sha256": "657a0bedd4912a5a3e60cd69f2c9d19b6d622f2f833ce6ea8006206336907a45",
+      "sha256": "657a0bedd4912a5a3e60cd69f2c9d19b6d622f2f833ce6ea8006206336907a45",
+      "license_paths": [
+        "docs/licenses/ebim-benchmark/LICENSE",
+        "docs/licenses/ebim-benchmark/NOTICE"
+      ],
+      "modifications": []
+    },
+    {
+      "path": "assets/task/tableware/spoon/meshes/scoop_prisms_coarse/spoon_scoop_coarse_prism_080.obj",
+      "source": "legacy",
+      "source_path": "assets/task/tableware/spoon/meshes/scoop_prisms_coarse/spoon_scoop_coarse_prism_080.obj",
+      "source_sha256": "84ae8d6f9144989ef8e610c9d033612ba0ce2e31728cfae6dd1b15a22fbe0e3b",
+      "sha256": "84ae8d6f9144989ef8e610c9d033612ba0ce2e31728cfae6dd1b15a22fbe0e3b",
+      "license_paths": [
+        "docs/licenses/ebim-benchmark/LICENSE",
+        "docs/licenses/ebim-benchmark/NOTICE"
+      ],
+      "modifications": []
+    },
+    {
+      "path": "assets/task/tableware/spoon/meshes/scoop_prisms_coarse/spoon_scoop_coarse_prism_081.obj",
+      "source": "legacy",
+      "source_path": "assets/task/tableware/spoon/meshes/scoop_prisms_coarse/spoon_scoop_coarse_prism_081.obj",
+      "source_sha256": "24fb83897c7d299dee31cf2d0519d55e0d76946f201fca80c42e8094e3a5403a",
+      "sha256": "24fb83897c7d299dee31cf2d0519d55e0d76946f201fca80c42e8094e3a5403a",
+      "license_paths": [
+        "docs/licenses/ebim-benchmark/LICENSE",
+        "docs/licenses/ebim-benchmark/NOTICE"
+      ],
+      "modifications": []
+    },
+    {
+      "path": "assets/task/tableware/spoon/meshes/scoop_prisms_coarse/spoon_scoop_coarse_prism_082.obj",
+      "source": "legacy",
+      "source_path": "assets/task/tableware/spoon/meshes/scoop_prisms_coarse/spoon_scoop_coarse_prism_082.obj",
+      "source_sha256": "438b741dd032b12610e23660f0629fa3e290b26b27570ddba62b9587e6aff97b",
+      "sha256": "438b741dd032b12610e23660f0629fa3e290b26b27570ddba62b9587e6aff97b",
+      "license_paths": [
+        "docs/licenses/ebim-benchmark/LICENSE",
+        "docs/licenses/ebim-benchmark/NOTICE"
+      ],
+      "modifications": []
+    },
+    {
+      "path": "assets/task/tableware/spoon/meshes/scoop_prisms_coarse/spoon_scoop_coarse_prism_083.obj",
+      "source": "legacy",
+      "source_path": "assets/task/tableware/spoon/meshes/scoop_prisms_coarse/spoon_scoop_coarse_prism_083.obj",
+      "source_sha256": "83432d18f32709dc941840570abc952984f9346a554198278fa051d34c614070",
+      "sha256": "83432d18f32709dc941840570abc952984f9346a554198278fa051d34c614070",
+      "license_paths": [
+        "docs/licenses/ebim-benchmark/LICENSE",
+        "docs/licenses/ebim-benchmark/NOTICE"
+      ],
+      "modifications": []
+    },
+    {
+      "path": "assets/task/tableware/spoon/meshes/scoop_prisms_coarse/spoon_scoop_coarse_prism_084.obj",
+      "source": "legacy",
+      "source_path": "assets/task/tableware/spoon/meshes/scoop_prisms_coarse/spoon_scoop_coarse_prism_084.obj",
+      "source_sha256": "bd60d83a131446f477d77aa9f76f818cc038a39bb67d6dbfc41585b30dad3ebd",
+      "sha256": "bd60d83a131446f477d77aa9f76f818cc038a39bb67d6dbfc41585b30dad3ebd",
+      "license_paths": [
+        "docs/licenses/ebim-benchmark/LICENSE",
+        "docs/licenses/ebim-benchmark/NOTICE"
+      ],
+      "modifications": []
+    },
+    {
+      "path": "assets/task/tableware/spoon/meshes/scoop_prisms_coarse/spoon_scoop_coarse_prism_085.obj",
+      "source": "legacy",
+      "source_path": "assets/task/tableware/spoon/meshes/scoop_prisms_coarse/spoon_scoop_coarse_prism_085.obj",
+      "source_sha256": "f28311172d8b4c4f23366ecea04e7951eb63b47be60665066f4e73ef250440cb",
+      "sha256": "f28311172d8b4c4f23366ecea04e7951eb63b47be60665066f4e73ef250440cb",
+      "license_paths": [
+        "docs/licenses/ebim-benchmark/LICENSE",
+        "docs/licenses/ebim-benchmark/NOTICE"
+      ],
+      "modifications": []
+    },
+    {
+      "path": "assets/task/tableware/spoon/meshes/scoop_prisms_coarse/spoon_scoop_coarse_prism_086.obj",
+      "source": "legacy",
+      "source_path": "assets/task/tableware/spoon/meshes/scoop_prisms_coarse/spoon_scoop_coarse_prism_086.obj",
+      "source_sha256": "17c25affcec1138c706432548e1595f13edf67ffd462393fb1ef375d906c09ca",
+      "sha256": "17c25affcec1138c706432548e1595f13edf67ffd462393fb1ef375d906c09ca",
+      "license_paths": [
+        "docs/licenses/ebim-benchmark/LICENSE",
+        "docs/licenses/ebim-benchmark/NOTICE"
+      ],
+      "modifications": []
+    },
+    {
+      "path": "assets/task/tableware/spoon/meshes/scoop_prisms_coarse/spoon_scoop_coarse_prism_087.obj",
+      "source": "legacy",
+      "source_path": "assets/task/tableware/spoon/meshes/scoop_prisms_coarse/spoon_scoop_coarse_prism_087.obj",
+      "source_sha256": "48bdb025324520da3e6d1317691319e0a9f0feebb8011b6587bc7617f9925901",
+      "sha256": "48bdb025324520da3e6d1317691319e0a9f0feebb8011b6587bc7617f9925901",
+      "license_paths": [
+        "docs/licenses/ebim-benchmark/LICENSE",
+        "docs/licenses/ebim-benchmark/NOTICE"
+      ],
+      "modifications": []
+    },
+    {
+      "path": "assets/task/tableware/spoon/meshes/scoop_prisms_coarse/spoon_scoop_coarse_prism_088.obj",
+      "source": "legacy",
+      "source_path": "assets/task/tableware/spoon/meshes/scoop_prisms_coarse/spoon_scoop_coarse_prism_088.obj",
+      "source_sha256": "87a07638b6c59cd50e810031c9d146ee8d16382da2b73670f895aeedd06afb2a",
+      "sha256": "87a07638b6c59cd50e810031c9d146ee8d16382da2b73670f895aeedd06afb2a",
+      "license_paths": [
+        "docs/licenses/ebim-benchmark/LICENSE",
+        "docs/licenses/ebim-benchmark/NOTICE"
+      ],
+      "modifications": []
+    },
+    {
+      "path": "assets/task/tableware/spoon/meshes/scoop_prisms_coarse/spoon_scoop_coarse_prism_089.obj",
+      "source": "legacy",
+      "source_path": "assets/task/tableware/spoon/meshes/scoop_prisms_coarse/spoon_scoop_coarse_prism_089.obj",
+      "source_sha256": "e742e7a530d946cacc68e52152ee1bff7e1fa3c550a5ff94428f69710dc53b1e",
+      "sha256": "e742e7a530d946cacc68e52152ee1bff7e1fa3c550a5ff94428f69710dc53b1e",
+      "license_paths": [
+        "docs/licenses/ebim-benchmark/LICENSE",
+        "docs/licenses/ebim-benchmark/NOTICE"
+      ],
+      "modifications": []
+    },
+    {
+      "path": "assets/task/tableware/spoon/meshes/scoop_prisms_coarse/spoon_scoop_coarse_prism_090.obj",
+      "source": "legacy",
+      "source_path": "assets/task/tableware/spoon/meshes/scoop_prisms_coarse/spoon_scoop_coarse_prism_090.obj",
+      "source_sha256": "8f54e7b929e579a33ae4ce5d0a83ab47f3593eb4ab8b720cd68836b3b5b2d0a9",
+      "sha256": "8f54e7b929e579a33ae4ce5d0a83ab47f3593eb4ab8b720cd68836b3b5b2d0a9",
+      "license_paths": [
+        "docs/licenses/ebim-benchmark/LICENSE",
+        "docs/licenses/ebim-benchmark/NOTICE"
+      ],
+      "modifications": []
+    },
+    {
+      "path": "assets/task/tableware/spoon/meshes/scoop_prisms_coarse/spoon_scoop_coarse_prism_091.obj",
+      "source": "legacy",
+      "source_path": "assets/task/tableware/spoon/meshes/scoop_prisms_coarse/spoon_scoop_coarse_prism_091.obj",
+      "source_sha256": "96a0f3773f9626f9ce969277d6c7a24c12fca777d6b5dd0d5b9c59fefad99672",
+      "sha256": "96a0f3773f9626f9ce969277d6c7a24c12fca777d6b5dd0d5b9c59fefad99672",
+      "license_paths": [
+        "docs/licenses/ebim-benchmark/LICENSE",
+        "docs/licenses/ebim-benchmark/NOTICE"
+      ],
+      "modifications": []
+    },
+    {
+      "path": "assets/task/tableware/spoon/meshes/scoop_prisms_coarse/spoon_scoop_coarse_prism_092.obj",
+      "source": "legacy",
+      "source_path": "assets/task/tableware/spoon/meshes/scoop_prisms_coarse/spoon_scoop_coarse_prism_092.obj",
+      "source_sha256": "e0836a95d14c41b130b06853856992ed77265b9577628a551de22a4aae2d07db",
+      "sha256": "e0836a95d14c41b130b06853856992ed77265b9577628a551de22a4aae2d07db",
+      "license_paths": [
+        "docs/licenses/ebim-benchmark/LICENSE",
+        "docs/licenses/ebim-benchmark/NOTICE"
+      ],
+      "modifications": []
+    },
+    {
+      "path": "assets/task/tableware/spoon/meshes/scoop_prisms_coarse/spoon_scoop_coarse_prism_093.obj",
+      "source": "legacy",
+      "source_path": "assets/task/tableware/spoon/meshes/scoop_prisms_coarse/spoon_scoop_coarse_prism_093.obj",
+      "source_sha256": "78774b79cbd9bb66b335afcba9723edc279193c5c1934530c4a11bfdfe394fcd",
+      "sha256": "78774b79cbd9bb66b335afcba9723edc279193c5c1934530c4a11bfdfe394fcd",
+      "license_paths": [
+        "docs/licenses/ebim-benchmark/LICENSE",
+        "docs/licenses/ebim-benchmark/NOTICE"
+      ],
+      "modifications": []
+    },
+    {
+      "path": "assets/task/tableware/spoon/meshes/scoop_prisms_coarse/spoon_scoop_coarse_prism_094.obj",
+      "source": "legacy",
+      "source_path": "assets/task/tableware/spoon/meshes/scoop_prisms_coarse/spoon_scoop_coarse_prism_094.obj",
+      "source_sha256": "2c935c8b3bc52f584ee132426c205fc23e1fde01af3978e5f9c5341bfeae5cac",
+      "sha256": "2c935c8b3bc52f584ee132426c205fc23e1fde01af3978e5f9c5341bfeae5cac",
+      "license_paths": [
+        "docs/licenses/ebim-benchmark/LICENSE",
+        "docs/licenses/ebim-benchmark/NOTICE"
+      ],
+      "modifications": []
+    },
+    {
+      "path": "assets/task/tableware/spoon/meshes/scoop_prisms_coarse/spoon_scoop_coarse_prism_095.obj",
+      "source": "legacy",
+      "source_path": "assets/task/tableware/spoon/meshes/scoop_prisms_coarse/spoon_scoop_coarse_prism_095.obj",
+      "source_sha256": "6e865984894815db91b264ed24a3a350c23084433675142ff5ce74fca54a8d3e",
+      "sha256": "6e865984894815db91b264ed24a3a350c23084433675142ff5ce74fca54a8d3e",
+      "license_paths": [
+        "docs/licenses/ebim-benchmark/LICENSE",
+        "docs/licenses/ebim-benchmark/NOTICE"
+      ],
+      "modifications": []
+    },
+    {
+      "path": "assets/task/tableware/spoon/meshes/scoop_prisms_coarse/spoon_scoop_coarse_prism_096.obj",
+      "source": "legacy",
+      "source_path": "assets/task/tableware/spoon/meshes/scoop_prisms_coarse/spoon_scoop_coarse_prism_096.obj",
+      "source_sha256": "8122003e8c44936c622e5dabf291de6f122d7ef503a734cccefc0a8560c886d3",
+      "sha256": "8122003e8c44936c622e5dabf291de6f122d7ef503a734cccefc0a8560c886d3",
+      "license_paths": [
+        "docs/licenses/ebim-benchmark/LICENSE",
+        "docs/licenses/ebim-benchmark/NOTICE"
+      ],
+      "modifications": []
+    },
+    {
+      "path": "assets/task/tableware/spoon/meshes/scoop_prisms_coarse/spoon_scoop_coarse_prism_097.obj",
+      "source": "legacy",
+      "source_path": "assets/task/tableware/spoon/meshes/scoop_prisms_coarse/spoon_scoop_coarse_prism_097.obj",
+      "source_sha256": "3719ba8b12f9d4901fac2e0fc69af8fe201ddd95df8b5926c2cf7386f84a3f3f",
+      "sha256": "3719ba8b12f9d4901fac2e0fc69af8fe201ddd95df8b5926c2cf7386f84a3f3f",
+      "license_paths": [
+        "docs/licenses/ebim-benchmark/LICENSE",
+        "docs/licenses/ebim-benchmark/NOTICE"
+      ],
+      "modifications": []
+    },
+    {
+      "path": "assets/task/tableware/spoon/meshes/scoop_prisms_coarse/spoon_scoop_coarse_prism_098.obj",
+      "source": "legacy",
+      "source_path": "assets/task/tableware/spoon/meshes/scoop_prisms_coarse/spoon_scoop_coarse_prism_098.obj",
+      "source_sha256": "fc71356ac5da3d49acfbd9e27cf3fb9c7a3149ed8ad4aa773d31557033b873e7",
+      "sha256": "fc71356ac5da3d49acfbd9e27cf3fb9c7a3149ed8ad4aa773d31557033b873e7",
+      "license_paths": [
+        "docs/licenses/ebim-benchmark/LICENSE",
+        "docs/licenses/ebim-benchmark/NOTICE"
+      ],
+      "modifications": []
+    },
+    {
+      "path": "assets/task/tableware/spoon/meshes/scoop_prisms_coarse/spoon_scoop_coarse_prism_099.obj",
+      "source": "legacy",
+      "source_path": "assets/task/tableware/spoon/meshes/scoop_prisms_coarse/spoon_scoop_coarse_prism_099.obj",
+      "source_sha256": "86e0d6ee52bff37bd61a2cddfc1aa5e33b4afd25d8fa2a6338fd20fbf29ef61e",
+      "sha256": "86e0d6ee52bff37bd61a2cddfc1aa5e33b4afd25d8fa2a6338fd20fbf29ef61e",
+      "license_paths": [
+        "docs/licenses/ebim-benchmark/LICENSE",
+        "docs/licenses/ebim-benchmark/NOTICE"
+      ],
+      "modifications": []
+    },
+    {
+      "path": "assets/task/tableware/spoon/meshes/scoop_prisms_coarse/spoon_scoop_coarse_prism_100.obj",
+      "source": "legacy",
+      "source_path": "assets/task/tableware/spoon/meshes/scoop_prisms_coarse/spoon_scoop_coarse_prism_100.obj",
+      "source_sha256": "49d133befd885cb41f612cd93f9739168a940baa3c8b9faf84fe37d607c8e166",
+      "sha256": "49d133befd885cb41f612cd93f9739168a940baa3c8b9faf84fe37d607c8e166",
+      "license_paths": [
+        "docs/licenses/ebim-benchmark/LICENSE",
+        "docs/licenses/ebim-benchmark/NOTICE"
+      ],
+      "modifications": []
+    },
+    {
+      "path": "assets/task/tableware/spoon/meshes/scoop_prisms_coarse/spoon_scoop_coarse_prism_101.obj",
+      "source": "legacy",
+      "source_path": "assets/task/tableware/spoon/meshes/scoop_prisms_coarse/spoon_scoop_coarse_prism_101.obj",
+      "source_sha256": "b51abfa55bb6839b17636b7b6f4be2763ee9e4e4f77ed23626c85f85d69e8dc6",
+      "sha256": "b51abfa55bb6839b17636b7b6f4be2763ee9e4e4f77ed23626c85f85d69e8dc6",
+      "license_paths": [
+        "docs/licenses/ebim-benchmark/LICENSE",
+        "docs/licenses/ebim-benchmark/NOTICE"
+      ],
+      "modifications": []
+    },
+    {
+      "path": "assets/task/tableware/spoon/meshes/scoop_prisms_coarse/spoon_scoop_coarse_prism_102.obj",
+      "source": "legacy",
+      "source_path": "assets/task/tableware/spoon/meshes/scoop_prisms_coarse/spoon_scoop_coarse_prism_102.obj",
+      "source_sha256": "ff97f5aa176e728591f584800dc826672c5c3b24abca46ea2298292848946e7f",
+      "sha256": "ff97f5aa176e728591f584800dc826672c5c3b24abca46ea2298292848946e7f",
+      "license_paths": [
+        "docs/licenses/ebim-benchmark/LICENSE",
+        "docs/licenses/ebim-benchmark/NOTICE"
+      ],
+      "modifications": []
+    },
+    {
+      "path": "assets/task/tableware/spoon/meshes/scoop_prisms_coarse/spoon_scoop_coarse_prism_103.obj",
+      "source": "legacy",
+      "source_path": "assets/task/tableware/spoon/meshes/scoop_prisms_coarse/spoon_scoop_coarse_prism_103.obj",
+      "source_sha256": "f304e23d6dbb88b50761e9d18be2d4c1772a66a5c3d14ead36c7d026a8240e61",
+      "sha256": "f304e23d6dbb88b50761e9d18be2d4c1772a66a5c3d14ead36c7d026a8240e61",
+      "license_paths": [
+        "docs/licenses/ebim-benchmark/LICENSE",
+        "docs/licenses/ebim-benchmark/NOTICE"
+      ],
+      "modifications": []
+    },
+    {
+      "path": "assets/task/tableware/spoon/meshes/scoop_prisms_coarse/spoon_scoop_coarse_prism_104.obj",
+      "source": "legacy",
+      "source_path": "assets/task/tableware/spoon/meshes/scoop_prisms_coarse/spoon_scoop_coarse_prism_104.obj",
+      "source_sha256": "3dd9204bd322d2d293fb3e2f1a58d5911d7e6bccd915f18d3efce83220c2fac8",
+      "sha256": "3dd9204bd322d2d293fb3e2f1a58d5911d7e6bccd915f18d3efce83220c2fac8",
+      "license_paths": [
+        "docs/licenses/ebim-benchmark/LICENSE",
+        "docs/licenses/ebim-benchmark/NOTICE"
+      ],
+      "modifications": []
+    },
+    {
+      "path": "assets/task/tableware/spoon/meshes/scoop_prisms_coarse/spoon_scoop_coarse_prism_105.obj",
+      "source": "legacy",
+      "source_path": "assets/task/tableware/spoon/meshes/scoop_prisms_coarse/spoon_scoop_coarse_prism_105.obj",
+      "source_sha256": "7c8509bcd3b42a8d49653e6d0442609d25768efe7ad30d7c12fad03988289594",
+      "sha256": "7c8509bcd3b42a8d49653e6d0442609d25768efe7ad30d7c12fad03988289594",
+      "license_paths": [
+        "docs/licenses/ebim-benchmark/LICENSE",
+        "docs/licenses/ebim-benchmark/NOTICE"
+      ],
+      "modifications": []
+    },
+    {
+      "path": "assets/task/tableware/spoon/meshes/scoop_prisms_coarse/spoon_scoop_coarse_prism_106.obj",
+      "source": "legacy",
+      "source_path": "assets/task/tableware/spoon/meshes/scoop_prisms_coarse/spoon_scoop_coarse_prism_106.obj",
+      "source_sha256": "98ca8b66ff0a35f4d0e502f789ce52240b6084df9aa29032626cc26f09940756",
+      "sha256": "98ca8b66ff0a35f4d0e502f789ce52240b6084df9aa29032626cc26f09940756",
+      "license_paths": [
+        "docs/licenses/ebim-benchmark/LICENSE",
+        "docs/licenses/ebim-benchmark/NOTICE"
+      ],
+      "modifications": []
+    },
+    {
+      "path": "assets/task/tableware/spoon/meshes/scoop_prisms_coarse/spoon_scoop_coarse_prism_107.obj",
+      "source": "legacy",
+      "source_path": "assets/task/tableware/spoon/meshes/scoop_prisms_coarse/spoon_scoop_coarse_prism_107.obj",
+      "source_sha256": "e7777f880088e336b0572be43bad129fafb42d31b7e4c10a3154511f86d395a6",
+      "sha256": "e7777f880088e336b0572be43bad129fafb42d31b7e4c10a3154511f86d395a6",
+      "license_paths": [
+        "docs/licenses/ebim-benchmark/LICENSE",
+        "docs/licenses/ebim-benchmark/NOTICE"
+      ],
+      "modifications": []
+    },
+    {
+      "path": "assets/task/tableware/spoon/meshes/scoop_prisms_coarse/spoon_scoop_coarse_prism_108.obj",
+      "source": "legacy",
+      "source_path": "assets/task/tableware/spoon/meshes/scoop_prisms_coarse/spoon_scoop_coarse_prism_108.obj",
+      "source_sha256": "4b6442584c114ad1cabc450cb75e298d6ba23d225280275801e5c91f507e541a",
+      "sha256": "4b6442584c114ad1cabc450cb75e298d6ba23d225280275801e5c91f507e541a",
+      "license_paths": [
+        "docs/licenses/ebim-benchmark/LICENSE",
+        "docs/licenses/ebim-benchmark/NOTICE"
+      ],
+      "modifications": []
+    },
+    {
+      "path": "assets/task/tableware/spoon/meshes/scoop_prisms_coarse/spoon_scoop_coarse_prism_109.obj",
+      "source": "legacy",
+      "source_path": "assets/task/tableware/spoon/meshes/scoop_prisms_coarse/spoon_scoop_coarse_prism_109.obj",
+      "source_sha256": "9a6b394c9a12b04088dcd640298186952e6c800c259757b6440886835d1d9bd3",
+      "sha256": "9a6b394c9a12b04088dcd640298186952e6c800c259757b6440886835d1d9bd3",
+      "license_paths": [
+        "docs/licenses/ebim-benchmark/LICENSE",
+        "docs/licenses/ebim-benchmark/NOTICE"
+      ],
+      "modifications": []
+    },
+    {
+      "path": "assets/task/tableware/spoon/meshes/scoop_prisms_coarse/spoon_scoop_coarse_prism_110.obj",
+      "source": "legacy",
+      "source_path": "assets/task/tableware/spoon/meshes/scoop_prisms_coarse/spoon_scoop_coarse_prism_110.obj",
+      "source_sha256": "dcfa6978e7ebc8dea6d7d1e659586c47815428cc6b0c05aa9403c9d01741d159",
+      "sha256": "dcfa6978e7ebc8dea6d7d1e659586c47815428cc6b0c05aa9403c9d01741d159",
+      "license_paths": [
+        "docs/licenses/ebim-benchmark/LICENSE",
+        "docs/licenses/ebim-benchmark/NOTICE"
+      ],
+      "modifications": []
+    },
+    {
+      "path": "assets/task/tableware/spoon/meshes/scoop_prisms_coarse/spoon_scoop_coarse_prism_111.obj",
+      "source": "legacy",
+      "source_path": "assets/task/tableware/spoon/meshes/scoop_prisms_coarse/spoon_scoop_coarse_prism_111.obj",
+      "source_sha256": "32465dc497ec6aa944fc5d4f9a7fa03655a473e5c0c553907e77ae1133bc1697",
+      "sha256": "32465dc497ec6aa944fc5d4f9a7fa03655a473e5c0c553907e77ae1133bc1697",
+      "license_paths": [
+        "docs/licenses/ebim-benchmark/LICENSE",
+        "docs/licenses/ebim-benchmark/NOTICE"
+      ],
+      "modifications": []
+    },
+    {
+      "path": "assets/task/tableware/spoon/meshes/scoop_prisms_coarse/spoon_scoop_coarse_prism_112.obj",
+      "source": "legacy",
+      "source_path": "assets/task/tableware/spoon/meshes/scoop_prisms_coarse/spoon_scoop_coarse_prism_112.obj",
+      "source_sha256": "f42373c57ffcd191f14f7f873199235d6f1713a397c981da1f0373fcd2ff4bdf",
+      "sha256": "f42373c57ffcd191f14f7f873199235d6f1713a397c981da1f0373fcd2ff4bdf",
+      "license_paths": [
+        "docs/licenses/ebim-benchmark/LICENSE",
+        "docs/licenses/ebim-benchmark/NOTICE"
+      ],
+      "modifications": []
+    },
+    {
+      "path": "assets/task/tableware/spoon/meshes/scoop_prisms_coarse/spoon_scoop_coarse_prism_113.obj",
+      "source": "legacy",
+      "source_path": "assets/task/tableware/spoon/meshes/scoop_prisms_coarse/spoon_scoop_coarse_prism_113.obj",
+      "source_sha256": "999b7cd3ffe5180ba3e36d9c3fe92c72bfed1868fe78d5f8895eaad5e3f9d2fa",
+      "sha256": "999b7cd3ffe5180ba3e36d9c3fe92c72bfed1868fe78d5f8895eaad5e3f9d2fa",
+      "license_paths": [
+        "docs/licenses/ebim-benchmark/LICENSE",
+        "docs/licenses/ebim-benchmark/NOTICE"
+      ],
+      "modifications": []
+    },
+    {
+      "path": "assets/task/tableware/spoon/meshes/scoop_prisms_coarse/spoon_scoop_coarse_prism_114.obj",
+      "source": "legacy",
+      "source_path": "assets/task/tableware/spoon/meshes/scoop_prisms_coarse/spoon_scoop_coarse_prism_114.obj",
+      "source_sha256": "24c7ef52e576e6774ec8d75abd14ce604452b1444f0f65d2f1bda13348a3300e",
+      "sha256": "24c7ef52e576e6774ec8d75abd14ce604452b1444f0f65d2f1bda13348a3300e",
+      "license_paths": [
+        "docs/licenses/ebim-benchmark/LICENSE",
+        "docs/licenses/ebim-benchmark/NOTICE"
+      ],
+      "modifications": []
+    },
+    {
+      "path": "assets/task/tableware/spoon/meshes/scoop_prisms_coarse/spoon_scoop_coarse_prism_115.obj",
+      "source": "legacy",
+      "source_path": "assets/task/tableware/spoon/meshes/scoop_prisms_coarse/spoon_scoop_coarse_prism_115.obj",
+      "source_sha256": "0194122f30969d082dabf14ea40025269bad29907152de0b7cc895bdc42b1704",
+      "sha256": "0194122f30969d082dabf14ea40025269bad29907152de0b7cc895bdc42b1704",
+      "license_paths": [
+        "docs/licenses/ebim-benchmark/LICENSE",
+        "docs/licenses/ebim-benchmark/NOTICE"
+      ],
+      "modifications": []
+    },
+    {
+      "path": "assets/task/tableware/spoon/meshes/scoop_prisms_coarse/spoon_scoop_coarse_prism_116.obj",
+      "source": "legacy",
+      "source_path": "assets/task/tableware/spoon/meshes/scoop_prisms_coarse/spoon_scoop_coarse_prism_116.obj",
+      "source_sha256": "c271e05274dea48542ed59d734466b863b80fc8e2e91fdd060ec0a973e468f04",
+      "sha256": "c271e05274dea48542ed59d734466b863b80fc8e2e91fdd060ec0a973e468f04",
+      "license_paths": [
+        "docs/licenses/ebim-benchmark/LICENSE",
+        "docs/licenses/ebim-benchmark/NOTICE"
+      ],
+      "modifications": []
+    },
+    {
+      "path": "assets/task/tableware/spoon/meshes/scoop_prisms_coarse/spoon_scoop_coarse_prism_117.obj",
+      "source": "legacy",
+      "source_path": "assets/task/tableware/spoon/meshes/scoop_prisms_coarse/spoon_scoop_coarse_prism_117.obj",
+      "source_sha256": "5a88fed93937bdb6f34fc01320e0773feda9ec26e7025dd8d6459a5cec9a83e6",
+      "sha256": "5a88fed93937bdb6f34fc01320e0773feda9ec26e7025dd8d6459a5cec9a83e6",
+      "license_paths": [
+        "docs/licenses/ebim-benchmark/LICENSE",
+        "docs/licenses/ebim-benchmark/NOTICE"
+      ],
+      "modifications": []
+    },
+    {
+      "path": "assets/task/tableware/spoon/meshes/scoop_prisms_coarse/spoon_scoop_coarse_prism_118.obj",
+      "source": "legacy",
+      "source_path": "assets/task/tableware/spoon/meshes/scoop_prisms_coarse/spoon_scoop_coarse_prism_118.obj",
+      "source_sha256": "f854bfde66d25186593a052ec26b1a5c679b2ebe7b6d05ebc4db831715855de6",
+      "sha256": "f854bfde66d25186593a052ec26b1a5c679b2ebe7b6d05ebc4db831715855de6",
+      "license_paths": [
+        "docs/licenses/ebim-benchmark/LICENSE",
+        "docs/licenses/ebim-benchmark/NOTICE"
+      ],
+      "modifications": []
+    },
+    {
+      "path": "assets/task/tableware/spoon/meshes/scoop_prisms_coarse/spoon_scoop_coarse_prism_119.obj",
+      "source": "legacy",
+      "source_path": "assets/task/tableware/spoon/meshes/scoop_prisms_coarse/spoon_scoop_coarse_prism_119.obj",
+      "source_sha256": "deb708b78c824f3dafb92b99ba626455b03cb47a807c026517b84e808a21fd60",
+      "sha256": "deb708b78c824f3dafb92b99ba626455b03cb47a807c026517b84e808a21fd60",
+      "license_paths": [
+        "docs/licenses/ebim-benchmark/LICENSE",
+        "docs/licenses/ebim-benchmark/NOTICE"
+      ],
+      "modifications": []
+    },
+    {
+      "path": "assets/task/tableware/spoon/meshes/scoop_prisms_coarse/spoon_scoop_coarse_prism_120.obj",
+      "source": "legacy",
+      "source_path": "assets/task/tableware/spoon/meshes/scoop_prisms_coarse/spoon_scoop_coarse_prism_120.obj",
+      "source_sha256": "f999b4c8ce40f5289a8f26c9881dbd5f29030e6b6612de29ce1fef7e025b713b",
+      "sha256": "f999b4c8ce40f5289a8f26c9881dbd5f29030e6b6612de29ce1fef7e025b713b",
+      "license_paths": [
+        "docs/licenses/ebim-benchmark/LICENSE",
+        "docs/licenses/ebim-benchmark/NOTICE"
+      ],
+      "modifications": []
+    },
+    {
+      "path": "assets/task/tableware/spoon/meshes/scoop_prisms_coarse/spoon_scoop_coarse_prism_121.obj",
+      "source": "legacy",
+      "source_path": "assets/task/tableware/spoon/meshes/scoop_prisms_coarse/spoon_scoop_coarse_prism_121.obj",
+      "source_sha256": "de6d135a492d5e6fdb88e0b1af60dd3938d0fb5ee79e5f18652c0a50e8794829",
+      "sha256": "de6d135a492d5e6fdb88e0b1af60dd3938d0fb5ee79e5f18652c0a50e8794829",
+      "license_paths": [
+        "docs/licenses/ebim-benchmark/LICENSE",
+        "docs/licenses/ebim-benchmark/NOTICE"
+      ],
+      "modifications": []
+    },
+    {
+      "path": "assets/task/tableware/spoon/meshes/scoop_prisms_coarse/spoon_scoop_coarse_prism_122.obj",
+      "source": "legacy",
+      "source_path": "assets/task/tableware/spoon/meshes/scoop_prisms_coarse/spoon_scoop_coarse_prism_122.obj",
+      "source_sha256": "19f74f1c6c67658bdbfe8619089b93dcb3e0f8e34caabb7153e81e9af5d0f7e0",
+      "sha256": "19f74f1c6c67658bdbfe8619089b93dcb3e0f8e34caabb7153e81e9af5d0f7e0",
+      "license_paths": [
+        "docs/licenses/ebim-benchmark/LICENSE",
+        "docs/licenses/ebim-benchmark/NOTICE"
+      ],
+      "modifications": []
+    },
+    {
+      "path": "assets/task/tableware/spoon/meshes/scoop_prisms_coarse/spoon_scoop_coarse_prism_123.obj",
+      "source": "legacy",
+      "source_path": "assets/task/tableware/spoon/meshes/scoop_prisms_coarse/spoon_scoop_coarse_prism_123.obj",
+      "source_sha256": "112632c1bd25cf1ba0ab9b85f2bdbc235a1ace2cc224d6390df1f8151b755c7b",
+      "sha256": "112632c1bd25cf1ba0ab9b85f2bdbc235a1ace2cc224d6390df1f8151b755c7b",
+      "license_paths": [
+        "docs/licenses/ebim-benchmark/LICENSE",
+        "docs/licenses/ebim-benchmark/NOTICE"
+      ],
+      "modifications": []
+    },
+    {
+      "path": "assets/task/tableware/spoon/meshes/scoop_prisms_coarse/spoon_scoop_coarse_prism_124.obj",
+      "source": "legacy",
+      "source_path": "assets/task/tableware/spoon/meshes/scoop_prisms_coarse/spoon_scoop_coarse_prism_124.obj",
+      "source_sha256": "7ed819a198ded15a91093149d3918df144de02e7c6256353e92583a0a0a2cf81",
+      "sha256": "7ed819a198ded15a91093149d3918df144de02e7c6256353e92583a0a0a2cf81",
+      "license_paths": [
+        "docs/licenses/ebim-benchmark/LICENSE",
+        "docs/licenses/ebim-benchmark/NOTICE"
+      ],
+      "modifications": []
+    },
+    {
+      "path": "assets/task/tableware/spoon/meshes/scoop_prisms_coarse/spoon_scoop_coarse_prism_125.obj",
+      "source": "legacy",
+      "source_path": "assets/task/tableware/spoon/meshes/scoop_prisms_coarse/spoon_scoop_coarse_prism_125.obj",
+      "source_sha256": "be6ef9acd936f91ab33658da48e453a52d635519c7adef10ce2f5dafd6934fde",
+      "sha256": "be6ef9acd936f91ab33658da48e453a52d635519c7adef10ce2f5dafd6934fde",
+      "license_paths": [
+        "docs/licenses/ebim-benchmark/LICENSE",
+        "docs/licenses/ebim-benchmark/NOTICE"
+      ],
+      "modifications": []
+    },
+    {
+      "path": "assets/task/tableware/spoon/meshes/scoop_prisms_coarse/spoon_scoop_coarse_prism_126.obj",
+      "source": "legacy",
+      "source_path": "assets/task/tableware/spoon/meshes/scoop_prisms_coarse/spoon_scoop_coarse_prism_126.obj",
+      "source_sha256": "6e139e90e9543f018225bee3f0ce350806f180ad1f6a1c6eabc07b1bb7b553ab",
+      "sha256": "6e139e90e9543f018225bee3f0ce350806f180ad1f6a1c6eabc07b1bb7b553ab",
+      "license_paths": [
+        "docs/licenses/ebim-benchmark/LICENSE",
+        "docs/licenses/ebim-benchmark/NOTICE"
+      ],
+      "modifications": []
+    },
+    {
+      "path": "assets/task/tableware/spoon/meshes/scoop_prisms_coarse/spoon_scoop_coarse_prism_127.obj",
+      "source": "legacy",
+      "source_path": "assets/task/tableware/spoon/meshes/scoop_prisms_coarse/spoon_scoop_coarse_prism_127.obj",
+      "source_sha256": "0aa53fae9d929d8da276d5ac7acf17f01591282616b5cfef870c721a117f2ff0",
+      "sha256": "0aa53fae9d929d8da276d5ac7acf17f01591282616b5cfef870c721a117f2ff0",
+      "license_paths": [
+        "docs/licenses/ebim-benchmark/LICENSE",
+        "docs/licenses/ebim-benchmark/NOTICE"
+      ],
+      "modifications": []
+    },
+    {
+      "path": "assets/task/tableware/spoon/meshes/scoop_prisms_coarse/spoon_scoop_coarse_prism_128.obj",
+      "source": "legacy",
+      "source_path": "assets/task/tableware/spoon/meshes/scoop_prisms_coarse/spoon_scoop_coarse_prism_128.obj",
+      "source_sha256": "3d2a8de12a7dc7dbf3e60cb9d034887e782a2738f3dca7a8e086473693dd3dd4",
+      "sha256": "3d2a8de12a7dc7dbf3e60cb9d034887e782a2738f3dca7a8e086473693dd3dd4",
+      "license_paths": [
+        "docs/licenses/ebim-benchmark/LICENSE",
+        "docs/licenses/ebim-benchmark/NOTICE"
+      ],
+      "modifications": []
+    },
+    {
+      "path": "assets/task/tableware/spoon/meshes/scoop_prisms_coarse/spoon_scoop_coarse_prism_129.obj",
+      "source": "legacy",
+      "source_path": "assets/task/tableware/spoon/meshes/scoop_prisms_coarse/spoon_scoop_coarse_prism_129.obj",
+      "source_sha256": "1291904aab0373092d3b50b629c7b33a21f27d1ad5ae61184aef6044cc07b9c0",
+      "sha256": "1291904aab0373092d3b50b629c7b33a21f27d1ad5ae61184aef6044cc07b9c0",
+      "license_paths": [
+        "docs/licenses/ebim-benchmark/LICENSE",
+        "docs/licenses/ebim-benchmark/NOTICE"
+      ],
+      "modifications": []
+    },
+    {
+      "path": "assets/task/tableware/spoon/meshes/spoon_visual.obj",
+      "source": "legacy",
+      "source_path": "assets/task/tableware/spoon/meshes/spoon_visual.obj",
+      "source_sha256": "ba3739e41f8e58136d08728d8d291863d206ef76963c519bb5907a2b644df105",
+      "sha256": "ba3739e41f8e58136d08728d8d291863d206ef76963c519bb5907a2b644df105",
+      "license_paths": [
+        "docs/licenses/ebim-benchmark/LICENSE",
+        "docs/licenses/ebim-benchmark/NOTICE"
+      ],
+      "modifications": []
+    },
+    {
+      "path": "assets/task/tableware/spoon/meshes/stem/spoon_stem_00.obj",
+      "source": "legacy",
+      "source_path": "assets/task/tableware/spoon/meshes/stem/spoon_stem_00.obj",
+      "source_sha256": "4e4960957142945896c5b520c2ae120fdaeda4ff375240f772c56e7156240798",
+      "sha256": "4e4960957142945896c5b520c2ae120fdaeda4ff375240f772c56e7156240798",
+      "license_paths": [
+        "docs/licenses/ebim-benchmark/LICENSE",
+        "docs/licenses/ebim-benchmark/NOTICE"
+      ],
+      "modifications": []
+    },
+    {
+      "path": "assets/task/tableware/spoon/meshes/stem/spoon_stem_01.obj",
+      "source": "legacy",
+      "source_path": "assets/task/tableware/spoon/meshes/stem/spoon_stem_01.obj",
+      "source_sha256": "60c70fadf48d5ffbe813b5f5598948d9928b8e721deaa98b7e1eda5980aa5ae1",
+      "sha256": "60c70fadf48d5ffbe813b5f5598948d9928b8e721deaa98b7e1eda5980aa5ae1",
+      "license_paths": [
+        "docs/licenses/ebim-benchmark/LICENSE",
+        "docs/licenses/ebim-benchmark/NOTICE"
+      ],
+      "modifications": []
+    },
+    {
+      "path": "assets/task/tableware/spoon/meshes/stem/spoon_stem_02.obj",
+      "source": "legacy",
+      "source_path": "assets/task/tableware/spoon/meshes/stem/spoon_stem_02.obj",
+      "source_sha256": "b053f9f919ffdd8030790fbb1caf45058f5520d00917d745c7b1ef1ccb63fb27",
+      "sha256": "b053f9f919ffdd8030790fbb1caf45058f5520d00917d745c7b1ef1ccb63fb27",
+      "license_paths": [
+        "docs/licenses/ebim-benchmark/LICENSE",
+        "docs/licenses/ebim-benchmark/NOTICE"
+      ],
+      "modifications": []
+    },
+    {
+      "path": "assets/task/tableware/spoon/meshes/stem/spoon_stem_03.obj",
+      "source": "legacy",
+      "source_path": "assets/task/tableware/spoon/meshes/stem/spoon_stem_03.obj",
+      "source_sha256": "7016bcfe5f29d72c3f17f321b84fdf634a3cc3e9b136747b357a90d241d90dba",
+      "sha256": "7016bcfe5f29d72c3f17f321b84fdf634a3cc3e9b136747b357a90d241d90dba",
+      "license_paths": [
+        "docs/licenses/ebim-benchmark/LICENSE",
+        "docs/licenses/ebim-benchmark/NOTICE"
+      ],
+      "modifications": []
+    },
+    {
+      "path": "assets/task/tableware/spoon/meshes/stem/spoon_stem_04.obj",
+      "source": "legacy",
+      "source_path": "assets/task/tableware/spoon/meshes/stem/spoon_stem_04.obj",
+      "source_sha256": "31febbad063c5c11ebaaad8910eaca39e65731336885691f8e47b76b96d9993c",
+      "sha256": "31febbad063c5c11ebaaad8910eaca39e65731336885691f8e47b76b96d9993c",
+      "license_paths": [
+        "docs/licenses/ebim-benchmark/LICENSE",
+        "docs/licenses/ebim-benchmark/NOTICE"
+      ],
+      "modifications": []
+    },
+    {
+      "path": "assets/task/tableware/spoon/meshes/stem/spoon_stem_05.obj",
+      "source": "legacy",
+      "source_path": "assets/task/tableware/spoon/meshes/stem/spoon_stem_05.obj",
+      "source_sha256": "c89e43d36fc97e358f4ecf111c2ede3729367a279e6da2c5f5cf80f5d7bc403c",
+      "sha256": "c89e43d36fc97e358f4ecf111c2ede3729367a279e6da2c5f5cf80f5d7bc403c",
+      "license_paths": [
+        "docs/licenses/ebim-benchmark/LICENSE",
+        "docs/licenses/ebim-benchmark/NOTICE"
+      ],
+      "modifications": []
+    },
+    {
+      "path": "assets/task/tableware/spoon/meshes/stem/spoon_stem_06.obj",
+      "source": "legacy",
+      "source_path": "assets/task/tableware/spoon/meshes/stem/spoon_stem_06.obj",
+      "source_sha256": "db026498fa25446ac1e7d82ed6f3a4a6970d9b770ac9ae0f7b025bb1272723cc",
+      "sha256": "db026498fa25446ac1e7d82ed6f3a4a6970d9b770ac9ae0f7b025bb1272723cc",
+      "license_paths": [
+        "docs/licenses/ebim-benchmark/LICENSE",
+        "docs/licenses/ebim-benchmark/NOTICE"
+      ],
+      "modifications": []
+    },
+    {
+      "path": "assets/task/tableware/spoon/meshes/stem/spoon_stem_07.obj",
+      "source": "legacy",
+      "source_path": "assets/task/tableware/spoon/meshes/stem/spoon_stem_07.obj",
+      "source_sha256": "2d05437e302a1639d8525f94176b48d5df2b7822237c772aa1dfbab4e863964e",
+      "sha256": "2d05437e302a1639d8525f94176b48d5df2b7822237c772aa1dfbab4e863964e",
+      "license_paths": [
+        "docs/licenses/ebim-benchmark/LICENSE",
+        "docs/licenses/ebim-benchmark/NOTICE"
+      ],
+      "modifications": []
+    },
+    {
+      "path": "assets/task/tableware/spoon/meshes/stem/spoon_stem_08.obj",
+      "source": "legacy",
+      "source_path": "assets/task/tableware/spoon/meshes/stem/spoon_stem_08.obj",
+      "source_sha256": "240beb65423688be72087742c5f1ecfc95c7b4a7210a508fa670caddeb500690",
+      "sha256": "240beb65423688be72087742c5f1ecfc95c7b4a7210a508fa670caddeb500690",
+      "license_paths": [
+        "docs/licenses/ebim-benchmark/LICENSE",
+        "docs/licenses/ebim-benchmark/NOTICE"
+      ],
+      "modifications": []
+    },
+    {
+      "path": "assets/task/tableware/spoon/meshes/stem/spoon_stem_09.obj",
+      "source": "legacy",
+      "source_path": "assets/task/tableware/spoon/meshes/stem/spoon_stem_09.obj",
+      "source_sha256": "44450ed2f66b96c6022281eed39f0fe71fb8a5bf86c0098d22d6ee3df8faf1f2",
+      "sha256": "44450ed2f66b96c6022281eed39f0fe71fb8a5bf86c0098d22d6ee3df8faf1f2",
+      "license_paths": [
+        "docs/licenses/ebim-benchmark/LICENSE",
+        "docs/licenses/ebim-benchmark/NOTICE"
+      ],
+      "modifications": []
+    },
+    {
+      "path": "assets/task/tableware/spoon/meshes/stem/spoon_stem_10.obj",
+      "source": "legacy",
+      "source_path": "assets/task/tableware/spoon/meshes/stem/spoon_stem_10.obj",
+      "source_sha256": "7f065b5f7dda375a3d3e31d3a1b09dec499b53790d21619d16f644bcaa5bf239",
+      "sha256": "7f065b5f7dda375a3d3e31d3a1b09dec499b53790d21619d16f644bcaa5bf239",
+      "license_paths": [
+        "docs/licenses/ebim-benchmark/LICENSE",
+        "docs/licenses/ebim-benchmark/NOTICE"
+      ],
+      "modifications": []
+    },
+    {
+      "path": "assets/task/tableware/spoon/meshes/stem/spoon_stem_11.obj",
+      "source": "legacy",
+      "source_path": "assets/task/tableware/spoon/meshes/stem/spoon_stem_11.obj",
+      "source_sha256": "55f95a82f2eede006885357cec8e6ac63e63e2e8433c9b79d9f31fc3f81b892e",
+      "sha256": "55f95a82f2eede006885357cec8e6ac63e63e2e8433c9b79d9f31fc3f81b892e",
+      "license_paths": [
+        "docs/licenses/ebim-benchmark/LICENSE",
+        "docs/licenses/ebim-benchmark/NOTICE"
+      ],
+      "modifications": []
+    },
+    {
+      "path": "assets/task/tableware/spoon/meshes/stem/spoon_stem_12.obj",
+      "source": "legacy",
+      "source_path": "assets/task/tableware/spoon/meshes/stem/spoon_stem_12.obj",
+      "source_sha256": "c8a64cf1ca69ee2218e2a9988fb00af92d6babd756e5b20718e4e3232194b689",
+      "sha256": "c8a64cf1ca69ee2218e2a9988fb00af92d6babd756e5b20718e4e3232194b689",
+      "license_paths": [
+        "docs/licenses/ebim-benchmark/LICENSE",
+        "docs/licenses/ebim-benchmark/NOTICE"
+      ],
+      "modifications": []
+    },
+    {
+      "path": "assets/task/tableware/spoon/meshes/stem/spoon_stem_13.obj",
+      "source": "legacy",
+      "source_path": "assets/task/tableware/spoon/meshes/stem/spoon_stem_13.obj",
+      "source_sha256": "8bac6959d0e8d0b902c00d6aeea6a78a45767aae731205406940c1187f9dfb37",
+      "sha256": "8bac6959d0e8d0b902c00d6aeea6a78a45767aae731205406940c1187f9dfb37",
+      "license_paths": [
+        "docs/licenses/ebim-benchmark/LICENSE",
+        "docs/licenses/ebim-benchmark/NOTICE"
+      ],
+      "modifications": []
+    },
+    {
+      "path": "assets/task/tableware/spoon/spoon.xml",
+      "source": "legacy",
+      "source_path": "assets/task/tableware/spoon/spoon.xml",
+      "source_sha256": "60bff07be7a97b57083509c284b015f1544d5923242a20bb9687fbdd7a78ebf5",
+      "sha256": "60bff07be7a97b57083509c284b015f1544d5923242a20bb9687fbdd7a78ebf5",
+      "license_paths": [
+        "docs/licenses/ebim-benchmark/LICENSE",
+        "docs/licenses/ebim-benchmark/NOTICE"
+      ],
+      "modifications": []
+    },
+    {
+      "path": "assets/third_party/franka_emika_panda/LICENSE",
+      "source": "legacy",
+      "source_path": "assets/third_party/franka_emika_panda/LICENSE",
+      "source_sha256": "a6cba85bc92e0cff7a450b1d873c0eaa2e9fc96bf472df0247a26bec77bf3ff9",
+      "sha256": "a6cba85bc92e0cff7a450b1d873c0eaa2e9fc96bf472df0247a26bec77bf3ff9",
+      "license_paths": [
+        "assets/third_party/franka_emika_panda/LICENSE"
+      ],
+      "modifications": []
+    },
+    {
+      "path": "assets/third_party/franka_emika_panda/README.md",
+      "source": "legacy",
+      "source_path": "assets/third_party/franka_emika_panda/README.md",
+      "source_sha256": "e12684556d0154bdf2a9e77e7009ed680cd06ca89904f9e6303050f9fe59300c",
+      "sha256": "e12684556d0154bdf2a9e77e7009ed680cd06ca89904f9e6303050f9fe59300c",
+      "license_paths": [
+        "assets/third_party/franka_emika_panda/LICENSE"
+      ],
+      "modifications": []
+    },
+    {
+      "path": "assets/third_party/franka_emika_panda/assets/link0.stl",
+      "source": "legacy",
+      "source_path": "assets/third_party/franka_emika_panda/assets/link0.stl",
+      "source_sha256": "dfc6d94330de8ddb005b311bfdba9f3b8e1aa7c256b71592ee7ff32cb9a9a5aa",
+      "sha256": "dfc6d94330de8ddb005b311bfdba9f3b8e1aa7c256b71592ee7ff32cb9a9a5aa",
+      "license_paths": [
+        "assets/third_party/franka_emika_panda/LICENSE"
+      ],
+      "modifications": []
+    },
+    {
+      "path": "assets/third_party/franka_emika_panda/assets/link0_0.obj",
+      "source": "legacy",
+      "source_path": "assets/third_party/franka_emika_panda/assets/link0_0.obj",
+      "source_sha256": "6b9f41a4c203540daaeb7a33cc3d0d6c6a32dc8bba187074eeaf97b3e36b3f9c",
+      "sha256": "6b9f41a4c203540daaeb7a33cc3d0d6c6a32dc8bba187074eeaf97b3e36b3f9c",
+      "license_paths": [
+        "assets/third_party/franka_emika_panda/LICENSE"
+      ],
+      "modifications": []
+    },
+    {
+      "path": "assets/third_party/franka_emika_panda/assets/link0_1.obj",
+      "source": "legacy",
+      "source_path": "assets/third_party/franka_emika_panda/assets/link0_1.obj",
+      "source_sha256": "57673d2ee2a9db2e10c8986ae57c56a7c39c012b60fd26d7d8549553b664a5ed",
+      "sha256": "57673d2ee2a9db2e10c8986ae57c56a7c39c012b60fd26d7d8549553b664a5ed",
+      "license_paths": [
+        "assets/third_party/franka_emika_panda/LICENSE"
+      ],
+      "modifications": []
+    },
+    {
+      "path": "assets/third_party/franka_emika_panda/assets/link0_10.obj",
+      "source": "legacy",
+      "source_path": "assets/third_party/franka_emika_panda/assets/link0_10.obj",
+      "source_sha256": "c9198b9d8534d628d097b0f2b239bb30343353182df098ce0d9db6bc13326848",
+      "sha256": "c9198b9d8534d628d097b0f2b239bb30343353182df098ce0d9db6bc13326848",
+      "license_paths": [
+        "assets/third_party/franka_emika_panda/LICENSE"
+      ],
+      "modifications": []
+    },
+    {
+      "path": "assets/third_party/franka_emika_panda/assets/link0_11.obj",
+      "source": "legacy",
+      "source_path": "assets/third_party/franka_emika_panda/assets/link0_11.obj",
+      "source_sha256": "f0adec78d6677b7799d25121981270e8bfe119b5c18d08a91ee37a54ad75f65c",
+      "sha256": "f0adec78d6677b7799d25121981270e8bfe119b5c18d08a91ee37a54ad75f65c",
+      "license_paths": [
+        "assets/third_party/franka_emika_panda/LICENSE"
+      ],
+      "modifications": []
+    },
+    {
+      "path": "assets/third_party/franka_emika_panda/assets/link0_2.obj",
+      "source": "legacy",
+      "source_path": "assets/third_party/franka_emika_panda/assets/link0_2.obj",
+      "source_sha256": "1ca435a2a87a9608a146a47955724d43dd7ce10fc3dd3018800aa98f8ba86e05",
+      "sha256": "1ca435a2a87a9608a146a47955724d43dd7ce10fc3dd3018800aa98f8ba86e05",
+      "license_paths": [
+        "assets/third_party/franka_emika_panda/LICENSE"
+      ],
+      "modifications": []
+    },
+    {
+      "path": "assets/third_party/franka_emika_panda/assets/link0_3.obj",
+      "source": "legacy",
+      "source_path": "assets/third_party/franka_emika_panda/assets/link0_3.obj",
+      "source_sha256": "3e9c6334d2b3b47944af3458ee5f20519abc20fe7ee23063bb53405ccab28046",
+      "sha256": "3e9c6334d2b3b47944af3458ee5f20519abc20fe7ee23063bb53405ccab28046",
+      "license_paths": [
+        "assets/third_party/franka_emika_panda/LICENSE"
+      ],
+      "modifications": []
+    },
+    {
+      "path": "assets/third_party/franka_emika_panda/assets/link0_4.obj",
+      "source": "legacy",
+      "source_path": "assets/third_party/franka_emika_panda/assets/link0_4.obj",
+      "source_sha256": "215d25789704936120f119c0bc1cc7f68516dd3f8f1df61457b71acac3873f26",
+      "sha256": "215d25789704936120f119c0bc1cc7f68516dd3f8f1df61457b71acac3873f26",
+      "license_paths": [
+        "assets/third_party/franka_emika_panda/LICENSE"
+      ],
+      "modifications": []
+    },
+    {
+      "path": "assets/third_party/franka_emika_panda/assets/link0_5.obj",
+      "source": "legacy",
+      "source_path": "assets/third_party/franka_emika_panda/assets/link0_5.obj",
+      "source_sha256": "9361b104e93743045107aa5b15fb1a0835ba9c1f355aae71f56403cf6a9c33f6",
+      "sha256": "9361b104e93743045107aa5b15fb1a0835ba9c1f355aae71f56403cf6a9c33f6",
+      "license_paths": [
+        "assets/third_party/franka_emika_panda/LICENSE"
+      ],
+      "modifications": []
+    },
+    {
+      "path": "assets/third_party/franka_emika_panda/assets/link0_7.obj",
+      "source": "legacy",
+      "source_path": "assets/third_party/franka_emika_panda/assets/link0_7.obj",
+      "source_sha256": "2dc0b8ebbbc80e4c065d71e195adbc384f673438641fac82b07b801b4d2837cb",
+      "sha256": "2dc0b8ebbbc80e4c065d71e195adbc384f673438641fac82b07b801b4d2837cb",
+      "license_paths": [
+        "assets/third_party/franka_emika_panda/LICENSE"
+      ],
+      "modifications": []
+    },
+    {
+      "path": "assets/third_party/franka_emika_panda/assets/link0_8.obj",
+      "source": "legacy",
+      "source_path": "assets/third_party/franka_emika_panda/assets/link0_8.obj",
+      "source_sha256": "3b8c436999db5586b8eb47bed2b0aa7de6993868b2681b4c04246eeac42fdb7a",
+      "sha256": "3b8c436999db5586b8eb47bed2b0aa7de6993868b2681b4c04246eeac42fdb7a",
+      "license_paths": [
+        "assets/third_party/franka_emika_panda/LICENSE"
+      ],
+      "modifications": []
+    },
+    {
+      "path": "assets/third_party/franka_emika_panda/assets/link0_9.obj",
+      "source": "legacy",
+      "source_path": "assets/third_party/franka_emika_panda/assets/link0_9.obj",
+      "source_sha256": "45178f97d2b5da6bce11f610212c4ef7d08c73db33a4fc38e1b7f66b93d023f5",
+      "sha256": "45178f97d2b5da6bce11f610212c4ef7d08c73db33a4fc38e1b7f66b93d023f5",
+      "license_paths": [
+        "assets/third_party/franka_emika_panda/LICENSE"
+      ],
+      "modifications": []
+    },
+    {
+      "path": "assets/third_party/franka_emika_panda/assets/link1.obj",
+      "source": "legacy",
+      "source_path": "assets/third_party/franka_emika_panda/assets/link1.obj",
+      "source_sha256": "51091e776b16babdbe2f3849b5c041f921d1f11dd94ac19a0f1c81abf496fbae",
+      "sha256": "51091e776b16babdbe2f3849b5c041f921d1f11dd94ac19a0f1c81abf496fbae",
+      "license_paths": [
+        "assets/third_party/franka_emika_panda/LICENSE"
+      ],
+      "modifications": []
+    },
+    {
+      "path": "assets/third_party/franka_emika_panda/assets/link1.stl",
+      "source": "legacy",
+      "source_path": "assets/third_party/franka_emika_panda/assets/link1.stl",
+      "source_sha256": "e41a39a94108fcf56aacff603fc91ec80541f4c1af17b51a0de5617f5566e6d2",
+      "sha256": "e41a39a94108fcf56aacff603fc91ec80541f4c1af17b51a0de5617f5566e6d2",
+      "license_paths": [
+        "assets/third_party/franka_emika_panda/LICENSE"
+      ],
+      "modifications": []
+    },
+    {
+      "path": "assets/third_party/franka_emika_panda/assets/link2.obj",
+      "source": "legacy",
+      "source_path": "assets/third_party/franka_emika_panda/assets/link2.obj",
+      "source_sha256": "5c9f8e715de52c3eb71b475de35993b3b96081e02abea9f28c414768877fc59b",
+      "sha256": "5c9f8e715de52c3eb71b475de35993b3b96081e02abea9f28c414768877fc59b",
+      "license_paths": [
+        "assets/third_party/franka_emika_panda/LICENSE"
+      ],
+      "modifications": []
+    },
+    {
+      "path": "assets/third_party/franka_emika_panda/assets/link2.stl",
+      "source": "legacy",
+      "source_path": "assets/third_party/franka_emika_panda/assets/link2.stl",
+      "source_sha256": "370f7605a0fae3529db169ded50f52f171024aa792d4d773bc84197301f6a039",
+      "sha256": "370f7605a0fae3529db169ded50f52f171024aa792d4d773bc84197301f6a039",
+      "license_paths": [
+        "assets/third_party/franka_emika_panda/LICENSE"
+      ],
+      "modifications": []
+    },
+    {
+      "path": "assets/third_party/franka_emika_panda/assets/link3.stl",
+      "source": "legacy",
+      "source_path": "assets/third_party/franka_emika_panda/assets/link3.stl",
+      "source_sha256": "0a8d638b9349c6c0eefc4e888636ac4838c4b27170f18a51699321118af709c1",
+      "sha256": "0a8d638b9349c6c0eefc4e888636ac4838c4b27170f18a51699321118af709c1",
+      "license_paths": [
+        "assets/third_party/franka_emika_panda/LICENSE"
+      ],
+      "modifications": []
+    },
+    {
+      "path": "assets/third_party/franka_emika_panda/assets/link3_0.obj",
+      "source": "legacy",
+      "source_path": "assets/third_party/franka_emika_panda/assets/link3_0.obj",
+      "source_sha256": "ce2da87f51708e11b189249d41401065dabe89a06e251185a06cef4d5ff27178",
+      "sha256": "ce2da87f51708e11b189249d41401065dabe89a06e251185a06cef4d5ff27178",
+      "license_paths": [
+        "assets/third_party/franka_emika_panda/LICENSE"
+      ],
+      "modifications": []
+    },
+    {
+      "path": "assets/third_party/franka_emika_panda/assets/link3_1.obj",
+      "source": "legacy",
+      "source_path": "assets/third_party/franka_emika_panda/assets/link3_1.obj",
+      "source_sha256": "2880b7753a7173f38fa87ee21da4dfc7fa7be46fbe07bac5aef9e128513cb118",
+      "sha256": "2880b7753a7173f38fa87ee21da4dfc7fa7be46fbe07bac5aef9e128513cb118",
+      "license_paths": [
+        "assets/third_party/franka_emika_panda/LICENSE"
+      ],
+      "modifications": []
+    },
+    {
+      "path": "assets/third_party/franka_emika_panda/assets/link3_2.obj",
+      "source": "legacy",
+      "source_path": "assets/third_party/franka_emika_panda/assets/link3_2.obj",
+      "source_sha256": "670cff81ae84693769ca4ae658c154cf909d81167e7c8d22b70ea977f2504efa",
+      "sha256": "670cff81ae84693769ca4ae658c154cf909d81167e7c8d22b70ea977f2504efa",
+      "license_paths": [
+        "assets/third_party/franka_emika_panda/LICENSE"
+      ],
+      "modifications": []
+    },
+    {
+      "path": "assets/third_party/franka_emika_panda/assets/link3_3.obj",
+      "source": "legacy",
+      "source_path": "assets/third_party/franka_emika_panda/assets/link3_3.obj",
+      "source_sha256": "30ede0c812efd0e0b767d134a4eae0b84e0fa407bb6325a5a555e0569b3a3ffd",
+      "sha256": "30ede0c812efd0e0b767d134a4eae0b84e0fa407bb6325a5a555e0569b3a3ffd",
+      "license_paths": [
+        "assets/third_party/franka_emika_panda/LICENSE"
+      ],
+      "modifications": []
+    },
+    {
+      "path": "assets/third_party/franka_emika_panda/assets/link4.stl",
+      "source": "legacy",
+      "source_path": "assets/third_party/franka_emika_panda/assets/link4.stl",
+      "source_sha256": "0180ebb5772ec9840cb049750cffb29a9ddc90311752a16ea34757782ef9e48d",
+      "sha256": "0180ebb5772ec9840cb049750cffb29a9ddc90311752a16ea34757782ef9e48d",
+      "license_paths": [
+        "assets/third_party/franka_emika_panda/LICENSE"
+      ],
+      "modifications": []
+    },
+    {
+      "path": "assets/third_party/franka_emika_panda/assets/link4_0.obj",
+      "source": "legacy",
+      "source_path": "assets/third_party/franka_emika_panda/assets/link4_0.obj",
+      "source_sha256": "443bf6d178177cf347951ecf107ccd10ca444e605e375b67304579e5f948806f",
+      "sha256": "443bf6d178177cf347951ecf107ccd10ca444e605e375b67304579e5f948806f",
+      "license_paths": [
+        "assets/third_party/franka_emika_panda/LICENSE"
+      ],
+      "modifications": []
+    },
+    {
+      "path": "assets/third_party/franka_emika_panda/assets/link4_1.obj",
+      "source": "legacy",
+      "source_path": "assets/third_party/franka_emika_panda/assets/link4_1.obj",
+      "source_sha256": "ca935ec7cc8b3f0e86aa079c76b0b3bf593b1e9830bab0fa7131ac51577c74f0",
+      "sha256": "ca935ec7cc8b3f0e86aa079c76b0b3bf593b1e9830bab0fa7131ac51577c74f0",
+      "license_paths": [
+        "assets/third_party/franka_emika_panda/LICENSE"
+      ],
+      "modifications": []
+    },
+    {
+      "path": "assets/third_party/franka_emika_panda/assets/link4_2.obj",
+      "source": "legacy",
+      "source_path": "assets/third_party/franka_emika_panda/assets/link4_2.obj",
+      "source_sha256": "c89caf26d379c35bb9e191ee2d91d09ab29ecc792b48d8bc10b39e5b38222175",
+      "sha256": "c89caf26d379c35bb9e191ee2d91d09ab29ecc792b48d8bc10b39e5b38222175",
+      "license_paths": [
+        "assets/third_party/franka_emika_panda/LICENSE"
+      ],
+      "modifications": []
+    },
+    {
+      "path": "assets/third_party/franka_emika_panda/assets/link4_3.obj",
+      "source": "legacy",
+      "source_path": "assets/third_party/franka_emika_panda/assets/link4_3.obj",
+      "source_sha256": "1495d17f45bdb230cf58b0beef9da4e8c9cfe76a3d2d38da89017efe5e093136",
+      "sha256": "1495d17f45bdb230cf58b0beef9da4e8c9cfe76a3d2d38da89017efe5e093136",
+      "license_paths": [
+        "assets/third_party/franka_emika_panda/LICENSE"
+      ],
+      "modifications": []
+    },
+    {
+      "path": "assets/third_party/franka_emika_panda/assets/link5_0.obj",
+      "source": "legacy",
+      "source_path": "assets/third_party/franka_emika_panda/assets/link5_0.obj",
+      "source_sha256": "a3238b8f2af0f2eb66d9fe63dc5d41ac52d5d38507241b5ed10e3cb019ab3e71",
+      "sha256": "a3238b8f2af0f2eb66d9fe63dc5d41ac52d5d38507241b5ed10e3cb019ab3e71",
+      "license_paths": [
+        "assets/third_party/franka_emika_panda/LICENSE"
+      ],
+      "modifications": []
+    },
+    {
+      "path": "assets/third_party/franka_emika_panda/assets/link5_1.obj",
+      "source": "legacy",
+      "source_path": "assets/third_party/franka_emika_panda/assets/link5_1.obj",
+      "source_sha256": "9d994bbf83ec241e301b5197a6846da13f2a4a0582edb2c0f76962c5549649d6",
+      "sha256": "9d994bbf83ec241e301b5197a6846da13f2a4a0582edb2c0f76962c5549649d6",
+      "license_paths": [
+        "assets/third_party/franka_emika_panda/LICENSE"
+      ],
+      "modifications": []
+    },
+    {
+      "path": "assets/third_party/franka_emika_panda/assets/link5_2.obj",
+      "source": "legacy",
+      "source_path": "assets/third_party/franka_emika_panda/assets/link5_2.obj",
+      "source_sha256": "83b4ffe9f772cd7fe182e98640650eebc899aaf01842656574b0416c90dd40a4",
+      "sha256": "83b4ffe9f772cd7fe182e98640650eebc899aaf01842656574b0416c90dd40a4",
+      "license_paths": [
+        "assets/third_party/franka_emika_panda/LICENSE"
+      ],
+      "modifications": []
+    },
+    {
+      "path": "assets/third_party/franka_emika_panda/assets/link5_collision_0.obj",
+      "source": "legacy",
+      "source_path": "assets/third_party/franka_emika_panda/assets/link5_collision_0.obj",
+      "source_sha256": "3e5aa75fb13f193555c3dfb999df91d81df25006a5c3af5338297d78137c129b",
+      "sha256": "3e5aa75fb13f193555c3dfb999df91d81df25006a5c3af5338297d78137c129b",
+      "license_paths": [
+        "assets/third_party/franka_emika_panda/LICENSE"
+      ],
+      "modifications": []
+    },
+    {
+      "path": "assets/third_party/franka_emika_panda/assets/link5_collision_1.obj",
+      "source": "legacy",
+      "source_path": "assets/third_party/franka_emika_panda/assets/link5_collision_1.obj",
+      "source_sha256": "87cd8f621071df010f774cbde789282b8463840dfe704f8bdfa2e29be0142e15",
+      "sha256": "87cd8f621071df010f774cbde789282b8463840dfe704f8bdfa2e29be0142e15",
+      "license_paths": [
+        "assets/third_party/franka_emika_panda/LICENSE"
+      ],
+      "modifications": []
+    },
+    {
+      "path": "assets/third_party/franka_emika_panda/assets/link5_collision_2.obj",
+      "source": "legacy",
+      "source_path": "assets/third_party/franka_emika_panda/assets/link5_collision_2.obj",
+      "source_sha256": "823ab6c8f7b1d79e0844fa071d82a03499ff68e34fddb1ba3451032c22736040",
+      "sha256": "823ab6c8f7b1d79e0844fa071d82a03499ff68e34fddb1ba3451032c22736040",
+      "license_paths": [
+        "assets/third_party/franka_emika_panda/LICENSE"
+      ],
+      "modifications": []
+    },
+    {
+      "path": "assets/third_party/franka_emika_panda/assets/link6.stl",
+      "source": "legacy",
+      "source_path": "assets/third_party/franka_emika_panda/assets/link6.stl",
+      "source_sha256": "20b768e99a0e0440b5754dcca108016434e57937cc356acd9c352ccd3cb27f77",
+      "sha256": "20b768e99a0e0440b5754dcca108016434e57937cc356acd9c352ccd3cb27f77",
+      "license_paths": [
+        "assets/third_party/franka_emika_panda/LICENSE"
+      ],
+      "modifications": []
+    },
+    {
+      "path": "assets/third_party/franka_emika_panda/assets/link6_0.obj",
+      "source": "legacy",
+      "source_path": "assets/third_party/franka_emika_panda/assets/link6_0.obj",
+      "source_sha256": "0504c70ebf1b284ee8faae7dcb896b8830bc672a6552015dd5dbd121fa031fb9",
+      "sha256": "0504c70ebf1b284ee8faae7dcb896b8830bc672a6552015dd5dbd121fa031fb9",
+      "license_paths": [
+        "assets/third_party/franka_emika_panda/LICENSE"
+      ],
+      "modifications": []
+    },
+    {
+      "path": "assets/third_party/franka_emika_panda/assets/link6_1.obj",
+      "source": "legacy",
+      "source_path": "assets/third_party/franka_emika_panda/assets/link6_1.obj",
+      "source_sha256": "45f7ca77695198b6d86ec2417ad4e42e6275044f0f96266699ee8e1057757ac1",
+      "sha256": "45f7ca77695198b6d86ec2417ad4e42e6275044f0f96266699ee8e1057757ac1",
+      "license_paths": [
+        "assets/third_party/franka_emika_panda/LICENSE"
+      ],
+      "modifications": []
+    },
+    {
+      "path": "assets/third_party/franka_emika_panda/assets/link6_10.obj",
+      "source": "legacy",
+      "source_path": "assets/third_party/franka_emika_panda/assets/link6_10.obj",
+      "source_sha256": "365f26c21d10332cab8d8704645cb46930c30b3085956f2d097498c793f24db4",
+      "sha256": "365f26c21d10332cab8d8704645cb46930c30b3085956f2d097498c793f24db4",
+      "license_paths": [
+        "assets/third_party/franka_emika_panda/LICENSE"
+      ],
+      "modifications": []
+    },
+    {
+      "path": "assets/third_party/franka_emika_panda/assets/link6_11.obj",
+      "source": "legacy",
+      "source_path": "assets/third_party/franka_emika_panda/assets/link6_11.obj",
+      "source_sha256": "8ae61e08b3ad064f25bbf03b22e59cc15d65883b5a7ce92711aff29df2493901",
+      "sha256": "8ae61e08b3ad064f25bbf03b22e59cc15d65883b5a7ce92711aff29df2493901",
+      "license_paths": [
+        "assets/third_party/franka_emika_panda/LICENSE"
+      ],
+      "modifications": []
+    },
+    {
+      "path": "assets/third_party/franka_emika_panda/assets/link6_12.obj",
+      "source": "legacy",
+      "source_path": "assets/third_party/franka_emika_panda/assets/link6_12.obj",
+      "source_sha256": "f28d1bfd62b0244ffd19fb35fe9edefdf583d3c9167db944e87185d919e1d021",
+      "sha256": "f28d1bfd62b0244ffd19fb35fe9edefdf583d3c9167db944e87185d919e1d021",
+      "license_paths": [
+        "assets/third_party/franka_emika_panda/LICENSE"
+      ],
+      "modifications": []
+    },
+    {
+      "path": "assets/third_party/franka_emika_panda/assets/link6_13.obj",
+      "source": "legacy",
+      "source_path": "assets/third_party/franka_emika_panda/assets/link6_13.obj",
+      "source_sha256": "0a55fa92dccb261d07200e6565fca4c850fd17f0c1ecf38821c0b97d51796c7d",
+      "sha256": "0a55fa92dccb261d07200e6565fca4c850fd17f0c1ecf38821c0b97d51796c7d",
+      "license_paths": [
+        "assets/third_party/franka_emika_panda/LICENSE"
+      ],
+      "modifications": []
+    },
+    {
+      "path": "assets/third_party/franka_emika_panda/assets/link6_14.obj",
+      "source": "legacy",
+      "source_path": "assets/third_party/franka_emika_panda/assets/link6_14.obj",
+      "source_sha256": "750ae3ee4781e62e3a045c662195247b03f6642b05aa93104f08258e5f6eba26",
+      "sha256": "750ae3ee4781e62e3a045c662195247b03f6642b05aa93104f08258e5f6eba26",
+      "license_paths": [
+        "assets/third_party/franka_emika_panda/LICENSE"
+      ],
+      "modifications": []
+    },
+    {
+      "path": "assets/third_party/franka_emika_panda/assets/link6_15.obj",
+      "source": "legacy",
+      "source_path": "assets/third_party/franka_emika_panda/assets/link6_15.obj",
+      "source_sha256": "5999c1c2497a004a7c4bbe034cdf13744f839d85ae7a11b1bc386c48a3e642e6",
+      "sha256": "5999c1c2497a004a7c4bbe034cdf13744f839d85ae7a11b1bc386c48a3e642e6",
+      "license_paths": [
+        "assets/third_party/franka_emika_panda/LICENSE"
+      ],
+      "modifications": []
+    },
+    {
+      "path": "assets/third_party/franka_emika_panda/assets/link6_16.obj",
+      "source": "legacy",
+      "source_path": "assets/third_party/franka_emika_panda/assets/link6_16.obj",
+      "source_sha256": "551d7a8b37c53e7a152d008b4e36992e5b5abe74a4be18b57ee6319c27def09f",
+      "sha256": "551d7a8b37c53e7a152d008b4e36992e5b5abe74a4be18b57ee6319c27def09f",
+      "license_paths": [
+        "assets/third_party/franka_emika_panda/LICENSE"
+      ],
+      "modifications": []
+    },
+    {
+      "path": "assets/third_party/franka_emika_panda/assets/link6_2.obj",
+      "source": "legacy",
+      "source_path": "assets/third_party/franka_emika_panda/assets/link6_2.obj",
+      "source_sha256": "e54eee4d8232947ee8af65afd5a067e09dac2da6e7e585cb1dccb65496457da0",
+      "sha256": "e54eee4d8232947ee8af65afd5a067e09dac2da6e7e585cb1dccb65496457da0",
+      "license_paths": [
+        "assets/third_party/franka_emika_panda/LICENSE"
+      ],
+      "modifications": []
+    },
+    {
+      "path": "assets/third_party/franka_emika_panda/assets/link6_3.obj",
+      "source": "legacy",
+      "source_path": "assets/third_party/franka_emika_panda/assets/link6_3.obj",
+      "source_sha256": "d4f6a25ef32fa1fa4734146981994ee760232cb077c80fea6487d78a077c7f27",
+      "sha256": "d4f6a25ef32fa1fa4734146981994ee760232cb077c80fea6487d78a077c7f27",
+      "license_paths": [
+        "assets/third_party/franka_emika_panda/LICENSE"
+      ],
+      "modifications": []
+    },
+    {
+      "path": "assets/third_party/franka_emika_panda/assets/link6_4.obj",
+      "source": "legacy",
+      "source_path": "assets/third_party/franka_emika_panda/assets/link6_4.obj",
+      "source_sha256": "be353480fe71d46f7a96f0a3cbb7e112caaf8d88368826f321a36a253c8749b2",
+      "sha256": "be353480fe71d46f7a96f0a3cbb7e112caaf8d88368826f321a36a253c8749b2",
+      "license_paths": [
+        "assets/third_party/franka_emika_panda/LICENSE"
+      ],
+      "modifications": []
+    },
+    {
+      "path": "assets/third_party/franka_emika_panda/assets/link6_5.obj",
+      "source": "legacy",
+      "source_path": "assets/third_party/franka_emika_panda/assets/link6_5.obj",
+      "source_sha256": "7c87664623c3e1a6cb330db273227a69626dc5e53b4caff1d4ee7911eb3340c6",
+      "sha256": "7c87664623c3e1a6cb330db273227a69626dc5e53b4caff1d4ee7911eb3340c6",
+      "license_paths": [
+        "assets/third_party/franka_emika_panda/LICENSE"
+      ],
+      "modifications": []
+    },
+    {
+      "path": "assets/third_party/franka_emika_panda/assets/link6_6.obj",
+      "source": "legacy",
+      "source_path": "assets/third_party/franka_emika_panda/assets/link6_6.obj",
+      "source_sha256": "8fbc031e0d07b795ebf99115c75223141caaba317cab569159f3d477a7821681",
+      "sha256": "8fbc031e0d07b795ebf99115c75223141caaba317cab569159f3d477a7821681",
+      "license_paths": [
+        "assets/third_party/franka_emika_panda/LICENSE"
+      ],
+      "modifications": []
+    },
+    {
+      "path": "assets/third_party/franka_emika_panda/assets/link6_7.obj",
+      "source": "legacy",
+      "source_path": "assets/third_party/franka_emika_panda/assets/link6_7.obj",
+      "source_sha256": "7dc5ebb799fe281aab27d6e84e7a4efa0a8e42da2369ec83de3ea3f206f62d73",
+      "sha256": "7dc5ebb799fe281aab27d6e84e7a4efa0a8e42da2369ec83de3ea3f206f62d73",
+      "license_paths": [
+        "assets/third_party/franka_emika_panda/LICENSE"
+      ],
+      "modifications": []
+    },
+    {
+      "path": "assets/third_party/franka_emika_panda/assets/link6_8.obj",
+      "source": "legacy",
+      "source_path": "assets/third_party/franka_emika_panda/assets/link6_8.obj",
+      "source_sha256": "e3f77381817a341030f9dcc4c4aa7c559f80411b453fd87eb0fefecca82151bf",
+      "sha256": "e3f77381817a341030f9dcc4c4aa7c559f80411b453fd87eb0fefecca82151bf",
+      "license_paths": [
+        "assets/third_party/franka_emika_panda/LICENSE"
+      ],
+      "modifications": []
+    },
+    {
+      "path": "assets/third_party/franka_emika_panda/assets/link6_9.obj",
+      "source": "legacy",
+      "source_path": "assets/third_party/franka_emika_panda/assets/link6_9.obj",
+      "source_sha256": "25a56ea9b02a03b6cb5a81f31c54f54d0185e1a0b3937c37e4289d896e50215a",
+      "sha256": "25a56ea9b02a03b6cb5a81f31c54f54d0185e1a0b3937c37e4289d896e50215a",
+      "license_paths": [
+        "assets/third_party/franka_emika_panda/LICENSE"
+      ],
+      "modifications": []
+    },
+    {
+      "path": "assets/third_party/franka_emika_panda/assets/link7.stl",
+      "source": "legacy",
+      "source_path": "assets/third_party/franka_emika_panda/assets/link7.stl",
+      "source_sha256": "92ac6afcf7574c034d3170d8a68e95ac9048ab9d0dd5bbd8311b86e551b9ab1c",
+      "sha256": "92ac6afcf7574c034d3170d8a68e95ac9048ab9d0dd5bbd8311b86e551b9ab1c",
+      "license_paths": [
+        "assets/third_party/franka_emika_panda/LICENSE"
+      ],
+      "modifications": []
+    },
+    {
+      "path": "assets/third_party/franka_emika_panda/assets/link7_0.obj",
+      "source": "legacy",
+      "source_path": "assets/third_party/franka_emika_panda/assets/link7_0.obj",
+      "source_sha256": "04586b0bde011715cfc22072ac72fe0717eb4d4817bcf665987ce6cd88eb2b93",
+      "sha256": "04586b0bde011715cfc22072ac72fe0717eb4d4817bcf665987ce6cd88eb2b93",
+      "license_paths": [
+        "assets/third_party/franka_emika_panda/LICENSE"
+      ],
+      "modifications": []
+    },
+    {
+      "path": "assets/third_party/franka_emika_panda/assets/link7_1.obj",
+      "source": "legacy",
+      "source_path": "assets/third_party/franka_emika_panda/assets/link7_1.obj",
+      "source_sha256": "c3f72289f394c9d6749a4a327fb11f05b203c37c95032c92f28019b40ebe7e00",
+      "sha256": "c3f72289f394c9d6749a4a327fb11f05b203c37c95032c92f28019b40ebe7e00",
+      "license_paths": [
+        "assets/third_party/franka_emika_panda/LICENSE"
+      ],
+      "modifications": []
+    },
+    {
+      "path": "assets/third_party/franka_emika_panda/assets/link7_2.obj",
+      "source": "legacy",
+      "source_path": "assets/third_party/franka_emika_panda/assets/link7_2.obj",
+      "source_sha256": "d2faecedb304d0989040d082410378dc949dbbda23bd18c05134f08aae984db5",
+      "sha256": "d2faecedb304d0989040d082410378dc949dbbda23bd18c05134f08aae984db5",
+      "license_paths": [
+        "assets/third_party/franka_emika_panda/LICENSE"
+      ],
+      "modifications": []
+    },
+    {
+      "path": "assets/third_party/franka_emika_panda/assets/link7_3.obj",
+      "source": "legacy",
+      "source_path": "assets/third_party/franka_emika_panda/assets/link7_3.obj",
+      "source_sha256": "b62d87c4d4bdb7b281ed341d347c39dad0e50bf36aed8ac11d050073701d5f70",
+      "sha256": "b62d87c4d4bdb7b281ed341d347c39dad0e50bf36aed8ac11d050073701d5f70",
+      "license_paths": [
+        "assets/third_party/franka_emika_panda/LICENSE"
+      ],
+      "modifications": []
+    },
+    {
+      "path": "assets/third_party/franka_emika_panda/assets/link7_4.obj",
+      "source": "legacy",
+      "source_path": "assets/third_party/franka_emika_panda/assets/link7_4.obj",
+      "source_sha256": "cb78ccb61fd4ad6c7bff4c4d2e6cb41e1964a5a3e1a28e67c0c6202371cfc018",
+      "sha256": "cb78ccb61fd4ad6c7bff4c4d2e6cb41e1964a5a3e1a28e67c0c6202371cfc018",
+      "license_paths": [
+        "assets/third_party/franka_emika_panda/LICENSE"
+      ],
+      "modifications": []
+    },
+    {
+      "path": "assets/third_party/franka_emika_panda/assets/link7_5.obj",
+      "source": "legacy",
+      "source_path": "assets/third_party/franka_emika_panda/assets/link7_5.obj",
+      "source_sha256": "099071d3090b51471ba52f4f90814fd3089f4975d196e4d488117073d0bfe491",
+      "sha256": "099071d3090b51471ba52f4f90814fd3089f4975d196e4d488117073d0bfe491",
+      "license_paths": [
+        "assets/third_party/franka_emika_panda/LICENSE"
+      ],
+      "modifications": []
+    },
+    {
+      "path": "assets/third_party/franka_emika_panda/assets/link7_6.obj",
+      "source": "legacy",
+      "source_path": "assets/third_party/franka_emika_panda/assets/link7_6.obj",
+      "source_sha256": "99469e2d95ab74ce0292f2f16954c87a8a7dc16652e62e970fe37c94330a81bb",
+      "sha256": "99469e2d95ab74ce0292f2f16954c87a8a7dc16652e62e970fe37c94330a81bb",
+      "license_paths": [
+        "assets/third_party/franka_emika_panda/LICENSE"
+      ],
+      "modifications": []
+    },
+    {
+      "path": "assets/third_party/franka_emika_panda/assets/link7_7.obj",
+      "source": "legacy",
+      "source_path": "assets/third_party/franka_emika_panda/assets/link7_7.obj",
+      "source_sha256": "426c3db8a19373f3dc73d4bec672e948121b2914c10e2e7b9c7ea80643a19e54",
+      "sha256": "426c3db8a19373f3dc73d4bec672e948121b2914c10e2e7b9c7ea80643a19e54",
+      "license_paths": [
+        "assets/third_party/franka_emika_panda/LICENSE"
+      ],
+      "modifications": []
+    },
+    {
+      "path": "assets/third_party/franka_emika_panda/panda.xml",
+      "source": "legacy",
+      "source_path": "assets/third_party/franka_emika_panda/panda.xml",
+      "source_sha256": "96ad67da03710f17f798c9478fd9e9efdf24a3bf8359f05e456dd9fb158ea273",
+      "sha256": "96ad67da03710f17f798c9478fd9e9efdf24a3bf8359f05e456dd9fb158ea273",
+      "license_paths": [
+        "assets/third_party/franka_emika_panda/LICENSE"
+      ],
+      "modifications": []
+    },
+    {
+      "path": "docs/licenses/ebim-benchmark/LICENSE",
+      "source": "legacy",
+      "source_path": "docs/licenses/ebim-benchmark/LICENSE",
+      "source_sha256": "ab2cd053f20ef36b0aefbd7af45cd31c96f314d586c717f62791d6f636014026",
+      "sha256": "ab2cd053f20ef36b0aefbd7af45cd31c96f314d586c717f62791d6f636014026",
+      "license_paths": [],
+      "modifications": []
+    },
+    {
+      "path": "docs/licenses/ebim-benchmark/NOTICE",
+      "source": "legacy",
+      "source_path": "docs/licenses/ebim-benchmark/NOTICE",
+      "source_sha256": "2c08fc3d938d6d623897deaf4fc421791e04a002c5ddbc6ff2574ecfb1a9dcf1",
+      "sha256": "2c08fc3d938d6d623897deaf4fc421791e04a002c5ddbc6ff2574ecfb1a9dcf1",
+      "license_paths": [],
+      "modifications": []
+    },
+    {
+      "path": "docs/licenses/ebim-benchmark/task3_mujoco_README.md",
+      "source": "legacy",
+      "source_path": "docs/licenses/ebim-benchmark/task3_mujoco_README.md",
+      "source_sha256": "62253b733221f2df5c3231bb57b2d219e619ff4a622e3c18db016c55a446e88c",
+      "sha256": "62253b733221f2df5c3231bb57b2d219e619ff4a622e3c18db016c55a446e88c",
+      "license_paths": [],
+      "modifications": []
+    },
+    {
+      "path": "src/feedingrobot/sim/model.py",
+      "source": "legacy",
+      "source_path": "src/feedingrobot/sim/model.py",
+      "source_sha256": "0c2d2b42332c4cea860b6bf285080656a49923ff0baca2ff357b1c8a01405e36",
+      "sha256": "82e58aafb5febbc950f6f707b05678c846a5ae03ac10ede36fa796be70ec67ef",
+      "license_paths": [],
+      "modifications": [
+        "Panda-only assembly API; expose assembled XML and bowl indexes; scope runtime input hashes"
+      ]
+    },
+    {
+      "path": "src/feedingrobot/sim/beans.py",
+      "source": "legacy",
+      "source_path": "src/feedingrobot/sim/beans.py",
+      "source_sha256": "25b68411fa15c0bdeb923998b6ffc4fa6efed4aa8ee1f6d03cc9a1805a9806d4",
+      "sha256": "eb3693e75e7c436e10d39d17b0e48ebdd4ddf1b5b976279e5581f0e091b7ea12",
+      "license_paths": [],
+      "modifications": [
+        "Reuse diagnostics; replace reset with single rotated-ellipsoid finite-disk envelope and finite geom clearance"
+      ]
+    },
+    {
+      "path": "src/feedingrobot/sim/task.py",
+      "source": "legacy",
+      "source_path": "src/feedingrobot/sim/task.py",
+      "source_sha256": "4b8b2369f0b3780f5ebd5d2295c6a4343d148941b1a1b7ed5f37669260a52351",
+      "sha256": "1d2c892202f0a41811438d15c975d3ade0e449c243144bb5b6f45f4214bda710",
+      "license_paths": [],
+      "modifications": [
+        "P1 joint holding only; episode-local randomized reset, fixed head PD, complete layout-aware state restore"
+      ]
+    },
+    {
+      "path": "src/feedingrobot/sim/contacts.py",
+      "source": "legacy",
+      "source_path": "src/feedingrobot/sim/contacts.py",
+      "source_sha256": "6f2d7466fb06095f1013210b07a622ed81a9c8f8521a3d8f1cd8cff54873260b",
+      "sha256": "6f2d7466fb06095f1013210b07a622ed81a9c8f8521a3d8f1cd8cff54873260b",
+      "license_paths": [],
+      "modifications": []
+    },
+    {
+      "path": "src/feedingrobot/sim/sensors.py",
+      "source": "legacy",
+      "source_path": "src/feedingrobot/sim/sensors.py",
+      "source_sha256": "f7bbdaaad5696473f11093a832aa9c70e4735567aafbb04e4664c0d74b175b7b",
+      "sha256": "f7bbdaaad5696473f11093a832aa9c70e4735567aafbb04e4664c0d74b175b7b",
+      "license_paths": [],
+      "modifications": []
+    },
+    {
+      "path": "configs/scene.json",
+      "source": "legacy",
+      "source_path": "configs/scene.json",
+      "source_sha256": "551e5df49fb2ce16d3507a339b8c899e4cdb5e56135ffab6f1855f8cec4c7055",
+      "sha256": "dcdea4858e77edbd87c8dc30cc0dd280cee95985e26e0d24bfacb722af9fc25d",
+      "license_paths": [],
+      "modifications": [
+        "Set head_fixed=true; other physical values preserved"
+      ]
+    },
+    {
+      "path": "configs/robots/panda.json",
+      "source": "legacy",
+      "source_path": "configs/robots/panda.json",
+      "source_sha256": "c5f739fc23aa2b301a80fb165ba8e4a6d3dd07685e23e578982956266d16dfd8",
+      "sha256": "c5f739fc23aa2b301a80fb165ba8e4a6d3dd07685e23e578982956266d16dfd8",
+      "license_paths": [],
+      "modifications": []
+    },
+    {
+      "path": "configs/acceptance.json",
+      "source": "legacy",
+      "source_path": "configs/acceptance.json",
+      "source_sha256": "ed328ff1089784218197979072197b91e31246e321e90fa289ad36efa839ed02",
+      "sha256": "645e3718790a62c6501c4bcbe8bf1c310a2581aa7845ff654de6cf90c77579e1",
+      "license_paths": [],
+      "modifications": [
+        "Retain only P1 beans_native settling thresholds"
+      ]
+    },
+    {
+      "path": "tests/reference/legacy_model.py",
+      "source": "legacy",
+      "source_path": "src/feedingrobot/sim/model.py",
+      "source_sha256": "0c2d2b42332c4cea860b6bf285080656a49923ff0baca2ff357b1c8a01405e36",
+      "sha256": "0c2d2b42332c4cea860b6bf285080656a49923ff0baca2ff357b1c8a01405e36",
+      "license_paths": [],
+      "modifications": [],
+      "role": "validation_reference_only"
+    },
+    {
+      "path": "tests/reference/scene.json",
+      "source": "legacy",
+      "source_path": "configs/scene.json",
+      "source_sha256": "551e5df49fb2ce16d3507a339b8c899e4cdb5e56135ffab6f1855f8cec4c7055",
+      "sha256": "551e5df49fb2ce16d3507a339b8c899e4cdb5e56135ffab6f1855f8cec4c7055",
+      "license_paths": [],
+      "modifications": [],
+      "role": "validation_reference_only"
+    },
+    {
+      "path": "tests/reference/panda.json",
+      "source": "legacy",
+      "source_path": "configs/robots/panda.json",
+      "source_sha256": "c5f739fc23aa2b301a80fb165ba8e4a6d3dd07685e23e578982956266d16dfd8",
+      "sha256": "c5f739fc23aa2b301a80fb165ba8e4a6d3dd07685e23e578982956266d16dfd8",
+      "license_paths": [],
+      "modifications": [],
+      "role": "validation_reference_only"
+    },
+    {
+      "path": "tests/reference/legacy_task.py",
+      "source": "legacy",
+      "source_path": "src/feedingrobot/sim/task.py",
+      "source_sha256": "4b8b2369f0b3780f5ebd5d2295c6a4343d148941b1a1b7ed5f37669260a52351",
+      "sha256": "4b8b2369f0b3780f5ebd5d2295c6a4343d148941b1a1b7ed5f37669260a52351",
+      "license_paths": [],
+      "modifications": [],
+      "role": "validation_reference_only"
+    }
+  ],
+  "tableware_provenance": {
+    "url": "https://github.com/EBiM-Benchmark/benchmark",
+    "license_audit_commit": "161db49e9eafd34be31e5bdada72d8e2f796c16a",
+    "asset_extraction_commit": "unverified; inherited from fixed legacy source"
+  },
+  "bean_visual_provenance": "Generated ellipsoid visual mesh in legacy source; collision remains native ellipsoid"
+}
